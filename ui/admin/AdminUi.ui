@@ -485,7 +485,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>../images/icons/RedIcons/film_ic.svg</pixmap>
+                    <pixmap resource="../../images/resources.qrc">:/RedIcons/icons/RedIcons/users_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -3384,6 +3384,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../images/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
