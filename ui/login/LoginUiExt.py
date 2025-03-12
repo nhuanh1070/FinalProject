@@ -1,6 +1,6 @@
 from Custom_Widgets import QMainWindow
 
-from ui.login import Ui_MainWindow
+from ui.login.login import Ui_MainWindow
 from utils.style_login_loader import loadStyleJson
 
 

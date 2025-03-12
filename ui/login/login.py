@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
 "    background-repeat: no-repeat;\n"
 "}\n"
 "#widget {\n"
-"    background-color: rgb(249, 246, 233);\n"
+"    background-color: rgb(243, 233, 206);\n"
 "    border-radius: 20px;\n"
 "}\n"
 "QLineEdit {\n"
@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
         self.label.setMinimumSize(QtCore.QSize(50, 50))
         self.label.setMaximumSize(QtCore.QSize(50, 50))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("D:\\FinalProject\\FinalProject\\ui\\../images/icons/RedIcons/user_plus_ic.svg"))
+        self.label.setPixmap(QtGui.QPixmap("/images/icons/RedIcons/user_plus_ic.svg"))
         self.label.setScaledContents(True)
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
@@ -190,7 +190,7 @@ class Ui_MainWindow(object):
         self.label_5.setMinimumSize(QtCore.QSize(50, 50))
         self.label_5.setMaximumSize(QtCore.QSize(50, 50))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("D:\\FinalProject\\FinalProject\\ui\\../images/icons/RedIcons/user_check_ic.svg"))
+        self.label_5.setPixmap(QtGui.QPixmap("/images/icons/RedIcons/user_check_ic.svg"))
         self.label_5.setScaledContents(True)
         self.label_5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_5.setObjectName("label_5")
@@ -294,7 +294,7 @@ class Ui_MainWindow(object):
         self.label_7 = QtWidgets.QLabel(parent=self.frame_10)
         self.label_7.setMaximumSize(QtCore.QSize(25, 25))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("D:\\FinalProject\\FinalProject\\ui\\../images/icons/RedIcons/alert_circle_ic.svg"))
+        self.label_7.setPixmap(QtGui.QPixmap("/images/icons/RedIcons/alert_circle_ic.svg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout_3.addWidget(self.label_7)

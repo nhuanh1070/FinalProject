@@ -1,4 +1,4 @@
-from ui.interface import Ui_MainWindow
+from ui.admin.Admin import Ui_MainWindow
 from Custom_Widgets import QMainWindow
 from utils.style_loader import loadStyleJson
 from PyQt6.QtCore import QSize

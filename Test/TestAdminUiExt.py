@@ -1,7 +1,7 @@
 # myApp.py
 import sys
 from PyQt6.QtWidgets import QApplication
-from ui.interfaceExt import MainWindow  # Import class từ file `interfaceExt.py`
+from ui.admin.AdminUiExt import MainWindow  # Import class từ file `AdminUiExt.py`
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
