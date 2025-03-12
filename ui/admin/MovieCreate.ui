@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>755</width>
-    <height>583</height>
+    <height>561</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -252,6 +252,9 @@ QLineEdit {
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
                 <widget class="QLabel" name="label_3">
                  <property name="text">
@@ -275,9 +278,12 @@ QLineEdit {
                 <number>0</number>
                </property>
                <property name="topMargin">
-                <number>9</number>
+                <number>0</number>
                </property>
                <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
@@ -373,7 +379,7 @@ QLineEdit {
              <number>0</number>
             </property>
             <property name="bottomMargin">
-             <number>0</number>
+             <number>30</number>
             </property>
             <item alignment="Qt::AlignLeft">
              <widget class="QFrame" name="frame_4">
@@ -406,7 +412,7 @@ QLineEdit {
                <item>
                 <widget class="QTextEdit" name="textEditDescription">
                  <property name="styleSheet">
-                  <string notr="true">font: 10pt &quot;Cascadia Code&quot;;</string>
+                  <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  </property>
                 </widget>
                </item>
@@ -417,14 +423,14 @@ QLineEdit {
              <widget class="QFrame" name="frame_7">
               <property name="minimumSize">
                <size>
-                <width>184</width>
-                <height>349</height>
+                <width>205</width>
+                <height>300</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>184</width>
-                <height>349</height>
+                <width>205</width>
+                <height>300</height>
                </size>
               </property>
               <property name="frameShape">
@@ -449,7 +455,7 @@ QLineEdit {
                <property name="bottomMargin">
                 <number>0</number>
                </property>
-               <item>
+               <item alignment="Qt::AlignHCenter">
                 <widget class="QLabel" name="labelImage">
                  <property name="minimumSize">
                   <size>
@@ -462,6 +468,15 @@ QLineEdit {
                    <width>185</width>
                    <height>280</height>
                   </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>MS Shell Dlg 2</family>
+                   <pointsize>48</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">font: 48pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -508,19 +523,19 @@ QLineEdit {
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_14">
                   <property name="spacing">
-                   <number>0</number>
+                   <number>6</number>
                   </property>
                   <property name="leftMargin">
-                   <number>0</number>
+                   <number>9</number>
                   </property>
                   <property name="topMargin">
-                   <number>0</number>
+                   <number>9</number>
                   </property>
                   <property name="rightMargin">
                    <number>9</number>
                   </property>
                   <property name="bottomMargin">
-                   <number>0</number>
+                   <number>9</number>
                   </property>
                   <item>
                    <widget class="QLabel" name="label_8">
@@ -544,6 +559,12 @@ QLineEdit {
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
                   <item>
                    <widget class="QPushButton" name="pushButton_AddPoster">
                     <property name="text">
