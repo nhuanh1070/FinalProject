@@ -1,0 +1,32 @@
+{
+	"QCustomQStackedWidget":[
+		{
+			"name":"stackedWidget",
+			"transitionAnimation":[
+				{
+					"fade":[
+						{
+							"active": true,
+							"duration":1000,
+							"easingCurve": "OutBack"
+						}
+					],
+					"slide":[
+						{
+							"active":true,
+							"duration": 1000,
+							"direction": "horizontal",
+							"easingCurve": "OutBack"
+						}
+					]
+				}
+			],
+			"navigation":[
+				{
+					"nextPage":"pushButtonTo_Login",
+					"previousPage": "pushButtonTo_Register"
+				}
+			]
+		}
+	]
+}
