@@ -1,18 +1,36 @@
-from Custom_Widgets import QMainWindow
-
+from PyQt6.QtWidgets import QMainWindow
 from ui.login.login import Ui_MainWindow
-from utils.style_login_loader import loadStyleJson
+
+import utils.resources_rc
+
+class LoginUiExt(Ui_MainWindow):
+    def __init__(self):
+        self.MainWindow = QMainWindow()
+        self.setupUi(self.MainWindow)
+        self.setupIcons()
+    def setupUi(self, MainWindow):
+        super().setupUi(MainWindow)
+        self.MainWindow = MainWindow
+        self.MainWindow.ui = self
 
 
-class MainWindow(QMainWindow):
-    def __init__(self, parent=None):
-        QMainWindow.__init__(self)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        # Đặt trang đầu tiên hiển thị
+        self.stackedWidget.setCurrentIndex(0)
 
-        # 🟢 Gọi hàm load JSON style từ thư mục utils
-        loadStyleJson(self)
+        # Gán sự kiện click cho các nút chuyển trang
+        self.setupSignalAndSlot()
 
+    def showWindow(self):
+        self.MainWindow.show()
+    def setupSignalAndSlot(self):
+        """ Gán sự kiện cho các nút để chuyển trang """
+        self.pushButtonTo_Register.clicked.connect(self.showRegisterPage)
+        self.pushButtonTo_Login.clicked.connect(self.showLoginPage)
 
+    def showRegisterPage(self):
+        """ Hiển thị trang đăng ký """
+        self.stackedWidget.setCurrentWidget(self.RegisterPage)
 
-        self.show()
+    def showLoginPage(self):
+        """ Hiển thị trang đăng nhập """
+        self.stackedWidget.setCurrentWidget(self.LoginPage)

@@ -1,21 +1,40 @@
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QMainWindow, QTableWidgetItem
 from PyQt6 import QtWidgets
-
 from ui.admin.AdminUi import Ui_MainWindow
 from ui.admin.MovieDetailExt import MovieDetailExt
 from ui.admin.MovieCreateExt import MovieCreateExt
 from ui.admin.MovieEditExt import MovieEditExt
 
-class MainWindow(QMainWindow):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        self.setupSignalAndSlot()
-        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
+class AdminUiExt(Ui_MainWindow):
+    def __init__(self):
+        self.MainWindow = QMainWindow()  # Tạo một QMainWindow mới
+        self.setupUi(self.MainWindow)  # Áp dụng giao diện UI
 
-        # Danh sách phim mẫu
-        self.movies = [
+        # Kết nối các sự kiện
+        self.setupSignalAndSlot()
+
+        # Cấu hình bảng
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
+        self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        # Gán danh sách phim mẫu
+        self.movies = self.get_sample_movies()
+
+        # Tải danh sách phim lên bảng
+        self.load_movies()
+
+    def setupSignalAndSlot(self):
+        """ Kết nối các nút với các hộp thoại """
+        self.pushButtonDetails.clicked.connect(self.show_movie_details)
+        self.pushButtonCreate.clicked.connect(self.show_movie_create)
+        self.pushButtonEdit.clicked.connect(self.show_movie_edit)
+
+    def showWindow(self):
+        """ Hiển thị cửa sổ chính """
+        self.MainWindow.show()
+
+    def get_sample_movies(self):
+        """ Trả về danh sách phim mẫu """
+        return [
             {
                 "name": "Inception",
                 "author": "Christopher Nolan",
@@ -48,51 +67,43 @@ class MainWindow(QMainWindow):
             }
         ]
 
-        self.load_movies()
-
-    def setupSignalAndSlot(self):
-        """ Kết nối các nút với các hộp thoại """
-        self.ui.pushButtonDetails.clicked.connect(self.show_movie_details)
-        self.ui.pushButtonCreate.clicked.connect(self.show_movie_create)
-        self.ui.pushButtonEdit.clicked.connect(self.show_movie_edit)
-
     def load_movies(self):
         """ Load danh sách phim vào bảng """
-        self.ui.tableWidget.setRowCount(len(self.movies))
+        self.tableWidget.setRowCount(len(self.movies))
         for row, movie in enumerate(self.movies):
-            self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(movie["name"]))
-            self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(movie["genre"]))
-            self.ui.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(movie["country"]))
-            self.ui.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(movie["year"]))
-            self.ui.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(movie["duration"]))
+            self.tableWidget.setItem(row, 0, QTableWidgetItem(movie["name"]))
+            self.tableWidget.setItem(row, 1, QTableWidgetItem(movie["genre"]))
+            self.tableWidget.setItem(row, 2, QTableWidgetItem(movie["country"]))
+            self.tableWidget.setItem(row, 3, QTableWidgetItem(movie["year"]))
+            self.tableWidget.setItem(row, 4, QTableWidgetItem(movie["duration"]))
 
     def show_movie_details(self):
         """ Hiển thị cửa sổ chi tiết phim """
-        selected_row = self.ui.tableWidget.currentRow()
+        selected_row = self.tableWidget.currentRow()
         if selected_row == -1:
-            QMessageBox.warning(self, "Lỗi", "Vui lòng chọn một bộ phim!")
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn một bộ phim!")
             return
 
         movie = self.movies[selected_row]
-        dialog = MovieDetailExt(movie, self)
+        dialog = MovieDetailExt(movie, self.MainWindow)
         dialog.exec()
 
     def show_movie_edit(self):
         """ Hiển thị cửa sổ chỉnh sửa phim """
-        selected_row = self.ui.tableWidget.currentRow()
+        selected_row = self.tableWidget.currentRow()
         if selected_row == -1:
-            QMessageBox.warning(self, "Lỗi", "Vui lòng chọn một bộ phim!")
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn một bộ phim!")
             return
 
         movie = self.movies[selected_row]
-        dialog = MovieEditExt(movie, self)
+        dialog = MovieEditExt(movie, self.MainWindow)
         if dialog.exec():
             # Cập nhật lại bảng sau khi chỉnh sửa
             self.load_movies()
 
     def show_movie_create(self):
         """ Hiển thị cửa sổ tạo phim mới """
-        dialog = MovieCreateExt(self)
+        dialog = MovieCreateExt(self.MainWindow)
         if dialog.exec():
             # Thêm phim mới vào danh sách (nếu cần)
             new_movie = {

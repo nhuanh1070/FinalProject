@@ -1,11 +1,12 @@
-import sys
-
 from PyQt6.QtWidgets import QApplication
+from ui.admin.AdminUiExt import AdminUiExt
 
-from ui.admin.AdminUiExt import MainWindow
+# Khởi tạo ứng dụng
+app = QApplication([])
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec())
+# Tạo cửa sổ UI
+ui = AdminUiExt()
+ui.showWindow()  # Hiển thị cửa sổ chính
+
+# Chạy vòng lặp sự kiện
+app.exec()

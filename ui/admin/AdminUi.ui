@@ -161,7 +161,7 @@ QPushButton {
        </property>
        <attribute name="icon">
         <iconset>
-         <normaloff>../images/icons_menu/cinema_ic.png</normaloff>../images/icons_menu/cinema_ic.png</iconset>
+         <normaloff>../../images/icons_menu/cinema_ic.png</normaloff>../../images/icons_menu/cinema_ic.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>
@@ -485,7 +485,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../images/resources.qrc">:/RedIcons/icons/RedIcons/users_ic.svg</pixmap>
+                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/users_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -578,7 +578,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>../images/icons/RedIcons/users_ic.svg</pixmap>
+                    <pixmap>:/RedIcons/icons/RedIcons/users_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -764,7 +764,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>../images/icons/RedIcons/ticket_ic.png</pixmap>
+                    <pixmap>:/RedIcons/icons/RedIcons/ticket_ic.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -3385,7 +3385,7 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../../images/resources.qrc"/>
+  <include location="../../utils/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

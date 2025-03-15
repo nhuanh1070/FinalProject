@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="RedIcons">
+    <file>../images/icons/RedIcons/alert_circle_ic.svg</file>
+    <file>../images/icons/RedIcons/chevron_left_ic.svg</file>
+    <file>../images/icons/RedIcons/delete_ic.svg</file>
+    <file>../images/icons/RedIcons/dollar_sign_ic.svg</file>
+    <file>../images/icons/RedIcons/film_ic.svg</file>
+    <file>../images/icons/RedIcons/home_ic.svg</file>
+    <file>../images/icons/RedIcons/log_out.svg</file>
+    <file>../images/icons/RedIcons/menu_ic.svg</file>
+    <file>../images/icons/RedIcons/Revenue_ic.svg</file>
+    <file>../images/icons/RedIcons/search_ic.svg</file>
+    <file>../images/icons/RedIcons/setting_ic.svg</file>
+    <file>../images/icons/RedIcons/shopping_cart_ic.svg</file>
+    <file>../images/icons/RedIcons/ticket_ic.png</file>
+    <file>../images/icons/RedIcons/user_check_ic.svg</file>
+    <file>../images/icons/RedIcons/user_ic.svg</file>
+    <file>../images/icons/RedIcons/user_plus_ic.svg</file>
+    <file>../images/icons/RedIcons/users_ic.svg</file>
+  </qresource>
+</RCC>
