@@ -243,13 +243,13 @@ QPushButton {
                <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>0</number>
+               <number>9</number>
               </property>
               <property name="topMargin">
-               <number>0</number>
+               <number>9</number>
               </property>
               <property name="rightMargin">
-               <number>0</number>
+               <number>9</number>
               </property>
               <property name="bottomMargin">
                <number>10</number>
@@ -274,67 +274,6 @@ QPushButton {
                    <property name="text">
                     <string>MOVIE MANAGEMENT</string>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QWidget" name="widget_3" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_4">
-                 <item>
-                  <widget class="QFrame" name="searchFrame">
-                   <property name="minimumSize">
-                    <size>
-                     <width>200</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_5">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="label_2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>32</width>
-                        <height>32</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>32</width>
-                        <height>32</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/search_ic.svg</pixmap>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -488,7 +427,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/users_ic.svg</pixmap>
+                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/film_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -581,7 +520,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>:/RedIcons/icons/RedIcons/users_ic.svg</pixmap>
+                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/users_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -674,7 +613,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>../images/icons/RedIcons/dollar_sign_ic.svg</pixmap>
+                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/dollar_ic.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -767,7 +706,7 @@ color: rgb(0, 0, 0);</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>:/RedIcons/icons/RedIcons/ticket_ic.png</pixmap>
+                    <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/ticket_ic.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -911,7 +850,7 @@ color: rgb(0, 0, 0);</string>
                        <string/>
                       </property>
                       <property name="pixmap">
-                       <pixmap>../images/icons/RedIcons/search_ic.svg</pixmap>
+                       <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/search_ic.svg</pixmap>
                       </property>
                      </widget>
                     </item>
@@ -1076,8 +1015,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                           <string>Details</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>../images/icons/WhiteIcons/file-text_ic.svg</normaloff>../images/icons/WhiteIcons/file-text_ic.svg</iconset>
+                          <iconset resource="../../utils/resources.qrc">
+                           <normaloff>:/WhiteIcons/images/icons/WhiteIcons/details_ic.svg</normaloff>:/WhiteIcons/images/icons/WhiteIcons/details_ic.svg</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1098,8 +1037,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                           <string>Delete</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>../images/icons/WhiteIcons/delete_ic.svg</normaloff>../images/icons/WhiteIcons/delete_ic.svg</iconset>
+                          <iconset resource="../../utils/resources.qrc">
+                           <normaloff>:/WhiteIcons/images/icons/WhiteIcons/delete_ic.svg</normaloff>:/WhiteIcons/images/icons/WhiteIcons/delete_ic.svg</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1123,8 +1062,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                           <string>Edit</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>../images/icons/WhiteIcons/edit_ic.svg</normaloff>../images/icons/WhiteIcons/edit_ic.svg</iconset>
+                          <iconset resource="../../utils/resources.qrc">
+                           <normaloff>:/WhiteIcons/images/icons/WhiteIcons/edit_ic.svg</normaloff>:/WhiteIcons/images/icons/WhiteIcons/edit_ic.svg</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1148,8 +1087,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                           <string>Create</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>../images/icons/WhiteIcons/create_ic.svg</normaloff>../images/icons/WhiteIcons/create_ic.svg</iconset>
+                          <iconset resource="../../utils/resources.qrc">
+                           <normaloff>:/WhiteIcons/images/icons/WhiteIcons/create_ic.svg</normaloff>:/WhiteIcons/images/icons/WhiteIcons/create_ic.svg</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1246,8 +1185,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="icon">
-        <iconset>
-         <normaloff>../images/icons_menu/revenue_ic.png</normaloff>../images/icons_menu/revenue_ic.png</iconset>
+        <iconset resource="../../utils/resources.qrc">
+         <normaloff>:/Menu/images/icons_menu/popcorn_ic.png</normaloff>:/Menu/images/icons_menu/popcorn_ic.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>
@@ -2315,8 +2254,8 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="icon">
-        <iconset>
-         <normaloff>../images/icons_menu/popcorn_ic.png</normaloff>../images/icons_menu/popcorn_ic.png</iconset>
+        <iconset resource="../../utils/resources.qrc">
+         <normaloff>:/Menu/images/icons_menu/revenue_ic.png</normaloff>:/Menu/images/icons_menu/revenue_ic.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>

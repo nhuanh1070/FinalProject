@@ -1,7 +1,10 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox
 from PyQt6.QtGui import QPixmap
 from ui.admin.MovieCreate import Ui_Dialog  # Import giao diện từ file MovieCreate.py
-
+from utils import resources_banner_rc
+from utils import resources_poster_rc
+from utils import resources_rc
+from utils import resources_logo_rc
 class MovieCreateExt(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)

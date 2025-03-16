@@ -1,6 +1,5 @@
-# TestUserUiExt.py
-from PyQt6.QtWidgets import QMainWindow, QApplication
 
+from PyQt6.QtWidgets import QMainWindow, QApplication
 from ui.user.UserUiExt import UserUiExt
 
 app = QApplication([])

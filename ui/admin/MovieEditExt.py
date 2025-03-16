@@ -1,7 +1,10 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox
 from PyQt6.QtGui import QPixmap
-from ui.admin.MovieEdit import Ui_Dialog  # Import giao diện từ file MovieEdit.py
-
+from ui.admin.MovieEdit import Ui_Dialog
+from utils import resources_banner_rc
+from utils import resources_poster_rc
+from utils import resources_rc
+from utils import resources_logo_rc
 class MovieEditExt(QDialog):
     def __init__(self, movie, parent=None):
         super().__init__(parent)

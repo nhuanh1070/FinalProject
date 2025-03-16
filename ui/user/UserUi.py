@@ -12,9 +12,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(982, 701)
+        MainWindow.resize(962, 702)
+        MainWindow.setMinimumSize(QtCore.QSize(962, 0))
         MainWindow.setStyleSheet("#centralwidget, #scrollArea, #scrollAreaWidgetContents,  #widget_3, #widget_4, #widget_5 {\n"
 "background-color:rgb(145, 8, 12);\n"
+" border: none;\n"
 "}\n"
 "\n"
 "  #widget_6, #widget_7, #widget_8, #widget_10, #widget_11, #widget_9 {\n"
@@ -27,7 +29,44 @@ class Ui_MainWindow(object):
 "}\n"
 "#frame_17, #frame_4, #frame_19, #frame_6, #frame_18, #frame_2, #frame_10, #frame_11, #frame_12, #frame_14, #frame_15, #frame_8  {\n"
 "background-color:  rgb(83, 9, 11);\n"
-"}")
+" border: none;\n"
+"}\n"
+"    QPushButton {\n"
+"        border: none;\n"
+"    }\n"
+"\n"
+"    QLabel {\n"
+"        border: none; \n"
+"    }\n"
+"\n"
+"    QFrame {\n"
+"        border: none;\n"
+"    }\n"
+"\n"
+"    QWidget {\n"
+"        border: none;\n"
+"    }\n"
+" QScrollBar:vertical {\n"
+"        border: none;\n"
+"        background: #c9c9c9; /* Màu nền thanh cuộn */\n"
+"        width: 8px;\n"
+"        margin: 2px 0 2px 0;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #f3f6fa; /* Màu thanh trượt */\n"
+"        min-height: 20px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background:#53090b; /* Màu khi hover */\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"    QScrollBar::add-line:vertical, \n"
+"    QScrollBar::sub-line:vertical {\n"
+"        background: none;\n"
+"        border: none;\n"
+"    }")
         MainWindow.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setStyleSheet("")
@@ -48,28 +87,26 @@ class Ui_MainWindow(object):
         self.headerFrame_7.setStyleSheet("background-color: rgb(124, 0, 11);")
         self.headerFrame_7.setObjectName("headerFrame_7")
         self.horizontalLayout_104 = QtWidgets.QHBoxLayout(self.headerFrame_7)
-        self.horizontalLayout_104.setContentsMargins(0, 0, 0, 10)
-        self.horizontalLayout_104.setSpacing(0)
+        self.horizontalLayout_104.setContentsMargins(0, 0, 6, 10)
+        self.horizontalLayout_104.setSpacing(6)
         self.horizontalLayout_104.setObjectName("horizontalLayout_104")
-        self.widget_32 = QtWidgets.QWidget(parent=self.headerFrame_7)
-        self.widget_32.setObjectName("widget_32")
-        self.horizontalLayout_105 = QtWidgets.QHBoxLayout(self.widget_32)
-        self.horizontalLayout_105.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_105.setSpacing(0)
-        self.horizontalLayout_105.setObjectName("horizontalLayout_105")
-        self.appHeader_7 = QtWidgets.QLabel(parent=self.widget_32)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_104.addItem(spacerItem)
+        self.appHeader_7 = QtWidgets.QLabel(parent=self.headerFrame_7)
         font = QtGui.QFont()
         font.setFamily("Segoe UI Black")
-        font.setPointSize(16)
+        font.setPointSize(30)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(10)
         self.appHeader_7.setFont(font)
-        self.appHeader_7.setStyleSheet("font: 87 16pt \"Segoe UI Black\";\n"
+        self.appHeader_7.setStyleSheet("font: 87 30pt \"Segoe UI Black\";\n"
 "color: rgb(254, 254, 255);")
+        self.appHeader_7.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.appHeader_7.setObjectName("appHeader_7")
-        self.horizontalLayout_105.addWidget(self.appHeader_7, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.horizontalLayout_104.addWidget(self.widget_32, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_104.addWidget(self.appHeader_7)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_104.addItem(spacerItem1)
         self.widget_34 = QtWidgets.QWidget(parent=self.headerFrame_7)
         self.widget_34.setObjectName("widget_34")
         self.horizontalLayout_108 = QtWidgets.QHBoxLayout(self.widget_34)
@@ -92,7 +129,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -617, 968, 1230))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 954, 1475))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -576,25 +613,188 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.addWidget(self.widget_6)
         self.verticalLayout_6.addWidget(self.widget_4)
         self.verticalLayout_2.addWidget(self.widget_3)
-        self.label_18 = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
-        self.label_18.setObjectName("label_18")
-        self.verticalLayout_2.addWidget(self.label_18)
         self.widget_12 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_12.setMinimumSize(QtCore.QSize(0, 0))
         self.widget_12.setObjectName("widget_12")
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.widget_12)
-        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_12)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.widget_13 = QtWidgets.QWidget(parent=self.widget_12)
+        self.widget_13.setObjectName("widget_13")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget_13)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.widget_2 = QtWidgets.QWidget(parent=self.widget_13)
+        self.widget_2.setObjectName("widget_2")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.widget_2)
         self.verticalLayout_19.setSpacing(0)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
-        self.label_19 = QtWidgets.QLabel(parent=self.widget_12)
+        self.frame = QtWidgets.QFrame(parent=self.widget_2)
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label_5 = QtWidgets.QLabel(parent=self.frame)
+        self.label_5.setMinimumSize(QtCore.QSize(50, 50))
+        self.label_5.setMaximumSize(QtCore.QSize(50, 50))
+        self.label_5.setText("")
+        self.label_5.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"))
+        self.label_5.setScaledContents(True)
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_2.addWidget(self.label_5)
+        self.label_4 = QtWidgets.QLabel(parent=self.frame)
+        self.label_4.setStyleSheet("font: 87 25pt \"Segoe UI Black\";\n"
+"color: rgb(255, 215, 0);")
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_2.addWidget(self.label_4)
+        self.verticalLayout_19.addWidget(self.frame)
+        self.frame_3 = QtWidgets.QFrame(parent=self.widget_2)
+        self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.frame_3)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.label_2 = QtWidgets.QLabel(parent=self.frame_3)
+        self.label_2.setStyleSheet("font: 87 15pt \"Segoe UI Black\";\n"
+"color: rgb(254, 254, 255);")
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_21.addWidget(self.label_2, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.frame_16 = QtWidgets.QFrame(parent=self.frame_3)
+        self.frame_16.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_16)
+        self.horizontalLayout_4.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_4.setSpacing(12)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_25 = QtWidgets.QLabel(parent=self.frame_16)
+        self.label_25.setMinimumSize(QtCore.QSize(40, 40))
+        self.label_25.setMaximumSize(QtCore.QSize(40, 40))
+        self.label_25.setText("")
+        self.label_25.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/facebook_lg.svg"))
+        self.label_25.setScaledContents(True)
+        self.label_25.setObjectName("label_25")
+        self.horizontalLayout_4.addWidget(self.label_25)
+        self.label_26 = QtWidgets.QLabel(parent=self.frame_16)
+        self.label_26.setMinimumSize(QtCore.QSize(40, 40))
+        self.label_26.setMaximumSize(QtCore.QSize(40, 40))
+        self.label_26.setText("")
+        self.label_26.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/instagram_lg.svg"))
+        self.label_26.setScaledContents(True)
+        self.label_26.setObjectName("label_26")
+        self.horizontalLayout_4.addWidget(self.label_26)
+        self.label_27 = QtWidgets.QLabel(parent=self.frame_16)
+        self.label_27.setMinimumSize(QtCore.QSize(40, 40))
+        self.label_27.setMaximumSize(QtCore.QSize(40, 40))
+        self.label_27.setText("")
+        self.label_27.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/youtube_lg.svg"))
+        self.label_27.setScaledContents(True)
+        self.label_27.setObjectName("label_27")
+        self.horizontalLayout_4.addWidget(self.label_27)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem2)
+        self.verticalLayout_21.addWidget(self.frame_16)
+        self.verticalLayout_19.addWidget(self.frame_3)
+        self.frame_9 = QtWidgets.QFrame(parent=self.widget_2)
+        self.frame_9.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_9)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.label_19 = QtWidgets.QLabel(parent=self.frame_9)
+        self.label_19.setMinimumSize(QtCore.QSize(50, 50))
+        self.label_19.setMaximumSize(QtCore.QSize(50, 50))
+        self.label_19.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius: 10px; \n"
+"")
+        self.label_19.setText("")
+        self.label_19.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/FIS_Logo.png"))
+        self.label_19.setScaledContents(True)
         self.label_19.setObjectName("label_19")
-        self.verticalLayout_19.addWidget(self.label_19)
+        self.horizontalLayout_3.addWidget(self.label_19)
+        self.label_22 = QtWidgets.QLabel(parent=self.frame_9)
+        self.label_22.setMinimumSize(QtCore.QSize(50, 50))
+        self.label_22.setMaximumSize(QtCore.QSize(50, 50))
+        self.label_22.setText("")
+        self.label_22.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/UEL_Logo.png"))
+        self.label_22.setScaledContents(True)
+        self.label_22.setObjectName("label_22")
+        self.horizontalLayout_3.addWidget(self.label_22)
+        self.label_23 = QtWidgets.QLabel(parent=self.frame_9)
+        self.label_23.setMaximumSize(QtCore.QSize(50, 50))
+        self.label_23.setStyleSheet("border-radius: 30px; ")
+        self.label_23.setText("")
+        self.label_23.setPixmap(QtGui.QPixmap(":/Logo/images/Logo/group_lg.jpg"))
+        self.label_23.setScaledContents(True)
+        self.label_23.setObjectName("label_23")
+        self.horizontalLayout_3.addWidget(self.label_23)
+        self.label_15 = QtWidgets.QLabel(parent=self.frame_9)
+        self.label_15.setStyleSheet("color: rgb(255, 255, 255);\n"
+"text-decoration: underline;\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"font: 12pt bold \"MS Shell Dlg 2\";")
+        self.label_15.setObjectName("label_15")
+        self.horizontalLayout_3.addWidget(self.label_15)
+        self.verticalLayout_19.addWidget(self.frame_9)
+        self.verticalLayout_5.addWidget(self.widget_2, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout.addWidget(self.widget_13)
+        self.widget_14 = QtWidgets.QWidget(parent=self.widget_12)
+        self.widget_14.setObjectName("widget_14")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.widget_14)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.widget_15 = QtWidgets.QWidget(parent=self.widget_14)
+        self.widget_15.setObjectName("widget_15")
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout(self.widget_15)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.frame_13 = QtWidgets.QFrame(parent=self.widget_15)
+        self.frame_13.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_13.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_13.setObjectName("frame_13")
+        self.verticalLayout_24 = QtWidgets.QVBoxLayout(self.frame_13)
+        self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_24.setSpacing(0)
+        self.verticalLayout_24.setObjectName("verticalLayout_24")
+        self.label_24 = QtWidgets.QLabel(parent=self.frame_13)
+        self.label_24.setStyleSheet("font: 87 25pt \"Segoe UI Black\";\n"
+"color: rgb(255, 215, 0);")
+        self.label_24.setObjectName("label_24")
+        self.verticalLayout_24.addWidget(self.label_24)
+        self.verticalLayout_23.addWidget(self.frame_13)
+        self.frame_5 = QtWidgets.QFrame(parent=self.widget_15)
+        self.frame_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.frame_5)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.label_6 = QtWidgets.QLabel(parent=self.frame_5)
+        self.label_6.setStyleSheet("color: rgb(254, 254, 255);\n"
+"font: 75 bold  12pt \"Segoe UI Variable Display\";")
+        self.label_6.setWordWrap(True)
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout_25.addWidget(self.label_6)
+        self.verticalLayout_23.addWidget(self.frame_5)
+        self.frame_7 = QtWidgets.QFrame(parent=self.widget_15)
+        self.frame_7.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.frame_7)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.label_18 = QtWidgets.QLabel(parent=self.frame_7)
+        self.label_18.setStyleSheet("font: 87 15pt \"Segoe UI Black\";\n"
+"color: rgb(255, 215, 0);")
+        self.label_18.setObjectName("label_18")
+        self.verticalLayout_26.addWidget(self.label_18)
+        self.verticalLayout_23.addWidget(self.frame_7)
+        self.verticalLayout_22.addWidget(self.widget_15, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout.addWidget(self.widget_14)
         self.verticalLayout_2.addWidget(self.widget_12)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
         self.gridLayout_7.addWidget(self.widget, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 982, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 962, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
 
@@ -605,7 +805,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.appHeader_7.setText(_translate("MainWindow", "WELCOME TO CINEX CINEMA"))
+        self.appHeader_7.setText(_translate("MainWindow", "     WELCOME TO CINEX CINEMA"))
         self.label_88.setText(_translate("MainWindow", "NOW SHOWING"))
         self.label_NameMovie_1.setText(_translate("MainWindow", "AVATAR: THE WAY OF WATER"))
         self.btn_ViewDetails_1.setText(_translate("MainWindow", "View Details"))
@@ -625,5 +825,9 @@ class Ui_MainWindow(object):
         self.label_9.setText(_translate("MainWindow", "THE CONJURING: <br>THE DEVIL MADE ME DO IT"))
         self.btn_ViewDetails_10.setText(_translate("MainWindow", "View Details"))
         self.btn_BookTicket_9.setText(_translate("MainWindow", "BOOK TICKETS"))
-        self.label_18.setText(_translate("MainWindow", "ENJOY YOUR MOVIE"))
-        self.label_19.setText(_translate("MainWindow", "TextLabel"))
+        self.label_4.setText(_translate("MainWindow", " CINEX "))
+        self.label_2.setText(_translate("MainWindow", "We hope you enjoy the cinema!"))
+        self.label_15.setText(_translate("MainWindow", "Vietnamese Crepe Group"))
+        self.label_24.setText(_translate("MainWindow", "ABOUT US"))
+        self.label_6.setText(_translate("MainWindow", "\"Cinex is a modern cinema chain that delivers a top-notch movie experience with high-definition screens, immersive sound, and a premium atmosphere. We are committed to bringing blockbuster films, captivating content, and excellent service to ensure audiences enjoy every moment to the fullest.\""))
+        self.label_18.setText(_translate("MainWindow", "Cinex – \"Cinematic Magic!\""))

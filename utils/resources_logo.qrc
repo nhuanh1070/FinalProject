@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Logo">
+    <file>../images/Welcome/login_bg.png</file>
+    <file>../images/Logo/group_lg.jpg</file>
+  </qresource>
+</RCC>
