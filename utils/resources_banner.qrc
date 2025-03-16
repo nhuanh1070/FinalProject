@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="Banners">
+    <file>../images/banners/anh-khong-dau-banner-compressed.jpg</file>
+    <file>../images/banners/John-Wick-2-New-Banner-compressed.jpg</file>
+    <file>../images/banners/quynhaptrang_banner-compressed.jpg</file>
+  </qresource>
+</RCC>

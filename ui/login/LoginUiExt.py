@@ -7,13 +7,13 @@ from CSDL.test.TestDataConnector import dc
 from CSDL.test.TestUser_WriteJson import users
 from ui.login.login import Ui_MainWindow
 
-
-
 class LoginUiExt(Ui_MainWindow):
     def __init__(self):
         self.MainWindow = QMainWindow()
         self.setupUi(self.MainWindow)
+
         self.dc=DataConnector()
+
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)

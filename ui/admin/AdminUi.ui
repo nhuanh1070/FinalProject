@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1148</width>
+    <width>1149</width>
     <height>773</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1048</width>
+    <width>1149</width>
     <height>773</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1149</width>
+    <width>1200</width>
     <height>773</height>
    </size>
   </property>
@@ -34,7 +34,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>1149</width>
+     <width>1200</width>
      <height>773</height>
     </size>
    </property>
@@ -124,7 +124,7 @@ QPushButton {
       </property>
       <property name="maximumSize">
        <size>
-        <width>1148</width>
+        <width>1200</width>
         <height>773</height>
        </size>
       </property>
@@ -155,7 +155,7 @@ QPushButton {
        </property>
        <property name="maximumSize">
         <size>
-         <width>1103</width>
+         <width>1200</width>
          <height>771</height>
         </size>
        </property>
@@ -174,7 +174,7 @@ QPushButton {
          <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>24</number>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -198,7 +198,7 @@ QPushButton {
           </property>
           <property name="maximumSize">
            <size>
-            <width>1103</width>
+            <width>1200</width>
             <height>771</height>
            </size>
           </property>
@@ -480,6 +480,9 @@ color: rgb(0, 0, 0);</string>
                      <width>50</width>
                      <height>50</height>
                     </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">    background-image: url(:/RedIcons/images/icons/users_ic.svg)</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -793,7 +796,7 @@ color: rgb(0, 0, 0);</string>
              </property>
              <property name="maximumSize">
               <size>
-               <width>1103</width>
+               <width>1200</width>
                <height>606</height>
               </size>
              </property>
@@ -808,7 +811,7 @@ color: rgb(0, 0, 0);</string>
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>0</number>
+               <number>9</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>

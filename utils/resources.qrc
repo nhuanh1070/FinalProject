@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="RedIcons">
+    <file>../images/icons/RedIcons/maximize_2_ic.svg</file>
     <file>../images/icons/RedIcons/alert_circle_ic.svg</file>
     <file>../images/icons/RedIcons/chevron_left_ic.svg</file>
     <file>../images/icons/RedIcons/delete_ic.svg</file>
@@ -17,5 +18,18 @@
     <file>../images/icons/RedIcons/user_ic.svg</file>
     <file>../images/icons/RedIcons/user_plus_ic.svg</file>
     <file>../images/icons/RedIcons/users_ic.svg</file>
+  </qresource>
+  <qresource prefix="WhiteIcons">
+    <file>../images/icons/WhiteIcons/alert_circle_ic.svg</file>
+    <file>../images/icons/WhiteIcons/maximize_2_ic.svg</file>
+    <file>../images/icons/WhiteIcons/chevron_left_ic.svg</file>
+    <file>../images/icons/WhiteIcons/chevron_right_ic.svg</file>
+    <file>../images/icons/WhiteIcons/arrow_left_ic.svg</file>
+    <file>../images/icons/WhiteIcons/arrow_right_ic.svg</file>
+    <file>../images/icons/WhiteIcons/create_ic.svg</file>
+    <file>../images/icons/WhiteIcons/delete_ic.svg</file>
+    <file>../images/icons/WhiteIcons/details_ic.svg</file>
+    <file>../images/icons/WhiteIcons/edit_ic.svg</file>
+    <file>../images/icons/WhiteIcons/file-text_ic.svg</file>
   </qresource>
 </RCC>

@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="Poster">
+    <file>../images/Poster/Avatar.jpg</file>
+    <file>../images/Poster/Dune.jpg</file>
+    <file>../images/Poster/FastX.jpg</file>
+    <file>../images/Poster/JohnWick.jpg</file>
+    <file>../images/Poster/Spiderman.jpg</file>
+    <file>../images/Poster/TheConjuring.jpg</file>
+  </qresource>
+</RCC>
