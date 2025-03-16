@@ -5,6 +5,7 @@ from ui.admin.MovieDetailExt import MovieDetailExt
 from ui.admin.MovieCreateExt import MovieCreateExt
 from ui.admin.MovieEditExt import MovieEditExt
 
+
 class AdminUiExt(Ui_MainWindow):
     def __init__(self):
         self.MainWindow = QMainWindow()  # Tạo một QMainWindow mới
