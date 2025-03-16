@@ -1,7 +1,9 @@
 from PyQt6.QtWidgets import QMainWindow
 from ui.login.login import Ui_MainWindow
+from utils import resources_banner_rc
+from utils import resources_poster_rc
 from utils import resources_rc
-
+from utils import resources_logo_rc
 class LoginUiExt(Ui_MainWindow):
     def __init__(self):
         self.MainWindow = QMainWindow()

@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="RedIcons">
+    <file>../images/icons/RedIcons/search_ic.svg</file>
+    <file>../images/icons/RedIcons/dollar_ic.svg</file>
+    <file>../images/icons/RedIcons/film_ic.svg</file>
+    <file>../images/icons/RedIcons/user_ic.svg</file>
+    <file>../images/icons/RedIcons/users_ic.svg</file>
+    <file>../images/icons/RedIcons/folder_plus_ic.svg</file>
+    <file>../images/icons/RedIcons/save_ic.svg</file>
     <file>../images/icons/RedIcons/maximize_2_ic.svg</file>
     <file>../images/icons/RedIcons/alert_circle_ic.svg</file>
     <file>../images/icons/RedIcons/chevron_left_ic.svg</file>
@@ -10,16 +17,37 @@
     <file>../images/icons/RedIcons/log_out.svg</file>
     <file>../images/icons/RedIcons/menu_ic.svg</file>
     <file>../images/icons/RedIcons/Revenue_ic.svg</file>
-    <file>../images/icons/RedIcons/search_ic.svg</file>
     <file>../images/icons/RedIcons/setting_ic.svg</file>
     <file>../images/icons/RedIcons/shopping_cart_ic.svg</file>
     <file>../images/icons/RedIcons/ticket_ic.png</file>
     <file>../images/icons/RedIcons/user_check_ic.svg</file>
-    <file>../images/icons/RedIcons/user_ic.svg</file>
     <file>../images/icons/RedIcons/user_plus_ic.svg</file>
-    <file>../images/icons/RedIcons/users_ic.svg</file>
+  </qresource>
+  <qresource prefix="Menu">
+    <file>../images/icons_menu/cinema_ic.png</file>
+    <file>../images/icons_menu/popcorn_ic.png</file>
+    <file>../images/icons_menu/revenue_ic.png</file>
+  </qresource>
+  <qresource prefix="slogan">
+    <file>../images/Welcome/slogan.png</file>
   </qresource>
   <qresource prefix="WhiteIcons">
+    <file>../images/icons/WhiteIcons/alert_circle_ic.svg</file>
+    <file>../images/icons/WhiteIcons/arrow_left_ic.svg</file>
+    <file>../images/icons/WhiteIcons/arrow_right_ic.svg</file>
+    <file>../images/icons/WhiteIcons/chevron_left_ic.svg</file>
+    <file>../images/icons/WhiteIcons/chevron_right_ic.svg</file>
+    <file>../images/icons/WhiteIcons/clock_ic.svg</file>
+    <file>../images/icons/WhiteIcons/create_ic.svg</file>
+    <file>../images/icons/WhiteIcons/delete_ic.svg</file>
+    <file>../images/icons/WhiteIcons/details_ic.svg</file>
+    <file>../images/icons/WhiteIcons/edit_ic.svg</file>
+    <file>../images/icons/WhiteIcons/file-text_ic.svg</file>
+    <file>../images/icons/WhiteIcons/globe_ic.svg</file>
+    <file>../images/icons/WhiteIcons/maximize_2_ic.svg</file>
+    <file>../images/icons/WhiteIcons/message_ic.svg</file>
+    <file>../images/icons/WhiteIcons/tag_ic.svg</file>
+    <file>../images/icons/WhiteIcons/user_check_ic.svg</file>
     <file>../images/icons/WhiteIcons/alert_circle_ic.svg</file>
     <file>../images/icons/WhiteIcons/maximize_2_ic.svg</file>
     <file>../images/icons/WhiteIcons/chevron_left_ic.svg</file>
@@ -31,5 +59,13 @@
     <file>../images/icons/WhiteIcons/details_ic.svg</file>
     <file>../images/icons/WhiteIcons/edit_ic.svg</file>
     <file>../images/icons/WhiteIcons/file-text_ic.svg</file>
+  </qresource>
+  <qresource prefix="Logo">
+    <file>../images/Logo/facebook_lg.svg</file>
+    <file>../images/Logo/FIS_Logo.png</file>
+    <file>../images/Logo/instagram_lg.svg</file>
+    <file>../images/Logo/Movie_logo.png</file>
+    <file>../images/Logo/UEL_Logo.png</file>
+    <file>../images/Logo/youtube_lg.svg</file>
   </qresource>
 </RCC>

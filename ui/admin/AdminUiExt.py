@@ -4,7 +4,10 @@ from ui.admin.AdminUi import Ui_MainWindow
 from ui.admin.MovieDetailExt import MovieDetailExt
 from ui.admin.MovieCreateExt import MovieCreateExt
 from ui.admin.MovieEditExt import MovieEditExt
-
+from utils import resources_banner_rc
+from utils import resources_poster_rc
+from utils import resources_rc
+from utils import resources_logo_rc
 
 class AdminUiExt(Ui_MainWindow):
     def __init__(self):

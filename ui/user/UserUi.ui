@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>982</width>
-    <height>701</height>
+    <width>962</width>
+    <height>702</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>962</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -16,6 +22,7 @@
   <property name="styleSheet">
    <string notr="true">#centralwidget, #scrollArea, #scrollAreaWidgetContents,  #widget_3, #widget_4, #widget_5 {
 background-color:rgb(145, 8, 12);
+ border: none;
 }
 
   #widget_6, #widget_7, #widget_8, #widget_10, #widget_11, #widget_9 {
@@ -28,7 +35,44 @@ border-radius: 10px;
 }
 #frame_17, #frame_4, #frame_19, #frame_6, #frame_18, #frame_2, #frame_10, #frame_11, #frame_12, #frame_14, #frame_15, #frame_8  {
 background-color:  rgb(83, 9, 11);
-}</string>
+ border: none;
+}
+    QPushButton {
+        border: none;
+    }
+
+    QLabel {
+        border: none; 
+    }
+
+    QFrame {
+        border: none;
+    }
+
+    QWidget {
+        border: none;
+    }
+ QScrollBar:vertical {
+        border: none;
+        background: #c9c9c9; /* Màu nền thanh cuộn */
+        width: 8px;
+        margin: 2px 0 2px 0;
+        border-radius: 6px;
+    }
+    QScrollBar::handle:vertical {
+        background: #f3f6fa; /* Màu thanh trượt */
+        min-height: 20px;
+        border-radius: 6px;
+    }
+    QScrollBar::handle:vertical:hover {
+        background:#53090b; /* Màu khi hover */
+	    border-radius: 6px;
+    }
+    QScrollBar::add-line:vertical, 
+    QScrollBar::sub-line:vertical {
+        background: none;
+        border: none;
+    }</string>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
@@ -90,7 +134,7 @@ background-color:  rgb(83, 9, 11);
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_104">
           <property name="spacing">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -99,51 +143,59 @@ background-color:  rgb(83, 9, 11);
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="bottomMargin">
            <number>10</number>
           </property>
-          <item alignment="Qt::AlignLeft">
-           <widget class="QWidget" name="widget_32" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_105">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="appHeader_7">
-               <property name="font">
-                <font>
-                 <family>Segoe UI Black</family>
-                 <pointsize>16</pointsize>
-                 <weight>10</weight>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">font: 87 16pt &quot;Segoe UI Black&quot;;
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="appHeader_7">
+            <property name="font">
+             <font>
+              <family>Segoe UI Black</family>
+              <pointsize>30</pointsize>
+              <weight>10</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 87 30pt &quot;Segoe UI Black&quot;;
 color: rgb(254, 254, 255);</string>
-               </property>
-               <property name="text">
-                <string>WELCOME TO CINEX CINEMA</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </property>
+            <property name="text">
+             <string>     WELCOME TO CINEX CINEMA</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item alignment="Qt::AlignRight">
            <widget class="QWidget" name="widget_34" native="true">
@@ -201,9 +253,9 @@ color: rgb(254, 254, 255);</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-617</y>
-            <width>968</width>
-            <height>1230</height>
+            <y>0</y>
+            <width>954</width>
+            <height>1475</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1395,35 +1447,420 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_18">
-             <property name="text">
-              <string>ENJOY YOUR MOVIE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QWidget" name="widget_12" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_19">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QLabel" name="label_19">
-                <property name="text">
-                 <string>TextLabel</string>
-                </property>
+               <widget class="QWidget" name="widget_13" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item alignment="Qt::AlignTop">
+                  <widget class="QWidget" name="widget_2" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_19">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="frame">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_5">
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/Movie_logo.png</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_4">
+                         <property name="styleSheet">
+                          <string notr="true">font: 87 25pt &quot;Segoe UI Black&quot;;
+color: rgb(255, 215, 0);</string>
+                         </property>
+                         <property name="text">
+                          <string> CINEX </string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_3">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_21">
+                       <item alignment="Qt::AlignTop">
+                        <widget class="QLabel" name="label_2">
+                         <property name="styleSheet">
+                          <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;
+color: rgb(254, 254, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>We hope you enjoy the cinema!</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="frame_16">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_4">
+                          <property name="spacing">
+                           <number>12</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QLabel" name="label_25">
+                            <property name="minimumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/facebook_lg.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_26">
+                            <property name="minimumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/instagram_lg.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_27">
+                            <property name="minimumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>40</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/youtube_lg.svg</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_3">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_9">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <item>
+                        <widget class="QLabel" name="label_19">
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px; 
+</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/FIS_Logo.png</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_22">
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../../utils/resources.qrc">:/Logo/images/Logo/UEL_Logo.png</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_23">
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>50</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-radius: 30px; </string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../../utils/resources_logo.qrc">:/Logo/images/Logo/group_lg.jpg</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_15">
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);
+text-decoration: underline;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+font: 12pt bold &quot;MS Shell Dlg 2&quot;;</string>
+                         </property>
+                         <property name="text">
+                          <string>Vietnamese Crepe Group</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_14" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_22">
+                 <item alignment="Qt::AlignTop">
+                  <widget class="QWidget" name="widget_15" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_23">
+                    <item>
+                     <widget class="QFrame" name="frame_13">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_24" stretch="0">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_24">
+                         <property name="styleSheet">
+                          <string notr="true">font: 87 25pt &quot;Segoe UI Black&quot;;
+color: rgb(255, 215, 0);</string>
+                         </property>
+                         <property name="text">
+                          <string>ABOUT US</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_5">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_25">
+                       <item>
+                        <widget class="QLabel" name="label_6">
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(254, 254, 255);
+font: 75 bold  12pt &quot;Segoe UI Variable Display&quot;;</string>
+                         </property>
+                         <property name="text">
+                          <string>&quot;Cinex is a modern cinema chain that delivers a top-notch movie experience with high-definition screens, immersive sound, and a premium atmosphere. We are committed to bringing blockbuster films, captivating content, and excellent service to ensure audiences enjoy every moment to the fullest.&quot;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_7">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_26">
+                       <item>
+                        <widget class="QLabel" name="label_18">
+                         <property name="styleSheet">
+                          <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;
+color: rgb(255, 215, 0);</string>
+                         </property>
+                         <property name="text">
+                          <string>Cinex – &quot;Cinematic Magic!&quot;</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -1443,7 +1880,7 @@ color: rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>982</width>
+     <width>962</width>
      <height>22</height>
     </rect>
    </property>
@@ -1451,6 +1888,7 @@ color: rgb(0, 0, 0);</string>
  </widget>
  <resources>
   <include location="../../utils/resources.qrc"/>
+  <include location="../../utils/resources_logo.qrc"/>
   <include location="../../utils/resources_banner.qrc"/>
   <include location="../../utils/resources_poster.qrc"/>
  </resources>

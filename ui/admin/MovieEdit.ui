@@ -553,6 +553,16 @@ QLineEdit {
                  </layout>
                 </widget>
                </item>
+               <item alignment="Qt::AlignTop">
+                <widget class="QComboBox" name="comboBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
                <item alignment="Qt::AlignBottom">
                 <widget class="QFrame" name="frame_9">
                  <property name="frameShape">
@@ -570,15 +580,38 @@ QLineEdit {
                   </property>
                   <item>
                    <widget class="QPushButton" name="pushButton_AddPoster">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
                     <property name="text">
-                     <string>icon thêm</string>
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../../utils/resources.qrc">
+                      <normaloff>:/RedIcons/images/icons/RedIcons/folder_plus_ic.svg</normaloff>:/RedIcons/images/icons/RedIcons/folder_plus_ic.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButtonSave">
                     <property name="text">
-                     <string>Save</string>
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../../utils/resources.qrc">
+                      <normaloff>:/RedIcons/images/icons/RedIcons/save_ic.svg</normaloff>:/RedIcons/images/icons/RedIcons/save_ic.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -599,6 +632,8 @@ QLineEdit {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../utils/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
