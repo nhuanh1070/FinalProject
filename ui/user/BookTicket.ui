@@ -930,7 +930,7 @@ border-radius: 8px;
                       <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                      </property>
                      <property name="text">
-                      <string>TextLabel</string>
+                      <string>0</string>
                      </property>
                     </widget>
                    </item>
@@ -1029,7 +1029,7 @@ border-radius: 10px;</string>
         <widget class="QWidget" name="widget_101" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_27">
           <property name="spacing">
-           <number>0</number>
+           <number>10</number>
           </property>
           <item alignment="Qt::AlignLeft|Qt::AlignTop">
            <widget class="QWidget" name="widget_102" native="true">
@@ -1225,36 +1225,27 @@ border-radius: 10px;</string>
               <height>16777215</height>
              </size>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_29">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>15</number>
-             </property>
-             <property name="rightMargin">
-              <number>15</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item alignment="Qt::AlignTop">
+            <property name="styleSheet">
+             <string notr="true">#widget_103 {border: 1px solid palette(mid)}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_14">
+             <item>
               <widget class="QWidget" name="widget_108" native="true">
+               <property name="styleSheet">
+                <string notr="true">border: None</string>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_127">
                 <property name="leftMargin">
                  <number>15</number>
                 </property>
                 <property name="topMargin">
-                 <number>15</number>
+                 <number>0</number>
                 </property>
                 <property name="rightMargin">
                  <number>15</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>15</number>
+                 <number>10</number>
                 </property>
                 <item>
                  <widget class="QFrame" name="frame_26">
@@ -1291,17 +1282,17 @@ border-radius: 10px;</string>
                      </property>
                     </widget>
                    </item>
-                   <item>
-                    <widget class="Line" name="line_3">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
                </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
               </widget>
              </item>
              <item>
@@ -1572,7 +1563,7 @@ border-radius: 10px;</string>
                       <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                      </property>
                      <property name="text">
-                      <string>40000</string>
+                      <string>0</string>
                      </property>
                     </widget>
                    </item>
@@ -1602,26 +1593,17 @@ border-radius: 10px;</string>
             </layout>
            </widget>
           </item>
-          <item alignment="Qt::AlignTop">
+          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
            <widget class="QWidget" name="widget_104" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_71">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>20</number>
-             </property>
-             <property name="rightMargin">
-              <number>20</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item alignment="Qt::AlignTop">
+            <property name="styleSheet">
+             <string notr="true">#widget_104 {border: 1px solid palette(mid)}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
               <widget class="QFrame" name="frame_85">
+               <property name="styleSheet">
+                <string notr="true">border: None</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -1633,13 +1615,13 @@ border-radius: 10px;</string>
                  <number>6</number>
                 </property>
                 <property name="leftMargin">
-                 <number>6</number>
+                 <number>20</number>
                 </property>
                 <property name="topMargin">
                  <number>15</number>
                 </property>
                 <property name="rightMargin">
-                 <number>6</number>
+                 <number>15</number>
                 </property>
                 <property name="bottomMargin">
                  <number>6</number>
@@ -1655,22 +1637,22 @@ border-radius: 10px;</string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="Line" name="line_6">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
                </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_10">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QWidget" name="widget_111" native="true">
                <layout class="QGridLayout" name="gridLayout_5">
-                <item row="0" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_72">
-                  <item>
+                <item row="1" column="0">
+                 <layout class="QVBoxLayout" name="verticalLayout_FoodPayment">
+                  <item alignment="Qt::AlignHCenter">
                    <widget class="QWidget" name="widget_112" native="true">
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(243, 246, 250);
@@ -1783,8 +1765,15 @@ border-radius: 10px;</string>
              <item>
               <widget class="QWidget" name="widget_113" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_129">
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="Line" name="line_7">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_9">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -1806,13 +1795,13 @@ border-radius: 10px;</string>
                      </property>
                     </widget>
                    </item>
-                   <item>
+                   <item alignment="Qt::AlignRight">
                     <widget class="QLabel" name="label_BillFood">
                      <property name="styleSheet">
                       <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                      </property>
                      <property name="text">
-                      <string>TextLabel</string>
+                      <string>0</string>
                      </property>
                     </widget>
                    </item>
@@ -1926,6 +1915,18 @@ border-radius: 10px;</string>
           </item>
           <item>
            <widget class="QWidget" name="widget_13" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>783</width>
+              <height>467</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>783</width>
+              <height>468</height>
+             </size>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_19">
              <item>
               <widget class="QWidget" name="widget_19" native="true">
@@ -1955,7 +1956,7 @@ border-radius: 10px;</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>474</width>
+                     <width>490</width>
                      <height>780</height>
                     </rect>
                    </property>
@@ -2127,7 +2128,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_92">
+                                       <widget class="QLabel" name="label_PriceProduct_1">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -2379,7 +2380,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_96">
+                                       <widget class="QLabel" name="label_PriceProduct_2">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -2631,7 +2632,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_100">
+                                       <widget class="QLabel" name="label_PriceProduct_3">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -2889,7 +2890,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_84">
+                                       <widget class="QLabel" name="label_PriceProduct_4">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -3141,7 +3142,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_88">
+                                       <widget class="QLabel" name="label_PriceProduct_5">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -3393,7 +3394,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_81">
+                                       <widget class="QLabel" name="label_PriceProduct_6">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -3651,7 +3652,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_104">
+                                       <widget class="QLabel" name="label_PriceProduct_7">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -3903,7 +3904,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_108">
+                                       <widget class="QLabel" name="label_PriceProduct_8">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -4155,7 +4156,7 @@ border-radius: 10px;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignRight">
-                                       <widget class="QLabel" name="label_112">
+                                       <widget class="QLabel" name="label_PriceProduct_9">
                                         <property name="styleSheet">
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
@@ -4279,6 +4280,24 @@ border-radius: 10px;</string>
              </item>
              <item>
               <widget class="QWidget" name="widget_14" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>232</width>
+                 <height>450</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>232</width>
+                 <height>450</height>
+                </size>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <property name="spacing">
                  <number>3</number>
@@ -4375,7 +4394,7 @@ color: rgb(0, 0, 0);</string>
                             <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                            </property>
                            <property name="text">
-                            <string>TextLabel</string>
+                            <string>0</string>
                            </property>
                           </widget>
                          </item>

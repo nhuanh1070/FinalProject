@@ -11,18 +11,23 @@ from utils import resources_logo_rc
 
 class AdminUiExt(Ui_MainWindow):
     def __init__(self):
-        self.MainWindow = QMainWindow()  # Tạo một QMainWindow mới
-        self.setupUi(self.MainWindow)  # Áp dụng giao diện UI
+        self.MainWindow = QMainWindow()
+        self.setupUi(self.MainWindow)
 
-        # Kết nối các sự kiện
+
+    def setupUi(self, MainWindow):
+        super().setupUi(MainWindow)
+        self.MainWindow = MainWindow
+        self.MainWindow.ui = self
+
         self.setupSignalAndSlot()
-
         # Cấu hình bảng
         self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         # Gán danh sách phim mẫu
         self.movies = self.get_sample_movies()
-
+        if not self.movies:
+            QMessageBox.warning(self, "Lỗi", "Danh sách phim rỗng!")
         # Tải danh sách phim lên bảng
         self.load_movies()
 
@@ -31,11 +36,13 @@ class AdminUiExt(Ui_MainWindow):
         self.pushButtonDetails.clicked.connect(self.show_movie_details)
         self.pushButtonCreate.clicked.connect(self.show_movie_create)
         self.pushButtonEdit.clicked.connect(self.show_movie_edit)
-
+        self.selected_row = -1
     def showWindow(self):
         """ Hiển thị cửa sổ chính """
         self.MainWindow.show()
-
+    def update_selected_row(self):
+        self.selected_row = self.tableWidget.currentRow()
+        print(f"Row selected: {self.selected_row}")  # Debugging
     def get_sample_movies(self):
         """ Trả về danh sách phim mẫu """
         return [
@@ -84,10 +91,10 @@ class AdminUiExt(Ui_MainWindow):
     def show_movie_details(self):
         """ Hiển thị cửa sổ chi tiết phim """
         selected_row = self.tableWidget.currentRow()
+        print(f"Selected row: {selected_row}")  # Debug
         if selected_row == -1:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn một bộ phim!")
             return
-
         movie = self.movies[selected_row]
         dialog = MovieDetailExt(movie, self.MainWindow)
         dialog.exec()
