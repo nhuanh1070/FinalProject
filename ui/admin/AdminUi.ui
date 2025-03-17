@@ -138,7 +138,7 @@ QPushButton {
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -851,6 +851,9 @@ color: rgb(0, 0, 0);</string>
                       </property>
                       <property name="pixmap">
                        <pixmap resource="../../utils/resources.qrc">:/RedIcons/images/icons/RedIcons/search_ic.svg</pixmap>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>

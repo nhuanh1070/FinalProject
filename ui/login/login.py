@@ -22,12 +22,12 @@ class Ui_MainWindow(object):
 "    color: #fff;\n"
 "}\n"
 "\n"
-"#centralwidget {\n"
 "\n"
-"    background: url(\"D:/FinalProject/FinalProject/images/Welcome/login_bg.png\") no-repeat center center;\n"
-"    background-size: cover;\n"
+"#centralwidget {\n"
+"    background-image: url(:/slogan/images/Welcome/login_bg.png);\n"
 "    background-position: center;\n"
 "    background-repeat: no-repeat;\n"
+"    background-size: cover;\n"
 "}\n"
 "QStackedWidget {\n"
 "    background-color: rgb(243, 233, 206);\n"
@@ -38,6 +38,7 @@ class Ui_MainWindow(object):
 "    color: rgb(0, 0, 0);\n"
 "    padding: 5px 3px;\n"
 "    border-radius: 5px;\n"
+"background-color: rgb(255, 255, 255);\n"
 "}\n"
 "#pushButtonRegister, #pushButtonLogin {\n"
 "    background-color: rgb(124, 0, 11);\n"
@@ -54,7 +55,8 @@ class Ui_MainWindow(object):
 "QLineEdit {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #7c000b;\n"
-"}")
+"}\n"
+"")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -267,6 +269,7 @@ class Ui_MainWindow(object):
         self.lineEditPassword_Login = QtWidgets.QLineEdit(parent=self.frame_10)
         self.lineEditPassword_Login.setMinimumSize(QtCore.QSize(0, 35))
         self.lineEditPassword_Login.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.lineEditPassword_Login.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.lineEditPassword_Login.setText("")
         self.lineEditPassword_Login.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.lineEditPassword_Login.setObjectName("lineEditPassword_Login")
@@ -335,7 +338,7 @@ class Ui_MainWindow(object):
         self.label_7 = QtWidgets.QLabel(parent=self.frame_15)
         self.label_7.setMaximumSize(QtCore.QSize(25, 25))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("C:/Users/Nhu Anh/.designer/images/icons/RedIcons/alert_circle_ic.svg"))
+        self.label_7.setPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/alert_circle_ic.svg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout_3.addWidget(self.label_7)
@@ -360,7 +363,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
