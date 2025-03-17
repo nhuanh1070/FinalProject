@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="RedIcons">
+    <file>../images/icons/RedIcons/alert_circle_ic.svg</file>
+    <file>../images/icons/RedIcons/arrow-left_ic.svg</file>
     <file>../images/icons/RedIcons/search_ic.svg</file>
     <file>../images/icons/RedIcons/dollar_ic.svg</file>
     <file>../images/icons/RedIcons/film_ic.svg</file>

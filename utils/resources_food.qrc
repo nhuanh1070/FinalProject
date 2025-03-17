@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="Food">
+    <file>../images/Food/CNS036_COMBO_CO_GAU.png</file>
+    <file>../images/Food/coca.png</file>
+    <file>../images/Food/COKE-ZERO.png</file>
+    <file>../images/Food/COMBO.png</file>
+    <file>../images/Food/lays-khoai-tay.png</file>
+    <file>../images/Food/laystax.png</file>
+    <file>../images/Food/lays-vi-bo_1_.png</file>
+    <file>../images/Food/POPCORN.jpg</file>
+    <file>../images/Food/snack-que-thai.png</file>
+  </qresource>
+</RCC>
