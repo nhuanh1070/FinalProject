@@ -909,7 +909,7 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 490, 780))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, -350, 490, 780))
         self.scrollAreaWidgetContents_3.setMinimumSize(QtCore.QSize(0, 0))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_113 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
@@ -1796,7 +1796,7 @@ class Ui_Dialog(object):
         self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
 
         self.retranslateUi(Dialog)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -1895,7 +1895,7 @@ class Ui_Dialog(object):
         self.label_PriceProduct_1.setText(_translate("Dialog", "75000"))
         self.label_93.setText(_translate("Dialog", "VNĐ"))
         self.label_NameProduct_1.setText(_translate("Dialog", "1 Bắp Phô Mai"))
-        self.label_PriceProduct_2.setText(_translate("Dialog", "11900"))
+        self.label_PriceProduct_2.setText(_translate("Dialog", "119000"))
         self.label_97.setText(_translate("Dialog", "VNĐ"))
         self.label_NameProduct_2.setText(_translate("Dialog", "1 Coke + 1 Bắp (Phô Mai, Caramel)"))
         self.label_PriceProduct_3.setText(_translate("Dialog", "179000"))

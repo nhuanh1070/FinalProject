@@ -54,7 +54,7 @@ background-color: rgb(224, 224, 224);
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pageChonGhe">
       <property name="styleSheet">
@@ -1955,7 +1955,7 @@ border-radius: 10px;</string>
                    <property name="geometry">
                     <rect>
                      <x>0</x>
-                     <y>0</y>
+                     <y>-350</y>
                      <width>490</width>
                      <height>780</height>
                     </rect>
@@ -2385,7 +2385,7 @@ border-radius: 10px;</string>
                                          <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                                         </property>
                                         <property name="text">
-                                         <string>11900</string>
+                                         <string>119000</string>
                                         </property>
                                        </widget>
                                       </item>
