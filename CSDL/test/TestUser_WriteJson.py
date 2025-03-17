@@ -9,5 +9,5 @@ print ("Danh sách người dùng:")
 for user in users:
     print(user)
 jff=JsonFileFactory()
-filename="../dataset/user.json"
+filename= "../../dataset/user.json"
 jff.write_data(users,filename)

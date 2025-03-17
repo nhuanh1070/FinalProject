@@ -26,5 +26,5 @@ print ("Danh sách phim:")
 for film in films:
     print(film)
 jff=JsonFileFactory()
-filename="../dataset/film.json"
+filename= "../../dataset/film.json"
 jff.write_data(films,filename)
