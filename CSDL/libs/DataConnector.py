@@ -6,7 +6,7 @@ from CSDL.models.User import User
 
 class DataConnector:
     def __init__(self):
-        self.filename = "../dataset/user.json"
+        self.filename = "../../dataset/user.json"
         self.ensure_file_exists()  # Đảm bảo tệp JSON tồn tại
 
     def ensure_file_exists(self):
@@ -21,7 +21,7 @@ class DataConnector:
                 f.write('[]')  # Ghi một mả
     def get_all_users(self):
         jff = JsonFileFactory()
-        filename = "../dataset/user.json"
+        filename = "../../dataset/user.json"
         users = jff.read_data(filename, User)
         return users
 
@@ -29,7 +29,7 @@ class DataConnector:
         users = self.get_all_users()
         users.append(user)
         jff = JsonFileFactory()
-        filename = "../dataset/user.json"
+        filename = "../../dataset/user.json"
         jff.write_data(users, filename)
 
     def check_user_exist(self,Username):
@@ -39,5 +39,3 @@ class DataConnector:
             if user.Username == Username:  # found
                 return i
         return -1
-    #minhdeptraivl
-    #hfihd-iojoijjiu
