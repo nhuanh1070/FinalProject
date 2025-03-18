@@ -1,6 +1,7 @@
 import os
 
 from CSDL.libs.JsonFileFactory import JsonFileFactory
+from CSDL.models.Film import Film
 from CSDL.models.User import User
 
 
@@ -40,3 +41,8 @@ class DataConnector:
                 return i
         return -1
 
+    def get_all_films(self):
+        jff = JsonFileFactory()
+        filename = "../../dataset/film.json"
+        films = jff.read_data(filename, Film)
+        return films

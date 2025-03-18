@@ -12,13 +12,13 @@ class MovieDetailExt(QDialog):
         self.ui.setupUi(self)
 
         # Hiển thị thông tin phim
-        self.ui.lineEditTitle.setText(movie["name"])
-        self.ui.lineEditAuthor.setText(movie["author"])
-        self.ui.lineEditGenre.setText(movie["genre"])
-        self.ui.lineEditCountry.setText(movie["country"])
-        self.ui.lineEditDuration.setText(movie["duration"])
-        self.ui.lineEditYear.setText(movie["year"])
-        self.ui.textEditDescription.setText(movie["description"])
+        self.ui.lineEditTitle.setText(movie["filmTitle"])
+        self.ui.lineEditAuthor.setText(movie["Author"])
+        self.ui.lineEditGenre.setText(movie["Gerne"])
+        self.ui.lineEditCountry.setText(movie["Country"])
+        self.ui.lineEditDuration.setText(movie["Duration"])
+        self.ui.lineEditYear.setText(movie["ReleaseDate"])
+        self.ui.textEditDescription.setText(movie["Description"])
 
         # Hiển thị hình ảnh phim
         pixmap = QPixmap(movie["image"])

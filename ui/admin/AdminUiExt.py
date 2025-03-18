@@ -1,5 +1,10 @@
+import json
+import os
+
 from PyQt6.QtWidgets import QMessageBox, QMainWindow, QTableWidgetItem
 from PyQt6 import QtWidgets
+
+from CSDL.libs.DataConnector import DataConnector
 from ui.admin.AdminUi import Ui_MainWindow
 from ui.admin.MovieDetailExt import MovieDetailExt
 from ui.admin.MovieCreateExt import MovieCreateExt
@@ -11,8 +16,11 @@ from utils import resources_logo_rc
 
 class AdminUiExt(Ui_MainWindow):
     def __init__(self):
-        self.MainWindow = QMainWindow()
-        self.setupUi(self.MainWindow)
+        self.MainWindow = QMainWindow()  # Tạo một QMainWindow mới
+        self.setupUi(self.MainWindow)  # Áp dụng giao diện UI
+        self.dc = DataConnector()
+        # Kết nối các sự kiện
+        self.setupSignalAndSlot()
 
 
     def setupUi(self, MainWindow):
@@ -25,9 +33,9 @@ class AdminUiExt(Ui_MainWindow):
         self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         # Gán danh sách phim mẫu
-        self.movies = self.get_sample_movies()
-        if not self.movies:
-            QMessageBox.warning(self, "Lỗi", "Danh sách phim rỗng!")
+
+        self.movies = self.get_movies_list()
+
         # Tải danh sách phim lên bảng
         self.load_movies()
 
@@ -40,53 +48,43 @@ class AdminUiExt(Ui_MainWindow):
     def showWindow(self):
         """ Hiển thị cửa sổ chính """
         self.MainWindow.show()
-    def update_selected_row(self):
-        self.selected_row = self.tableWidget.currentRow()
-        print(f"Row selected: {self.selected_row}")  # Debugging
-    def get_sample_movies(self):
-        """ Trả về danh sách phim mẫu """
-        return [
-            {
-                "name": "Inception",
-                "author": "Christopher Nolan",
-                "genre": "Khoa học viễn tưởng",
-                "country": "Mỹ",
-                "duration": "148 phút",
-                "year": "2010",
-                "description": "Một kẻ trộm chuyên nghiệp xâm nhập vào giấc mơ của người khác để đánh cắp bí mật.",
-                "image": "inception.jpg"
-            },
-            {
-                "name": "Parasite",
-                "author": "Bong Joon-ho",
-                "genre": "Chính kịch",
-                "country": "Hàn Quốc",
-                "duration": "132 phút",
-                "year": "2019",
-                "description": "Gia đình nghèo lừa đảo để xâm nhập vào một gia đình giàu có, dẫn đến hậu quả khó lường.",
-                "image": "parasite.jpg"
-            },
-            {
-                "name": "The Dark Knight",
-                "author": "Christopher Nolan",
-                "genre": "Hành động",
-                "country": "Mỹ",
-                "duration": "152 phút",
-                "year": "2008",
-                "description": "Batman đối đầu với Joker, kẻ thù đáng gờm nhất của thành phố Gotham.",
-                "image": "dark_knight.jpg"
-            }
-        ]
+
+
+    def get_movies_list(self):
+        """ Đọc danh sách phim từ file JSON """
+        file_path = "../dataset/film.json"
+
+        # Kiểm tra file có tồn tại không
+        if not os.path.exists(file_path):
+            print("❌ Lỗi: File dữ liệu không tồn tại!")
+            return []
+
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                data = json.load(file)  # Đọc JSON
+
+                if isinstance(data, list):
+                    return data  # Trả về danh sách phim
+
+                print("❌ Lỗi: Dữ liệu JSON không hợp lệ!")
+                return []
+        except json.JSONDecodeError:
+            print("❌ Lỗi: Không thể đọc file JSON!")
+            return []
 
     def load_movies(self):
         """ Load danh sách phim vào bảng """
-        self.tableWidget.setRowCount(len(self.movies))
+        self.tableWidget.setRowCount(len(self.movies))  # Cập nhật số dòng trong bảng
+
         for row, movie in enumerate(self.movies):
-            self.tableWidget.setItem(row, 0, QTableWidgetItem(movie["name"]))
-            self.tableWidget.setItem(row, 1, QTableWidgetItem(movie["genre"]))
-            self.tableWidget.setItem(row, 2, QTableWidgetItem(movie["country"]))
-            self.tableWidget.setItem(row, 3, QTableWidgetItem(movie["year"]))
-            self.tableWidget.setItem(row, 4, QTableWidgetItem(movie["duration"]))
+            self.tableWidget.setItem(row, 0, QTableWidgetItem(movie["filmTitle"]))
+            self.tableWidget.setItem(row, 1, QTableWidgetItem(movie["Gerne"]))
+            self.tableWidget.setItem(row, 2, QTableWidgetItem(movie["Country"]))
+            self.tableWidget.setItem(row, 3, QTableWidgetItem(movie["ReleaseDate"]))
+
+            # ✅ Sửa lỗi duration: Ép thành chuỗi nếu là số
+            self.tableWidget.setItem(row, 4, QTableWidgetItem(str(movie["Duration"])))
+
 
     def show_movie_details(self):
         """ Hiển thị cửa sổ chi tiết phim """

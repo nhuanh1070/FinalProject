@@ -7,6 +7,10 @@ from CSDL.models.User import User
 from ui.admin.AdminUiExt import AdminUiExt
 from ui.login.login import Ui_MainWindow
 from ui.user.UserUiExt import UserUiExt
+from utils import resources_banner_rc
+from utils import resources_poster_rc
+from utils import resources_rc
+from utils import resources_logo_rc
 
 
 class LoginUiExt(Ui_MainWindow):
@@ -20,8 +24,8 @@ class LoginUiExt(Ui_MainWindow):
        self.MainWindow = MainWindow
        self.MainWindow.ui = self
 
-       # Đặt trang đầu tiên hiển thị
-       self.stackedWidget.setCurrentIndex(0)
+       self.stackedWidget.setCurrentWidget(self.LoginPage)
+
 
        # Gán sự kiện click cho các nút chuyển trang
        self.setupSignalAndSlot()
@@ -86,7 +90,7 @@ class LoginUiExt(Ui_MainWindow):
                msgbox.exec()
                self.clear_user_infor()
 
-               Users_list=[]
+
                Users_list = self.dc.get_all_users()
                if Users_list is None:
                    Users_list = []
