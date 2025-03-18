@@ -11,7 +11,8 @@
         "ReleaseDate": "25/03/2024",
         "Rating": "18",
         "Showtimes": "9:30",
-        "inventory": 5
+        "inventory": 5,
+        "image": "anyone_but_you.jpg"
     },
     {
         "filmId": "F2",
@@ -25,7 +26,8 @@
         "ReleaseDate": "24/03/2024",
         "Rating": "18+",
         "Showtimes": "20:00",
-        "inventory": 10
+        "inventory": 10,
+        "image": "JohnWick.jpg"
     },
     {
         "filmId": "F3",
@@ -39,7 +41,8 @@
         "ReleaseDate": "22/03/2024",
         "Rating": "PG-13",
         "Showtimes": "17:30",
-        "inventory": 8
+        "inventory": 8,
+        "image": "TheMarvels.jpg"
     },
     {
         "filmId": "F4",
@@ -53,7 +56,8 @@
         "ReleaseDate": "21/03/2024",
         "Rating": "R",
         "Showtimes": "19:00",
-        "inventory": 12
+        "inventory": 12,
+        "image": "oppenheimer.jpg"
     },
     {
         "filmId": "F5",
@@ -67,7 +71,8 @@
         "ReleaseDate": "26/03/2024",
         "Rating": "PG",
         "Showtimes": "14:00",
-        "inventory": 15
+        "inventory": 15,
+        "image": "inside_out_two.jpg"
     },
     {
         "filmId": "F6",
@@ -81,7 +86,8 @@
         "ReleaseDate": "27/03/2024",
         "Rating": "PG-13",
         "Showtimes": "21:00",
-        "inventory": 7
+        "inventory": 7,
+        "image": "Dune.jpg"
     },
     {
         "filmId": "F7",
@@ -95,7 +101,8 @@
         "ReleaseDate": "28/03/2024",
         "Rating": "PG-13",
         "Showtimes": "18:30",
-        "inventory": 9
+        "inventory": 9,
+        "image": "Avatar.jpg"
     },
     {
         "filmId": "F8",
@@ -109,7 +116,8 @@
         "ReleaseDate": "29/03/2024",
         "Rating": "PG-13",
         "Showtimes": "20:00",
-        "inventory": 6
+        "inventory": 6,
+        "image": "Spiderman.jpg"
     },
     {
         "filmId": "F9",
@@ -123,7 +131,8 @@
         "ReleaseDate": "30/03/2024",
         "Rating": "R",
         "Showtimes": "22:00",
-        "inventory": 5
+        "inventory": 5,
+        "image": "TheConjuring.jpg"
     },
     {
         "filmId": "F10",
@@ -137,6 +146,7 @@
         "ReleaseDate": "31/03/2024",
         "Rating": "PG-13",
         "Showtimes": "16:00",
-        "inventory": 10
+        "inventory": 10,
+        "image": "FastX.jpg"
     }
 ]
