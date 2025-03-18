@@ -138,7 +138,7 @@ QPushButton {
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -915,27 +915,27 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>Tên phim</string>
+                     <string>Name</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Loại phim</string>
+                     <string>Genre</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Quốc gia</string>
+                     <string>Country</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Thể loại</string>
+                     <string>Year</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Thời lượng</string>
+                     <string>Duration</string>
                     </property>
                    </column>
                   </widget>
