@@ -14,7 +14,7 @@ class UserUiExt(Ui_MainWindow):
     def __init__(self):
         self.MainWindow = QMainWindow()
         self.setupUi(self.MainWindow)
-        self.movie_data = self.get_movie_data()
+
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
         self.MainWindow = MainWindow
