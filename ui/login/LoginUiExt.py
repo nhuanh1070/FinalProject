@@ -1,10 +1,11 @@
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
+
+from ui.user.UserInforExt import UserInforExt
 from CSDL.libs.DataConnector import DataConnector
 from CSDL.libs.JsonFileFactory import JsonFileFactory
 from CSDL.models.Admin import Admin
 from CSDL.models.User import User
-from ui.admin.AdminUiExt import AdminUiExt
 from ui.login.login import Ui_MainWindow
 from ui.user.UserUiExt import UserUiExt
 from utils import resources_banner_rc
@@ -147,6 +148,8 @@ class LoginUiExt(Ui_MainWindow):
 
    def open_admin_ui(self):
        """ Mở giao diện Admin """
+       from ui.admin.AdminUiExt import AdminUiExt
+
        # self.MainWindow.close()  # Đóng cửa sổ đăng nhập
        self.mainwindow = QMainWindow()
        self.myui = AdminUiExt()
@@ -155,11 +158,32 @@ class LoginUiExt(Ui_MainWindow):
 
    def open_user_ui(self):
        """ Mở giao diện User """
-       # self.MainWindow.close()  # Đóng cửa sổ đăng nhập
-       self.mainwindow = QMainWindow()
-       self.myui = UserUiExt()
-       self.myui.setupUi(self.mainwindow)
-       self.myui.showWindow()
+       from ui.user.UserUiExt import UserUiExt
+       self.user_info_dialog = UserInforExt(user_ui_ext=self)
+       result = self.user_info_dialog.exec()
+       """ Lấy thông tin user từ file JSON và điền vào các lineEdit 
+       filename = "../dataset/UserS.json"
+       user_list = self.load_user_infor(filename)  # Lấy danh sách user
+
+       # Tìm user theo username
+       user_info = None
+       for user in user_list:
+           if user.Username == self.username:  # So sánh username
+               user_info = user
+               break  # Dừng vòng lặp khi tìm thấy
+
+       # Nếu tìm thấy user thì gán giá trị vào các QLineEdit
+       if user_info:
+           self.ui.lineEdit.setText(str("nhuanh"))  # Username (String)
+           self.ui.lineEdit_2.setText(str("Phạm Lê Như Anh"))  # Họ và tên (String)
+           self.ui.lineEdit_6.setText(str("20-5-2025"))  # Ngày sinh (String)
+           self.ui.lineEdit_5.setText(str("0901030490"))  # Số điện thoại (String)
+           self.ui.lineEdit_4.setText(str("NhuAnh@gmail.com"))  # Email (String)
+       else:
+           QMessageBox.warning(self, "Lỗi", "Không tìm thấy thông tin người dùng!")
+
+
+"""
 
    def login_process(self):
        Username = self.lineEditUsername_Login.text().strip()
@@ -186,7 +210,11 @@ class LoginUiExt(Ui_MainWindow):
 
            user = self.coivalidate_user(Username, Password)  # Kiểm tra User
            if user:
+
+
                self.open_user_ui()
+
+
            else:
                msgbox = QMessageBox(self.MainWindow)
                msgbox.setIcon(QMessageBox.Icon.Critical)
@@ -216,4 +244,18 @@ class LoginUiExt(Ui_MainWindow):
            msgbox.setWindowTitle("Lỗi hệ thống")
            msgbox.exec()
 
-
+   """def load_user_infor(filename):
+        #Đọc danh sách user từ file JSON và trả về danh sách đối tượng UserInfor 
+       import json
+       try:
+           with open(filename, "r", encoding="utf-8") as file:
+               data = json.load(file)  # Đọc dữ liệu (danh sách [])
+               # Kiểm tra nếu dữ liệu không phải danh sách
+               if not isinstance(data, list):
+                   return []
+               user_list = [
+                   UserInfor(user["Username"], user["fullname"], user["birthday"], user["phone"], user["email"])
+                   for user in data]
+               return user_list
+       except (FileNotFoundError, json.JSONDecodeError):
+           return []"""

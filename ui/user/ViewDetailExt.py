@@ -19,13 +19,13 @@ class ViewDetailExt(QDialog):
         self.ui.pushButtonBuyTickets.clicked.connect(lambda: self.bookTicket(movie))
 
     def setMovieDetails(self, movie):
-        self.ui.label_title.setText(movie["title"])  # Tiêu đề phim
+        self.ui.label_title.setText(movie["filmTitle"])  # Tiêu đề phim
         self.ui.label_genre.setText(movie["genre"])  # Thể loại
-        self.ui.label_duration.setText(movie["duration"])  # Thời lượng
-        self.ui.label_language.setText(movie["language"])  # Ngôn ngữ
-        self.ui.label_rating.setText(movie["rating"])  # Độ tuổi
-        self.ui.label_poster.setPixmap(QtGui.QPixmap(movie["poster"]))  # Cập nhật poster
-        self.ui.textEditMovieContent.setText(movie["description"])  # Mô tả phim
+        self.ui.label_duration.setText(movie["Duration"])  # Thời lượng
+        self.ui.label_language.setText(movie["Language"])  # Ngôn ngữ
+        self.ui.label_rating.setText(movie["Rating"])  # Độ tuổi
+        self.ui.label_poster.setPixmap(QtGui.QPixmap(movie["Poster"]))  # Cập nhật poster
+        self.ui.textEditMovieContent.setText(movie["Description"])  # Mô tả phim
 
     def bookTicket(self, movie):
         """Mở giao diện đặt vé khi bấm Buy Ticket"""
