@@ -2,8 +2,6 @@ from PyQt6 import QtGui
 from PyQt6.QtWidgets import QDialog
 
 from ui.user.UserInfor import Ui_Dialog
-from utils import resources_banner_rc
-from utils import resources_poster_rc
 from utils import resources_rc
 
 

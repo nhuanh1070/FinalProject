@@ -59,7 +59,7 @@ class Ui_Dialog(object):
         self.label_9.setStyleSheet("color: rgb(254, 254, 255);\n"
 "font: 63 12pt \"Segoe UI Semibold\";")
         self.label_9.setObjectName("label_9")
-        self.horizontalLayout_7.addWidget(self.label_9, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_7.addWidget(self.label_9, 0, QtCore.Qt.AlignmentFlag.AlignRight)
         self.verticalLayout_9.addWidget(self.frame_9)
         self.gridLayout_2.addWidget(self.widget_10, 1, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame, 0, QtCore.Qt.AlignmentFlag.AlignTop)
@@ -283,7 +283,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label_9.setText(_translate("Dialog", "Please check and fill in your information to receive <br> incentives from Cinex."))
+        self.label_9.setText(_translate("Dialog", "  Please check and fill in your information to receive <br> incentives from Cinex."))
         self.label_2.setText(_translate("Dialog", "User Name:"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Your User Name"))
         self.label_3.setText(_translate("Dialog", "Full Name:"))

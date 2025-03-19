@@ -109,14 +109,14 @@
                  </property>
                 </widget>
                </item>
-               <item alignment="Qt::AlignLeft">
+               <item alignment="Qt::AlignRight">
                 <widget class="QLabel" name="label_9">
                  <property name="styleSheet">
                   <string notr="true">color: rgb(254, 254, 255);
 font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                  </property>
                  <property name="text">
-                  <string>Please check and fill in your information to receive &lt;br&gt; incentives from Cinex.</string>
+                  <string>  Please check and fill in your information to receive &lt;br&gt; incentives from Cinex.</string>
                  </property>
                 </widget>
                </item>
