@@ -1,12 +1,16 @@
+import json
+import os
+
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
+from CSDL.models.UserInfor import UserInfor
 
-from ui.user.UserInforExt import UserInforExt
 from CSDL.libs.DataConnector import DataConnector
 from CSDL.libs.JsonFileFactory import JsonFileFactory
 from CSDL.models.Admin import Admin
 from CSDL.models.User import User
 from ui.login.login import Ui_MainWindow
+from ui.user.UserInforExt import UserInforExt
 from ui.user.UserUiExt import UserUiExt
 from utils import resources_banner_rc
 from utils import resources_poster_rc
@@ -119,7 +123,7 @@ class LoginUiExt(Ui_MainWindow):
    def load_user_data(self, filename):
        """ Đọc danh sách tài khoản từ file JSON """
        jff = JsonFileFactory()
-       users_list = jff.read_data(filename, User)
+       users_list = jff.read_data(filename, UserInfor)
        if users_list is None:
            return []
        return users_list
@@ -133,11 +137,29 @@ class LoginUiExt(Ui_MainWindow):
        return admins_list
 
    def coivalidate_user(self, Username, Password):
-       users = self.load_user_data("../dataset/user.json")  # Lấy danh sách Admin từ hệ thống
-       for u in users:
-           if u.Username == Username and u.Password == Password:
-               return 1
-       return 0
+       # Xác định thư mục gốc của project
+       project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+       json_path = os.path.join(project_root, "dataset", "users_data.json")  # Đường dẫn đúng
+
+       try:
+           with open(json_path, "r", encoding="utf-8") as file:
+               users = json.load(file)
+       except FileNotFoundError:
+           print(f"❌ LỖI: Không thể tải dữ liệu user! File không tồn tại: {json_path}")
+           return None
+       except json.JSONDecodeError:
+           print("❌ LỖI: File JSON bị lỗi, không thể đọc!")
+           return None
+
+       if not users:
+           print("❌ LỖI: Danh sách user rỗng!")
+           return None
+
+       for user in users:
+           if user.get("Username") == Username and user.get("Password") == Password:
+               print(f"✅ Đăng nhập thành công: {user}")  # Debug dữ liệu user
+               return user  # Trả về toàn bộ thông tin user
+       return None
 
    def coivalidate_admin(self, Username, Password):
        admins = self.load_admin_data("../dataset/admin.json")  # Lấy danh sách Admin từ hệ thống
@@ -156,11 +178,23 @@ class LoginUiExt(Ui_MainWindow):
        self.myui.setupUi(self.mainwindow)
        self.myui.showWindow()
 
-   def open_user_ui(self):
-       """ Mở giao diện User """
+   def open_user_ui(self, user_info):
+       """ Mở giao diện UserInfor và truyền dữ liệu user """
+       if not user_info:
+           print("❌ LỖI: Không có dữ liệu user để mở giao diện!")
+           return
+
+       print(f"🚀 Đang mở UserInforExt với dữ liệu: {user_info}")
+
        from ui.user.UserUiExt import UserUiExt
-       self.user_info_dialog = UserInforExt(user_ui_ext=self)
-       result = self.user_info_dialog.exec()
+       self.user_info_dialog = UserInforExt(user_info=user_info, user_ui_ext=self)
+
+       try:
+           print("🚀 Hiển thị cửa sổ UserInforExt...")
+           self.user_info_dialog.show()  # Đổi từ exec() sang show() để tránh crash
+       except Exception as e:
+           print(f"❌ LỖI: Không thể mở UserInforExt - {e}")
+
        """ Lấy thông tin user từ file JSON và điền vào các lineEdit 
        filename = "../dataset/UserS.json"
        user_list = self.load_user_infor(filename)  # Lấy danh sách user
@@ -197,6 +231,7 @@ class LoginUiExt(Ui_MainWindow):
            msgbox.exec()
            return
 
+
        if self.checkBox.isChecked() and self.checkBox_2.isChecked():
            msgbox = QMessageBox(self.MainWindow)
            msgbox.setIcon(QMessageBox.Icon.Critical)
@@ -206,15 +241,11 @@ class LoginUiExt(Ui_MainWindow):
            return
 
        if self.checkBox.isChecked():
-           User1_list = self.load_user_data("../dataset/user.json")  # Tải danh sách user
+           user_info = self.coivalidate_user(Username, Password)  # Kiểm tra User
 
-           user = self.coivalidate_user(Username, Password)  # Kiểm tra User
-           if user:
-
-
-               self.open_user_ui()
-
-
+           if user_info:
+               print(f"✅ User hợp lệ: {user_info}")  # Debug xem user có được xác thực không
+               self.open_user_ui(user_info)  # Truyền thông tin vào UserInforExt
            else:
                msgbox = QMessageBox(self.MainWindow)
                msgbox.setIcon(QMessageBox.Icon.Critical)
@@ -235,15 +266,6 @@ class LoginUiExt(Ui_MainWindow):
                msgbox.setText(f"Tên đăng nhập hoặc mật khẩu không chính xác!")
                msgbox.setWindowTitle("Lỗi hệ thống")
                msgbox.exec()
-
-       # Nếu không chọn quyền đăng nhập
-       else:
-           msgbox = QMessageBox(self.MainWindow)
-           msgbox.setIcon(QMessageBox.Icon.Critical)
-           msgbox.setText(f"Vui lòng chọn quyền đăng nhập!")
-           msgbox.setWindowTitle("Lỗi hệ thống")
-           msgbox.exec()
-
    """def load_user_infor(filename):
         #Đọc danh sách user từ file JSON và trả về danh sách đối tượng UserInfor 
        import json

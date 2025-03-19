@@ -1,0 +1,42 @@
+[
+    {
+        "Username": "nhuanh",
+        "Password": "anh123",
+        "fullname": "Phạm Lê Như Anh",
+        "birthday": "2006-05-15",
+        "phone": "0987654321",
+        "email": "nhuanh@example.com"
+    },
+    {
+        "Username": "minhnguyen",
+        "Password": "minh456",
+        "fullname": "Nguyễn Minh",
+        "birthday": "2005-07-20",
+        "phone": "0912345678",
+        "email": "minh@example.com"
+    },
+    {
+        "Username": "linhtran",
+        "Password": "linh456",
+        "fullname": "Trần Kim Linh",
+        "birthday": "2004-12-10",
+        "phone": "0987123456",
+        "email": "linh@example.com"
+    },
+    {
+        "Username": "tuanle",
+        "Password": "tuan456",
+        "fullname": "Lê Tuấn",
+        "birthday": "2003-08-22",
+        "phone": "0978123456",
+        "email": "tuanle@example.com"
+    },
+    {
+        "Username": "hoangphat",
+        "Password": "phat123",
+        "fullname": "Ngô Hoàng Phát",
+        "birthday": "2002-11-30",
+        "phone": "0967123456",
+        "email": "hoangphat@example.com"
+    }
+]

@@ -1,23 +1,29 @@
+import json
+
 from PyQt6.QtWidgets import QDialog, QMessageBox, QMainWindow
 
-from ui.user.UserInfor import Ui_Dialog
-
+from ui.user.UserInforUi import Ui_Dialog
 from utils import resources_banner_rc
 from utils import resources_poster_rc
 from utils import resources_rc
 
 class UserInforExt(QDialog):
-    def __init__(self,username=None, user_ui_ext=None, parent=None):
+    def __init__(self, user_info=None, user_ui_ext=None, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
-        #self.username=username
-
+        self.user_info = user_info or {}  # Đảm bảo không bị None
         self.user_ui_ext = user_ui_ext  # Lưu tham chiếu UserUiExt
 
-        self.ui.pushButtonLogOut.clicked.connect(self.LogOutProcess)
-        self.ui.pushButtonConfirm.clicked.connect(self.ConfirmProcess)
+        if not self.user_info:
+            print("❌ LỖI: Không có dữ liệu user!")
+            QMessageBox.warning(self, "Lỗi", "Không có dữ liệu người dùng!")
+            self.close()
+            return
+
+        self.fill_user_data()
+
 
     print("UserInforExt setup xong!")  # Debug kiểm tra
 
@@ -108,3 +114,23 @@ class UserInforExt(QDialog):
             msgbox.setStandardButtons(QMessageBox.StandardButton.Yes)
 
             msgbox.exec()
+
+    def load_user_data(self):
+        """ Đọc dữ liệu từ file UserS.json """
+        filename = "UserS.json"  # Cập nhật đường dẫn nếu cần
+        try:
+            with open(filename, "r", encoding="utf-8") as file:
+                return json.load(file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return []
+
+    def fill_user_data(self):
+        self.ui.lineEdit.setText(self.user_info.get("Username", ""))  # Username
+        self.ui.lineEdit_2.setText(self.user_info.get("fullname", ""))  # Họ và tên
+        self.ui.lineEdit_6.setText(self.user_info.get("birthday", ""))  # Ngày sinh
+        self.ui.lineEdit_5.setText(self.user_info.get("phone", ""))  # Số điện thoại
+        self.ui.lineEdit_4.setText(self.user_info.get("email", ""))  # Email
+
+
+
+
