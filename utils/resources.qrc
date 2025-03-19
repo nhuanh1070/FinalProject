@@ -33,6 +33,7 @@
     <file>../images/Welcome/slogan.png</file>
   </qresource>
   <qresource prefix="WhiteIcons">
+    <file>../images/icons/WhiteIcons/user_ic.svg</file>
     <file>../images/icons/WhiteIcons/alert_circle_ic.svg</file>
     <file>../images/icons/WhiteIcons/arrow_left_ic.svg</file>
     <file>../images/icons/WhiteIcons/arrow_right_ic.svg</file>

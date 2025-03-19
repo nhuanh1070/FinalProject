@@ -115,18 +115,18 @@ background-color:  rgb(83, 9, 11);
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
+       <item alignment="Qt::AlignTop">
         <widget class="QWidget" name="headerFrame_7" native="true">
          <property name="minimumSize">
           <size>
-           <width>400</width>
+           <width>962</width>
            <height>64</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>1103</width>
-           <height>64</height>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -216,18 +216,18 @@ color: rgb(254, 254, 255);</string>
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="Account_btn_7">
+              <widget class="QPushButton" name="Account_btn">
                <property name="text">
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</iconset>
+                <iconset resource="../../utils/resources.qrc">
+                 <normaloff>:/WhiteIcons/images/icons/WhiteIcons/user_ic.svg</normaloff>:/WhiteIcons/images/icons/WhiteIcons/user_ic.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
-                 <width>32</width>
-                 <height>32</height>
+                 <width>40</width>
+                 <height>40</height>
                 </size>
                </property>
               </widget>
@@ -253,7 +253,7 @@ color: rgb(254, 254, 255);</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-460</y>
+            <y>0</y>
             <width>954</width>
             <height>1475</height>
            </rect>
@@ -509,6 +509,12 @@ color: rgb(254, 254, 255);</string>
                    <layout class="QVBoxLayout" name="verticalLayout_52">
                     <item alignment="Qt::AlignTop">
                      <widget class="QFrame" name="frame_63">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -1880,16 +1886,6 @@ color: rgb(255, 215, 0);</string>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>962</width>
-     <height>22</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources>

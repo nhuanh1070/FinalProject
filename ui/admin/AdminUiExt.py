@@ -19,8 +19,7 @@ class AdminUiExt(Ui_MainWindow):
         self.MainWindow = QMainWindow()  # Tạo một QMainWindow mới
         self.setupUi(self.MainWindow)  # Áp dụng giao diện UI
         self.dc = DataConnector()
-        # Kết nối các sự kiện
-        self.setupSignalAndSlot()
+
 
 
     def setupUi(self, MainWindow):

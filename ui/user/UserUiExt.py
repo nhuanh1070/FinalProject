@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QMainWindow
 
 from ui.user.BookTicketExt import BookTicketExt
+from ui.user.UserInforExt import UserInforExt
 from ui.user.UserUi import Ui_MainWindow
 from ui.user.ViewDetailExt import ViewDetailExt
 from utils import resources_banner_rc
@@ -24,6 +25,7 @@ class UserUiExt(Ui_MainWindow):
     def showWindow(self):
         self.MainWindow.show()
     def setupSignalAndSlot(self):
+        self.Account_btn.clicked.connect(self.showUserInfo)
         # Sự kiện nút bấm chuyển trang
         self.pushButton_Right.clicked.connect(self.nextPage)
         self.pushButton_Left.clicked.connect(self.prevPage)
@@ -66,17 +68,10 @@ class UserUiExt(Ui_MainWindow):
         movie = self.movie_data[movie_index]
         detail_dialog = ViewDetailExt(movie)
         detail_dialog.exec()
-
-    def get_movie_data(self):
-        # Danh sách dữ liệu phim
-        return [
-            {"title": "AVATAR: THE WAY OF WATER", "genre": "Sci-Fi", "duration": "192'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/Avatar.jpg", "description": "Jake Sully lives with his newfound family on the moon Pandora..."},
-            {"title": "DUNE PART TWO", "genre": "Action", "duration": "165'", "language": "English", "rating": "T16", "poster": ":/Poster/images/Poster/Dune.jpg", "description": "Paul Atreides unites with Chani and the Fremen while seeking revenge..."},
-            {"title": "FAST X", "genre": "Action", "duration": "141'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/FastX.jpg", "description": "Dominic Toretto and his family are targeted by the vengeful son of drug kingpin Hernan Reyes..."},
-            {"title": "JOHN WICK 4", "genre": "Action", "duration": "169'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/JohnWick.jpg", "description": "John Wick uncovers a path to defeating The High Table..."},
-            {"title": "SPIDERMAN", "genre": "Adventure", "duration": "133'", "language": "English", "rating": "T12", "poster": ":/Poster/images/Poster/Spiderman.jpg", "description": "Spider-Man must fight foes from multiple universes..."},
-            {"title": "THE CONJURING", "genre": "Horror", "duration": "112'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/TheConjuring.jpg", "description": "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence..."}
-        ]
+    def showUserInfo(self):
+        """Mở cửa sổ thông tin người dùng"""
+        self.user_info_dialog = UserInforExt(movie=None)
+        self.user_info_dialog.exec()
 
 
 
