@@ -1,7 +1,7 @@
 [
     {
         "filmId": "F1",
-        "filmTitle": "Anyone but you",
+        "filmTitle": "anyone but you",
         "Gerne": "Tình cảm",
         "Duration": 103,
         "Country": "Mỹ",
@@ -16,7 +16,7 @@
     },
     {
         "filmId": "F2",
-        "filmTitle": "John Wick 4",
+        "filmTitle": "john wick 4",
         "Gerne": "Hành động",
         "Duration": 169,
         "Country": "Mỹ",
@@ -31,7 +31,7 @@
     },
     {
         "filmId": "F3",
-        "filmTitle": "The Marvels",
+        "filmTitle": "the marvels",
         "Gerne": "Siêu anh hùng",
         "Duration": 130,
         "Country": "Mỹ",
@@ -46,7 +46,7 @@
     },
     {
         "filmId": "F4",
-        "filmTitle": "Oppenheimer",
+        "filmTitle": "oppenheimer",
         "Gerne": "Chính kịch",
         "Duration": 180,
         "Country": "Mỹ",
@@ -61,7 +61,7 @@
     },
     {
         "filmId": "F5",
-        "filmTitle": "Inside Out 2",
+        "filmTitle": "inside out 2",
         "Gerne": "Hoạt hình",
         "Duration": 100,
         "Country": "Mỹ",
@@ -76,7 +76,7 @@
     },
     {
         "filmId": "F6",
-        "filmTitle": "Dune: Part Two",
+        "filmTitle": "dune: part two",
         "Gerne": "Khoa học viễn tưởng",
         "Duration": 166,
         "Country": "Mỹ",
@@ -91,7 +91,7 @@
     },
     {
         "filmId": "F7",
-        "filmTitle": "Avatar: The Way of Water",
+        "filmTitle": "avatar: the way of water",
         "Gerne": "Khoa học viễn tưởng",
         "Duration": 192,
         "Country": "Mỹ",
@@ -106,7 +106,7 @@
     },
     {
         "filmId": "F8",
-        "filmTitle": "Spider-Man: No Way Home",
+        "filmTitle": "spider-man: no way home",
         "Gerne": "Siêu anh hùng",
         "Duration": 148,
         "Country": "Mỹ",
@@ -121,7 +121,7 @@
     },
     {
         "filmId": "F9",
-        "filmTitle": "The Conjuring: The Devil Made Me Do It",
+        "filmTitle": "the conjuring: The Devil Made Me Do It",
         "Gerne": "Kinh dị",
         "Duration": 112,
         "Country": "Mỹ",
@@ -136,7 +136,7 @@
     },
     {
         "filmId": "F10",
-        "filmTitle": "Fast X",
+        "filmTitle": "fast x",
         "Gerne": "Hành động",
         "Duration": 141,
         "Country": "Mỹ",

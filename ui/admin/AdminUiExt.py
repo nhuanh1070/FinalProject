@@ -142,17 +142,32 @@ class AdminUiExt(Ui_MainWindow):
     def delete_movie(self):
         """ Xóa bộ phim đang chọn khỏi danh sách `self.movies` và cập nhật `film.json` """
         selected_row = self.tableWidget.currentRow()  # Lấy dòng được chọn
-
         if selected_row == -1:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn một bộ phim!")
             return
+        #`filmTitle` từ cột 0 của bảng
+        filmTitle = self.tableWidget.item(selected_row, 0).text().strip().lower()
+        dlg = QMessageBox(self.MainWindow)
+        dlg.setWindowTitle("Xác nhận xoá")
+        dlg.setText(f'Bạn có chắc muốn xoá "{filmTitle}" không?')
+        dlg.setIcon(QMessageBox.Icon.Question)
+        buttons = QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        dlg.setStandardButtons(buttons)
 
-        # ✅ Lấy `filmTitle` từ cột 0 của bảng
-        film_title = self.tableWidget.item(selected_row, 0).text().strip().lower()
+        if dlg.exec()==QMessageBox.StandardButton.No:
+            return
+        else:
+            jff = JsonFileFactory()
+            filename = "../../dataset/film.json"
+            films= jff.read_data(filename, Film)
+            self.dc.remove_film(films, filmTitle)
+        self.load_movies()
 
-        # ✅ Debug: Kiểm tra giá trị `filmTitle` lấy từ bảng
-        print(f"📌 Tên phim được chọn để xóa: '{film_title}'")
 
+
+
+
+        '''film_title = self.tableWidget.item(selected_row, 0).text().strip().lower()
         # ✅ Hộp thoại xác nhận xoá
         dlg = QMessageBox(self.MainWindow)
         dlg.setWindowTitle("Xác nhận xoá")
@@ -176,19 +191,17 @@ class AdminUiExt(Ui_MainWindow):
         # ✅ Nếu tìm thấy phim thì xóa, nếu không báo lỗi
         if movie_to_delete:
             self.movies.remove(movie_to_delete)  # Xóa khỏi danh sách
-            print(f"✅ Đã tìm thấy và xóa phim: {movie_to_delete['filmTitle']}")
         else:
-            print(f"❌ Không tìm thấy phim có tên '{film_title}' để xóa!")
             QMessageBox.warning(self.MainWindow, "Lỗi", f"Không tìm thấy phim có tên '{film_title}' để xóa!")
             return
-
+        movies=self.movies
         # ✅ Ghi lại file JSON sau khi xóa
         jff = JsonFileFactory()
         filename = "../dataset/film.json"
-        jff.write_data(self.movies, filename)  # Ghi lại danh sách cập nhật
+        jff.write_data(movies, filename)  # Ghi lại danh sách cập nhật
 
         # ✅ Cập nhật giao diện
         self.load_movies()
 
-        QMessageBox.information(self.MainWindow, "Thành công", f"Đã xóa bộ phim: {film_title}")
+        QMessageBox.information(self.MainWindow, "Thành công", f"Đã xóa bộ phim: {film_title}")'''
 
