@@ -1,10 +1,18 @@
 [
     {
-        "Username": "son123",
-        "Password": "son456"
+        "Username": "new_user",
+        "Password": "password123"
     },
     {
-        "Username": "anh123",
-        "Password": "anh456"
+        "Username": "new_user",
+        "Password": "password123"
+    },
+    {
+        "Username": "new_user",
+        "Password": "password123"
+    },
+    {
+        "Username": "new_user",
+        "Password": "password123"
     }
 ]
