@@ -1,3 +1,5 @@
+import os
+
 from PyQt6.QtWidgets import QDialog
 from PyQt6.QtGui import QPixmap
 from ui.admin.MovieDetail import Ui_Dialog  # Import giao diện từ file MovieDetail.py
@@ -16,10 +18,15 @@ class MovieDetailExt(QDialog):
         self.ui.lineEditAuthor.setText(movie["Author"])
         self.ui.lineEditGenre.setText(movie["Gerne"])
         self.ui.lineEditCountry.setText(movie["Country"])
-        self.ui.lineEditDuration.setText(movie["Duration"])
+        self.ui.lineEditDuration.setText(str(movie["Duration"]))
         self.ui.lineEditYear.setText(movie["ReleaseDate"])
         self.ui.textEditDescription.setText(movie["Description"])
 
         # Hiển thị hình ảnh phim
-        pixmap = QPixmap(movie["image"])
-        self.ui.labelImage.setPixmap(pixmap.scaled(150, 200))
+        image_filename = movie.get("image", "default.jpg")  # Lấy tên file ảnh từ JSON
+        image_full_path = os.path.join("../images/Poster/", image_filename)  # Tạo đường dẫn đầy đủ
+
+        # Load ảnh bằng QPixmap và hiển thị
+        pixmap = QPixmap(image_full_path)
+        self.ui.labelImage.setPixmap(pixmap.scaled(200, 300))
+
