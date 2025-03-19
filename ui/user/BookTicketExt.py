@@ -5,8 +5,6 @@ from utils import resources_rc
 from utils import resources_food_rc
 from ui.user.BookTicket import Ui_Dialog
 
-
-
 class BookTicketExt(QDialog):
     def __init__(self, movie, parent=None):
         super().__init__(parent)
@@ -48,16 +46,15 @@ class BookTicketExt(QDialog):
             button = getattr(self.ui, button_name, None)
             if button:
                 button.clicked.connect(lambda _, idx=i: self.addFoodToCheckout(idx))
+
     def backToHomePage(self):
         from ui.user.UserUiExt import UserUiExt
         self.close()  # Đóng cửa sổ hiện tại
         self.user_ui = UserUiExt()
         self.user_ui.showWindow()
+
     def goToProductCategory(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_ProductCatalog)
-
-
-
 
 
 

@@ -4,6 +4,7 @@ from ui.user.BookTicketExt import BookTicketExt
 from ui.user.UserInforExt import UserInforExt
 from ui.user.UserUi import Ui_MainWindow
 from ui.user.ViewDetailExt import ViewDetailExt
+
 from utils import resources_banner_rc
 from utils import resources_poster_rc
 from utils import resources_rc
@@ -68,19 +69,22 @@ class UserUiExt(Ui_MainWindow):
         movie = self.movie_data[movie_index]
         detail_dialog = ViewDetailExt(movie)
         detail_dialog.exec()
+
     def showUserInfo(self):
         """Mở cửa sổ thông tin người dùng"""
-        self.user_info_dialog = UserInforExt(movie=None)
-        self.user_info_dialog.exec()
+        '''self.user_info_dialog = UserInforExt(movie=None)
+        self.user_info_dialog.exec()'''
+        self.user_info_dialog = UserInforExt(user_ui_ext=self)
+        result = self.user_info_dialog.exec()
     def get_movie_data(self):
         # Danh sách dữ liệu phim
         return [
-            {"title": "AVATAR: THE WAY OF WATER", "genre": "Sci-Fi", "duration": "192'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/Avatar.jpg", "description": "Jake Sully lives with his newfound family on the moon Pandora..."},
-            {"title": "DUNE PART TWO", "genre": "Action", "duration": "165'", "language": "English", "rating": "T16", "poster": ":/Poster/images/Poster/Dune.jpg", "description": "Paul Atreides unites with Chani and the Fremen while seeking revenge..."},
-            {"title": "FAST X", "genre": "Action", "duration": "141'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/FastX.jpg", "description": "Dominic Toretto and his family are targeted by the vengeful son of drug kingpin Hernan Reyes..."},
-            {"title": "JOHN WICK 4", "genre": "Action", "duration": "169'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/JohnWick.jpg", "description": "John Wick uncovers a path to defeating The High Table..."},
-            {"title": "SPIDERMAN", "genre": "Adventure", "duration": "133'", "language": "English", "rating": "T12", "poster": ":/Poster/images/Poster/Spiderman.jpg", "description": "Spider-Man must fight foes from multiple universes..."},
-            {"title": "THE CONJURING", "genre": "Horror", "duration": "112'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/TheConjuring.jpg", "description": "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence..."}
+            {"title": "AVATAR: THE WAY OF WATER", "genre": "Siuuuuuuu", "duration": "192'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/Avatar.jpg", "description":"Jake Sully và gia đình anh phải rời bỏ quê hương và tìm đến một bộ tộc sống dưới nước. Họ học cách sinh tồn và thích nghi với môi trường mới, nhưng nguy hiểm vẫn luôn rình rập. Kẻ thù cũ của họ quay trở lại với những âm mưu tàn bạo hơn. Phim mang đến hình ảnh mãn nhãn về thế giới Pandora với kỹ xảo tiên tiến. Đây là một cuộc phiêu lưu đầy cảm xúc về gia đình, lòng trung thành và bảo vệ thiên nhiên."},
+            {"title": "DUNE PART TWO", "genre": "Action", "duration": "165'", "language": "English", "rating": "T16", "poster": ":/Poster/images/Poster/Dune.jpg", "description": "Paul Atreides tiếp tục hành trình của mình để giành lại công lý cho gia đình và bảo vệ hành tinh Arrakis. Khi gia nhập tộc người Fremen, anh phải đối mặt với những thách thức khắc nghiệt của sa mạc và những kẻ thù mạnh mẽ. Tình yêu, lòng trung thành và trách nhiệm trở thành những yếu tố quan trọng trong cuộc chiến này. Bộ phim mang đến những cảnh quay hoành tráng, kết hợp với âm nhạc và hình ảnh mãn nhãn. Đây là phần phim đầy hấp dẫn, tiếp tục mở rộng thế giới Dune kỳ vĩ."},
+            {"title": "FAST X", "genre": "Action", "duration": "141'", "language": "English", "rating": "T13", "poster": ":/Poster/images/Poster/FastX.jpg", "description": "Dominic Toretto và gia đình của anh phải đối mặt với một kẻ thù mới từ quá khứ, kẻ mang trong mình mối hận thù sâu sắc. Những cuộc rượt đuổi tốc độ cao, các vụ nổ hoành tráng và những pha hành động mạo hiểm tiếp tục đẩy loạt phim Fast & Furious lên một tầm cao mới. Bộ phim không chỉ mang đến những pha hành động mãn nhãn mà còn khai thác sâu hơn về tình cảm gia đình và sự trung thành. Những nhân vật cũ trở lại và nhiều bí ẩn mới được tiết lộ, làm tăng thêm kịch tính cho phần phim này. Fast X là một phần quan trọng trong loạt phim, hứa hẹn sẽ mở ra những hướng đi mới đầy bất ngờ."},
+            {"title": "JOHN WICK 4", "genre": "Action", "duration": "169'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/JohnWick.jpg", "description":"John Wick tiếp tục bị thế giới sát thủ truy đuổi và lần này, kẻ thù của anh mạnh mẽ hơn bao giờ hết. Anh phải tìm kiếm đồng minh và lập kế hoạch để đối đầu với những tổ chức quyền lực. Những pha hành động mãn nhãn, các trận đấu căng thẳng và những âm mưu đen tối khiến bộ phim đầy cuốn hút. Sự pha trộn giữa bạo lực, chiến thuật và cảm xúc giúp John Wick 4 trở thành phần phim không thể bỏ lỡ. Liệu anh có thể giành lại tự do hay bị cuốn mãi vào vòng xoáy bạo lực?"},
+            {"title": "SPIDERMAN", "genre": "Adventure", "duration": "133'", "language": "English", "rating": "PG-13", "poster": ":/Poster/images/Poster/Spiderman.jpg", "description":"Peter Parker vô tình mở ra cánh cổng đa vũ trụ khi nhờ Doctor Strange giúp đỡ. Điều này dẫn đến sự xuất hiện của các phản diện từ những vũ trụ khác nhau. Cậu buộc phải chiến đấu để bảo vệ thế giới, đồng thời học cách chấp nhận hậu quả của quyết định mình. Bộ phim mang đến sự kết hợp giữa hành động, hài hước và những khoảnh khắc xúc động. Cao trào của phim là sự hội tụ của nhiều phiên bản Spider-Man, làm hài lòng người hâm mộ."},
+            {"title": "THE CONJURING", "genre": "Horror", "duration": "112'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/TheConjuring.jpg","description": "Ed và Lorraine Warren điều tra một vụ án giết người liên quan đến hiện tượng quỷ ám đáng sợ. Lần đầu tiên trong lịch sử, một kẻ sát nhân tuyên bố rằng hắn bị quỷ điều khiển để gây án. Những hiện tượng siêu nhiên ngày càng ám ảnh và nguy hiểm hơn bao giờ hết. Bộ phim mang đến những pha hù dọa căng thẳng cùng bầu không khí rùng rợn đặc trưng. Đây là một trong những phần đáng sợ nhất của vũ trụ Conjuring, khiến khán giả thót tim đến giây cuối cùng."}
         ]
 
 
