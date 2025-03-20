@@ -1,3 +1,4 @@
+import json
 import os
 
 from CSDL.libs.JsonFileFactory import JsonFileFactory
@@ -8,51 +9,109 @@ from CSDL.models.User import User
 
 class DataConnector:
     def __init__(self):
-        self.filename = "../../dataset/user.json"
-        self.ensure_file_exists()  # Đảm bảo tệp JSON tồn tại
+        # Xác định thư mục gốc của dự án (FinalProject/FinalProject/)
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+        # Sửa đường dẫn dataset để đảm bảo không bị lỗi
+        self.dataset_path = os.path.join(base_path, "dataset")
+        self.users_file = os.path.join(self.dataset_path, "users_data.json")
+        self.films_file = os.path.join(self.dataset_path, "film.json")
+
+        self.ensure_file_exists()
+
     def ensure_file_exists(self):
-        """Đảm bảo thư mục dataset và tệp user.json tồn tại"""
-        directory = os.path.dirname(self.filename)
-
-        if not os.path.exists(directory):
-            os.makedirs(directory)  # Tạo thư mục nếu chưa tồn tại
-
-        if not os.path.exists(self.filename):
-            with open(self.filename, 'w', encoding='utf-8') as f:
-                f.write('[]')  # Ghi một mả
+        """Đảm bảo thư mục dataset và các tệp JSON tồn tại"""
+        for filename in [self.users_file, self.films_file]:
+            directory = os.path.dirname(filename)
+            if not os.path.exists(directory):
+                os.makedirs(directory)  # Tạo thư mục nếu chưa tồn tại
+            if not os.path.exists(filename):
+                with open(filename, 'w', encoding="utf-8") as f:
+                    json.dump([], f, indent=4, ensure_ascii=False)
 
     def get_all_users(self):
         jff = JsonFileFactory()
-        filename = "../../dataset/user.json"
-        users = jff.read_data(filename, User)
-        return users
+        print(f"📌 Debug - Đang đọc file {self.users_file}...")
+
+        try:
+            with open(self.users_file, "r", encoding="utf-8") as f:
+                users = json.load(f)  # Không dùng jff.read_data()
+
+            if not isinstance(users, list):
+                print("❌ LỖI: Dữ liệu trong users_data.json không phải danh sách!")
+                return []
+
+            print(f"✅ Đọc thành công! Danh sách users: {users}")
+            return users
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"❌ LỖI: Không thể đọc file users_data.json - {e}")
+            return []
 
     def save_account(self,user):
-        users = self.get_all_users()
-        users.append(user)
-        jff = JsonFileFactory()
-        filename = "../../dataset/user.json"
-        jff.write_data(users, filename)
+        filename = self.users_file
+        users = self.get_all_users()  # Đọc danh sách user từ JSON
+
+        if users is None:
+            users = []
+
+        # Kiểm tra trùng lặp Username
+        for u in users:
+            if u.get("Username") == user.Username:
+                print(f"❌ LỖI: Username {user.Username} đã tồn tại!")
+                return False  # Username đã tồn tại
+
+        # Tạo tài khoản mới
+        new_user = {
+            "Username": user.Username,
+            "Password": user.Password,
+            "fullname": "",
+            "birthday": "",
+            "phone": "",
+            "email": ""
+        }
+        users.append(new_user)
+
+        print(f"📌 Debug - Đang ghi dữ liệu vào {filename}...")
+
+        try:
+            with open(filename, "w", encoding="utf-8") as f:
+                json.dump(users, f, indent=4, ensure_ascii=False)  # Ghi dữ liệu đúng định dạng
+            print(f"✅ Tài khoản mới đã được lưu: {new_user}")
+            return True
+        except Exception as e:
+            print(f"❌ LỖI KHI GHI FILE JSON: {str(e)}")
+            return False
 
     def save_film(self,film):
         films = self.get_all_films()
         films.append(film)
         jff = JsonFileFactory()
-        filename = "../../dataset/film.json"
-        jff.write_data(films, filename)
+        jff.write_data(films, self.films_file)
 
     def check_user_exist(self,Username):
-        self.users = self.get_all_users()
-        for i in range(len(self.users)):
-            user = self.users[i]
-            if user.Username == Username:  # found
-                return i
-        return -1
+        print(f"📌 Debug - Đang kiểm tra username: {Username}")
+
+        users = self.get_all_users()
+
+        if users is None:
+            print("❌ LỖI: Không thể lấy danh sách users từ JSON!")
+            return -1
+
+        print(f"📌 Debug - Danh sách user hiện có: {users}")
+
+        for i, user in enumerate(users):
+            if user.get("Username") == Username:
+                print(f"✅ Tìm thấy username: {Username} (index {i})")
+                return i  # Username tồn tại
+
+        print(f"❌ Không tìm thấy username: {Username}")
+        return -1  # Username không tồn tại
 
     def get_all_films(self):
         jff = JsonFileFactory()
-        filename = "../../dataset/film.json"
-        films = jff.read_data(filename, Film)
+        films = jff.read_data(self.films_file, Film)
+        if films is None:
+            return []
         return films
 
     def find_index_filmName(self,a):
@@ -82,9 +141,9 @@ class DataConnector:
         else:
             print(f'Không tìm thấy phim "{filmTitle}" để xóa.')'''
 
-    def remove_film(self, films, filmTitle):
-
-        # Chuẩn hóa tên phim cần tìm
+    def remove_film(self, filmTitle):
+        """Xóa phim theo tên"""
+        films = self.get_all_films()
         filmTitle = filmTitle.strip().lower()
 
         # Tìm index của phim cần xóa
@@ -99,13 +158,44 @@ class DataConnector:
 
             # Ghi danh sách mới vào file JSON
             jff = JsonFileFactory()
-            filename = "../../dataset/film.json"  # Đảm bảo đường dẫn đúng
-            jff.write_data(films, filename)
-            self.save_film(films)
+            jff.write_data(films, self.films_file)  # Dùng đường dẫn động
 
-            print(f'Phim "{filmTitle}" đã bị xóa.')
+            print(f'✅ Phim "{filmTitle}" đã bị xóa.')
         else:
-            print(f'Không tìm thấy phim "{filmTitle}" để xóa.')
+            print(f'❌ Không tìm thấy phim "{filmTitle}" để xóa.')
 
+    def update_user_info(self, Username, Fullname, Birthday, Phone, Email):
+        print(f"📌 Debug - Đang tìm user {Username} trong JSON để cập nhật thông tin...")
+
+        filename = self.users_file
+        users = self.get_all_users()
+
+        if users is None:
+            print("❌ LỖI: Không thể lấy danh sách users từ JSON!")
+            return False
+
+        updated = False
+        for user in users:
+            if user["Username"] == Username:
+                print(f"✅ Tìm thấy user {Username}, cập nhật thông tin...")
+                user["fullname"] = Fullname
+                user["birthday"] = Birthday
+                user["phone"] = Phone
+                user["email"] = Email
+                updated = True
+                break
+
+        if updated:
+            try:
+                with open(filename, "w", encoding="utf-8") as f:
+                    json.dump(users, f, indent=4, ensure_ascii=False)
+                print(f"✅ Cập nhật thành công user {Username}!")
+                return True
+            except Exception as e:
+                print(f"❌ LỖI KHI GHI FILE JSON: {e}")
+                return False
+        else:
+            print(f"❌ Không tìm thấy user {Username} trong JSON!")
+            return False
 
 

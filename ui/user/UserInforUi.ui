@@ -20,7 +20,8 @@
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(124, 0, 11);</string>
+      <string notr="true">background-color: rgb(124, 0, 11);
+border: None</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item alignment="Qt::AlignTop">
@@ -59,6 +60,9 @@
          </item>
          <item row="1" column="0">
           <widget class="QWidget" name="widget_10" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <property name="leftMargin">
              <number>12</number>
@@ -131,6 +135,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
       </item>
       <item alignment="Qt::AlignTop">
        <widget class="QWidget" name="widget_4" native="true">
+        <property name="styleSheet">
+         <string notr="true">border: None</string>
+        </property>
         <layout class="QVBoxLayout" name="verticalLayout_8">
          <property name="spacing">
           <number>0</number>
@@ -140,6 +147,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </property>
          <item>
           <widget class="QWidget" name="widget_2" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="leftMargin">
              <number>12</number>
@@ -183,7 +193,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                 </widget>
                </item>
                <item alignment="Qt::AlignRight">
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="QLineEdit" name="lineEditUserName">
                  <property name="minimumSize">
                   <size>
                    <width>320</width>
@@ -200,7 +210,8 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                   <string notr="true">    border-radius: 10px;
     border: 2px solid #D2B48C;
 background-color: rgb(253, 253, 250);
-font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
+font: 63 12pt &quot;Segoe UI Semibold&quot;;
+color: rgb(0, 0, 0);</string>
                  </property>
                  <property name="placeholderText">
                   <string>Your User Name</string>
@@ -215,6 +226,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </item>
          <item>
           <widget class="QWidget" name="widget_5" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <property name="leftMargin">
              <number>12</number>
@@ -258,7 +272,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                 </widget>
                </item>
                <item alignment="Qt::AlignRight">
-                <widget class="QLineEdit" name="lineEdit_2">
+                <widget class="QLineEdit" name="lineEditFullName">
                  <property name="minimumSize">
                   <size>
                    <width>320</width>
@@ -272,7 +286,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">    border-radius: 10px;
+                  <string notr="true">color: rgb(0, 0, 0);    border-radius: 10px;
     border: 2px solid #D2B48C;
 background-color: rgb(253, 253, 250);
 font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
@@ -290,6 +304,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </item>
          <item>
           <widget class="QWidget" name="widget_9" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <property name="leftMargin">
              <number>12</number>
@@ -333,7 +350,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                 </widget>
                </item>
                <item alignment="Qt::AlignRight">
-                <widget class="QLineEdit" name="lineEdit_6">
+                <widget class="QLineEdit" name="lineEditBirthDay">
                  <property name="minimumSize">
                   <size>
                    <width>320</width>
@@ -347,7 +364,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">    border-radius: 10px;
+                  <string notr="true">color: rgb(0, 0, 0);    border-radius: 10px;
     border: 2px solid #D2B48C;
 background-color: rgb(253, 253, 250);
 font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
@@ -365,6 +382,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </item>
          <item>
           <widget class="QWidget" name="widget_8" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <property name="leftMargin">
              <number>12</number>
@@ -408,7 +428,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                 </widget>
                </item>
                <item alignment="Qt::AlignRight">
-                <widget class="QLineEdit" name="lineEdit_5">
+                <widget class="QLineEdit" name="lineEditPhoneNumber">
                  <property name="minimumSize">
                   <size>
                    <width>320</width>
@@ -422,7 +442,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">    border-radius: 10px;
+                  <string notr="true">color: rgb(0, 0, 0);    border-radius: 10px;
     border: 2px solid #D2B48C;
 background-color: rgb(253, 253, 250);
 font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
@@ -440,6 +460,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </item>
          <item>
           <widget class="QWidget" name="widget_7" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <property name="leftMargin">
              <number>12</number>
@@ -483,7 +506,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                 </widget>
                </item>
                <item alignment="Qt::AlignRight">
-                <widget class="QLineEdit" name="lineEdit_4">
+                <widget class="QLineEdit" name="lineEditEmail">
                  <property name="minimumSize">
                   <size>
                    <width>320</width>
@@ -497,7 +520,7 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">    border-radius: 10px;
+                  <string notr="true">color: rgb(0, 0, 0);    border-radius: 10px;
     border: 2px solid #D2B48C;
 background-color: rgb(253, 253, 250);
 font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
@@ -515,6 +538,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
          </item>
          <item>
           <widget class="QWidget" name="widget_6" native="true">
+           <property name="styleSheet">
+            <string notr="true">border: None</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="leftMargin">
              <number>12</number>
@@ -554,6 +580,9 @@ font: 63 12pt &quot;Segoe UI Semibold&quot;;</string>
                    <height>30</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -588,6 +617,9 @@ Customers have agreed to the terms and conditions &lt;br&gt; of Cinex membership
       </item>
       <item>
        <widget class="QWidget" name="widget_3" native="true">
+        <property name="styleSheet">
+         <string notr="true">border: None</string>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
           <widget class="QFrame" name="frame_2">

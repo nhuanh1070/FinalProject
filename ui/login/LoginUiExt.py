@@ -60,65 +60,46 @@ class LoginUiExt(Ui_MainWindow):
 
    #Xử lý đăng kí
    def register_process(self):
-       Username = self.lineEditUsername_Signup.text()
-       Password = self.lineEditPassword_Signup.text()
-       ConfirmPassword = self.lineEditConfirmPassword_Signup.text()
+       Username = self.lineEditUsername_Signup.text().strip()
+       Password = self.lineEditPassword_Signup.text().strip()
+       ConfirmPassword = self.lineEditConfirmPassword_Signup.text().strip()
+
+       print(f"📌 Debug - Username nhập: {Username}")
+       print(f"📌 Debug - Password nhập: {Password}")
 
        if not Username or not Password or not ConfirmPassword:
-           msg = QMessageBox(self.MainWindow)
-           msg.setIcon(QMessageBox.Icon.Warning)
-           msg.setText("Vui lòng nhập đầy đủ thông tin.")
-           msg.setWindowTitle("Lỗi")
-           msg.exec()
+           print("❌ LỖI: Không nhập đủ thông tin!")
+           QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng nhập đầy đủ thông tin.")
            return
-
 
        if Password != ConfirmPassword:
-           msg = QMessageBox(self.MainWindow)
-           msg.setIcon(QMessageBox.Icon.Warning)
-           msg.setText("Mật khẩu xác nhận không khớp. Vui lòng thử lại!")
-           msg.setWindowTitle("Lỗi")
-           msg.exec()
-           self.lineEditConfirmPassword_Signup.setText("")
+           print("❌ LỖI: Mật khẩu không khớp!")
+           QMessageBox.warning(self.MainWindow, "Lỗi", "Mật khẩu xác nhận không khớp. Vui lòng thử lại!")
+           self.lineEditConfirmPassword_Signup.clear()
            return
 
-       user = User(self.lineEditUsername_Signup.text(), self.lineEditConfirmPassword_Signup.text())
+       user = User(Username, Password)
+       print(f"📌 Debug - Đang kiểm tra username {Username} trong database...")
        index = self.dc.check_user_exist(user.Username)
 
        if index == -1:
            try:
-               self.dc.save_account(user)
-               msgbox = QMessageBox(self.MainWindow)
-               msgbox.setIcon(QMessageBox.Icon.Information)
-               msgbox.setText("Tạo tài khoản thành công.")
-               msgbox.setWindowTitle("Xác nhận tạo khoản thành công")
-               msgbox.exec()
-               self.clear_user_infor()
+               print("📌 Debug - Đang lưu tài khoản vào database...")
+               success = self.dc.save_account(user)
 
-
-               Users_list = self.dc.get_all_users()
-               if Users_list is None:
-                   Users_list = []
-               Users_list.append(User(Username, Password))  # Không cần gán lại
-
-               jff = JsonFileFactory()
-               filename = "../dataset/user.json"
-               jff.write_data(Users_list, filename)
-
+               if success:
+                   print(f"✅ Tài khoản {Username} đã được lưu!")
+                   QMessageBox.information(self.MainWindow, "Thành công", "Tạo tài khoản thành công.")
+                   self.clear_user_infor()
+               else:
+                   print("❌ LỖI: Lưu tài khoản thất bại!")
+                   QMessageBox.warning(self.MainWindow, "Lỗi", "Lưu tài khoản thất bại!")
            except Exception as e:
-               msgbox = QMessageBox(self.MainWindow)
-               msgbox.setIcon(QMessageBox.Icon.Critical)
-               msgbox.setText(f"Lỗi khi lưu tài khoản: {str(e)}")
-               msgbox.setWindowTitle("Lỗi hệ thống")
-               msgbox.exec()
+               print(f"❌ LỖI HỆ THỐNG: {str(e)}")
+               QMessageBox.critical(self.MainWindow, "Lỗi hệ thống", f"Lỗi khi lưu tài khoản: {str(e)}")
        else:
-           msg = QMessageBox(self.MainWindow)
-           msg.setIcon(QMessageBox.Icon.Warning)
-           msg.setText("Tài khoản đã tồn tại. Vui lòng tạo tài khoản khác")
-           msg.setWindowTitle("Lỗi")
-           msg.exec()
-           self.clear_user_infor()
-
+           print("❌ LỖI: Username đã tồn tại!")
+           QMessageBox.warning(self.MainWindow, "Lỗi", "Tên người dùng đã tồn tại!")
     #xử lý đăng nhập
    def load_user_data(self, filename):
        """ Đọc danh sách tài khoản từ file JSON """
@@ -137,28 +118,26 @@ class LoginUiExt(Ui_MainWindow):
        return admins_list
 
    def coivalidate_user(self, Username, Password):
-       # Xác định thư mục gốc của project
-       project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-       json_path = os.path.join(project_root, "dataset", "users_data.json")  # Đường dẫn đúng
+       base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+       json_path = os.path.join(base_path, "dataset", "users_data.json")
+
+       if not os.path.exists(json_path):
+           print(f"❌ LỖI: Không tìm thấy file {json_path}")
+           return None
 
        try:
            with open(json_path, "r", encoding="utf-8") as file:
                users = json.load(file)
-       except FileNotFoundError:
-           print(f"❌ LỖI: Không thể tải dữ liệu user! File không tồn tại: {json_path}")
-           return None
        except json.JSONDecodeError:
            print("❌ LỖI: File JSON bị lỗi, không thể đọc!")
            return None
 
-       if not users:
-           print("❌ LỖI: Danh sách user rỗng!")
-           return None
-
        for user in users:
            if user.get("Username") == Username and user.get("Password") == Password:
-               print(f"✅ Đăng nhập thành công: {user}")  # Debug dữ liệu user
-               return user  # Trả về toàn bộ thông tin user
+               print(f"✅ Đăng nhập thành công: {user}")
+               return user  # Trả về toàn bộ user_info
+
+       print(f"❌ Không tìm thấy tài khoản: {Username}")
        return None
 
    def coivalidate_admin(self, Username, Password):
@@ -179,22 +158,20 @@ class LoginUiExt(Ui_MainWindow):
        self.myui.showWindow()
 
    def open_user_ui(self, user_info):
-       """ Mở giao diện UserInfor và truyền dữ liệu user """
        if not user_info:
-           print("❌ LỖI: Không có dữ liệu user để mở giao diện!")
+           QMessageBox.warning(self.MainWindow, "Lỗi", "Không có dữ liệu người dùng để hiển thị.")
            return
 
-       print(f"🚀 Đang mở UserInforExt với dữ liệu: {user_info}")
-
-       from ui.user.UserUiExt import UserUiExt
-       self.user_info_dialog = UserInforExt(user_info=user_info, user_ui_ext=self)
+       # Kiểm tra dữ liệu trước khi mở UserInforExt
+       print("📂 Debug - user_info truyền vào UserInforExt:")
+       print(user_info)
 
        try:
-           print("🚀 Hiển thị cửa sổ UserInforExt...")
-           self.user_info_dialog.show()  # Đổi từ exec() sang show() để tránh crash
+           self.user_info_dialog = UserInforExt(user_info=user_info)
+           self.user_info_dialog.exec()
        except Exception as e:
-           print(f"❌ LỖI: Không thể mở UserInforExt - {e}")
-
+           print(f"❌ LỖI: Không thể mở giao diện người dùng - {e}")
+           QMessageBox.critical(self.MainWindow, "Lỗi hệ thống", f"Không thể mở giao diện người dùng: {e}")
        """ Lấy thông tin user từ file JSON và điền vào các lineEdit 
        filename = "../dataset/UserS.json"
        user_list = self.load_user_infor(filename)  # Lấy danh sách user
@@ -222,6 +199,7 @@ class LoginUiExt(Ui_MainWindow):
    def login_process(self):
        Username = self.lineEditUsername_Login.text().strip()
        Password = self.lineEditPassword_Login.text().strip()
+
        # Kiểm tra nếu username hoặc password rỗng
        if not Username or not Password:
            msgbox = QMessageBox(self.MainWindow)
@@ -230,7 +208,6 @@ class LoginUiExt(Ui_MainWindow):
            msgbox.setWindowTitle("Lỗi hệ thống")
            msgbox.exec()
            return
-
 
        if self.checkBox.isChecked() and self.checkBox_2.isChecked():
            msgbox = QMessageBox(self.MainWindow)
@@ -245,6 +222,23 @@ class LoginUiExt(Ui_MainWindow):
 
            if user_info:
                print(f"✅ User hợp lệ: {user_info}")  # Debug xem user có được xác thực không
+               self.MainWindow.close()
+               # 🔹 Đường dẫn đến `current_user.json` trong thư mục `dataset/`
+               dataset_path = os.path.join(os.path.dirname(__file__), "../dataset")
+               current_user_path = os.path.join(dataset_path, "current_user.json")
+
+               # 🔹 Kiểm tra nếu thư mục `dataset/` không tồn tại, thì tạo mới
+               if not os.path.exists(dataset_path):
+                   os.makedirs(dataset_path)
+
+               # 🔹 Lưu username đang đăng nhập vào file `dataset/current_user.json`
+               try:
+                   with open(current_user_path, "w", encoding="utf-8") as f:
+                       json.dump({"Username": Username}, f)
+                   print(f"✅ Đã lưu user đang đăng nhập: {Username} tại {current_user_path}")
+               except Exception as e:
+                   print(f"❌ LỖI: Không thể ghi file current_user.json - {e}")
+
                self.open_user_ui(user_info)  # Truyền thông tin vào UserInforExt
            else:
                msgbox = QMessageBox(self.MainWindow)

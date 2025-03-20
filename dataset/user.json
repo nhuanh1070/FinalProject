@@ -1,22 +1,14 @@
 [
     {
         "Username": "nhuanh",
-        "Password": "anh123"
+        "Password": "456"
     },
     {
-        "Username": "minhnguyen",
-        "Password": "minh456"
+        "Username": "abc",
+        "Password": "abc"
     },
     {
-        "Username": "linhtran",
-        "Password": "linh456"
-    },
-    {
-        "Username": "tuanle",
-        "Password": "tuan456"
-    },
-    {
-        "Username": "hoangphat",
-        "Password": "phat123"
+        "Username": "abc",
+        "Password": "abc"
     }
 ]

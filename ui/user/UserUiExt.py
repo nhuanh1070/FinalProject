@@ -1,5 +1,9 @@
-from PyQt6.QtWidgets import QMainWindow
+import json
+import os
 
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
+
+from CSDL.libs.DataConnector import DataConnector
 from ui.user.BookTicketExt import BookTicketExt
 from ui.user.UserInforExt import UserInforExt
 from ui.user.UserUi import Ui_MainWindow
@@ -71,11 +75,35 @@ class UserUiExt(Ui_MainWindow):
         detail_dialog.exec()
 
     def showUserInfo(self):
-        """Mở cửa sổ thông tin người dùng"""
-        '''self.user_info_dialog = UserInforExt(movie=None)
-        self.user_info_dialog.exec()'''
-        self.user_info_dialog = UserInforExt(user_ui_ext=self)
-        result = self.user_info_dialog.exec()
+        """ Mở giao diện UserInforExt với thông tin user đang đăng nhập """
+        print("📌 Debug - Đang mở UserInforExt từ UserUiExt...")
+
+        # Lấy username từ file tạm
+        current_username = self.get_logged_in_user()
+
+        if not current_username:
+            print("❌ LỖI: Không tìm thấy user đang đăng nhập!")
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Không tìm thấy thông tin tài khoản!")
+            return
+
+        print(f"✅ Debug - Username đang đăng nhập: {current_username}")
+
+        # Lấy thông tin user từ file JSON
+        dc = DataConnector()
+        users = dc.get_all_users()
+        user_info = next((user for user in users if user["Username"] == current_username), None)
+
+        if not user_info:
+            print(f"❌ LỖI: Không tìm thấy user {current_username} trong JSON!")
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Tài khoản không tồn tại trong hệ thống!")
+            return
+
+        print(f"✅ Debug - Thông tin user đang đăng nhập: {user_info}")
+
+        # Mở cửa sổ UserInforExt và truyền `self.MainWindow` làm parent
+        self.user_info_dialog = UserInforExt(user_info=user_info, parent=self.MainWindow)
+        self.user_info_dialog.exec()
+
     def get_movie_data(self):
         # Danh sách dữ liệu phim
         return [
@@ -87,6 +115,17 @@ class UserUiExt(Ui_MainWindow):
             {"title": "THE CONJURING", "genre": "Horror", "duration": "112'", "language": "English", "rating": "T18", "poster": ":/Poster/images/Poster/TheConjuring.jpg","description": "Ed và Lorraine Warren điều tra một vụ án giết người liên quan đến hiện tượng quỷ ám đáng sợ. Lần đầu tiên trong lịch sử, một kẻ sát nhân tuyên bố rằng hắn bị quỷ điều khiển để gây án. Những hiện tượng siêu nhiên ngày càng ám ảnh và nguy hiểm hơn bao giờ hết. Bộ phim mang đến những pha hù dọa căng thẳng cùng bầu không khí rùng rợn đặc trưng. Đây là một trong những phần đáng sợ nhất của vũ trụ Conjuring, khiến khán giả thót tim đến giây cuối cùng."}
         ]
 
+    def get_logged_in_user(self):
+        """ Trả về username của user đang đăng nhập từ dataset/current_user.json """
+        try:
+            dataset_path = os.path.join(os.path.dirname(__file__), "../dataset")
+            current_user_path = os.path.join(dataset_path, "current_user.json")
 
+            with open(current_user_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data.get("Username", None)
+        except Exception as e:
+            print(f"❌ LỖI: Không thể đọc file current_user.json - {e}")
+            return None
 
 
