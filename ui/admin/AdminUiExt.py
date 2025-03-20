@@ -1,5 +1,6 @@
 import json
 import os
+import pandas as pd
 
 from PyQt6.QtWidgets import QMessageBox, QMainWindow, QTableWidgetItem
 from PyQt6 import QtWidgets
@@ -40,6 +41,10 @@ class AdminUiExt(Ui_MainWindow):
         # Tải danh sách phim lên bảng
         self.load_movies()
 
+
+
+        # Load dữ liệu ban đầu
+        self.load_revenue_data()
     def setupSignalAndSlot(self):
         """ Kết nối các nút với các hộp thoại """
         self.pushButtonDetails.clicked.connect(self.show_movie_details)
@@ -47,6 +52,7 @@ class AdminUiExt(Ui_MainWindow):
         self.pushButtonEdit.clicked.connect(self.show_movie_edit)
         self.pushButtonDelete.clicked.connect(self.delete_movie)
         self.selected_row = -1
+        self.btnFilter.clicked.connect(self.filter_data)
     def showWindow(self):
         """ Hiển thị cửa sổ chính """
         self.MainWindow.show()
@@ -205,3 +211,86 @@ class AdminUiExt(Ui_MainWindow):
 
         QMessageBox.information(self.MainWindow, "Thành công", f"Đã xóa bộ phim: {film_title}")'''
 
+    def load_revenue_data(self):
+        """Đọc dữ liệu từ Excel và tải vào bảng doanh thu."""
+        try:
+            # Tìm thư mục gốc của dự án
+            base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+            # Đường dẫn đến file Excel
+            movie_file = os.path.join(base_dir, "dataset", "data_doanhthuve.xlsx")
+            food_file = os.path.join(base_dir, "dataset", "data_doanhthubapnuoc.xlsx")
+
+            # Kiểm tra file tồn tại
+            if not os.path.exists(movie_file) or not os.path.exists(food_file):
+                QMessageBox.critical(self.MainWindow, "Lỗi", "Không tìm thấy file dữ liệu doanh thu!")
+                return
+
+            # Đọc file Excel
+            self.movie_data = pd.read_excel(movie_file, engine="openpyxl")
+            self.food_data = pd.read_excel(food_file, engine="openpyxl")
+
+            # Kiểm tra dữ liệu có cột "Thời gian"
+            if "Thời gian" not in self.movie_data.columns or "Thời gian" not in self.food_data.columns:
+                QMessageBox.critical(self.MainWindow, "Lỗi",
+                                     "File Excel không có cột 'Thời gian'. Kiểm tra lại dữ liệu!")
+                return
+
+            # Lấy danh sách tháng/năm và thêm vào ComboBox
+            unique_months = sorted(set(self.movie_data["Thời gian"]).union(set(self.food_data["Thời gian"])))
+            self.comboMonthYear.clear()  # Xóa dữ liệu cũ
+            self.comboMonthYear.addItems(unique_months)  # Thêm danh sách mới
+
+            # Hiển thị dữ liệu lên bảng
+            self.populate_table(self.movie_data, self.tableMovies)
+            self.populate_table(self.food_data, self.tableFoods)
+            self.calculate_total_revenue()
+
+        except Exception as e:
+            QMessageBox.critical(self.MainWindow, "Lỗi", f"Lỗi khi đọc file Excel: {str(e)}")
+
+    def populate_table(self, data, table_widget):
+        """Hiển thị dữ liệu vào QTableWidget."""
+        table_widget.setRowCount(len(data))
+        table_widget.setColumnCount(len(data.columns))
+        table_widget.setHorizontalHeaderLabels(data.columns)
+
+        for row_idx, row in data.iterrows():
+            for col_idx, value in enumerate(row):
+                table_widget.setItem(row_idx, col_idx, QTableWidgetItem(str(value)))
+
+    def filter_data(self):
+        """Lọc dữ liệu theo tháng/năm được chọn từ comboMonthYear"""
+        selected_month_year = self.comboMonthYear.currentText()  # Lấy giá trị được chọn
+
+        if not selected_month_year:
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn tháng/năm để lọc!")
+            return
+
+        # Lọc dữ liệu từ DataFrame
+        filtered_movies = self.movie_data[self.movie_data["Thời gian"] == selected_month_year]
+        filtered_foods = self.food_data[self.food_data["Thời gian"] == selected_month_year]
+
+        if filtered_movies.empty and filtered_foods.empty:
+            QMessageBox.warning(self.MainWindow, "Thông báo", "Không có dữ liệu cho tháng đã chọn!")
+            return
+
+        # Hiển thị dữ liệu sau khi lọc
+        self.populate_table(filtered_movies, self.tableMovies)
+        self.populate_table(filtered_foods, self.tableFoods)
+        self.calculate_total_revenue(filtered_movies, filtered_foods)
+
+    def calculate_total_revenue(self, movies=None, foods=None):
+        """Tính tổng doanh thu và hiển thị."""
+        if movies is None:
+            movies = self.movie_data
+        if foods is None:
+            foods = self.food_data
+
+        movie_revenue = movies["Doanh thu"].sum()
+        food_revenue = foods["Doanh thu"].sum()
+        total_revenue = movie_revenue + food_revenue
+
+        self.lblMovieRevenue.setText(f"Doanh thu phim: {movie_revenue:,} VND")
+        self.lblFoodRevenue.setText(f"Doanh thu bắp nước: {food_revenue:,} VND")
+        self.lblTotalRevenue.setText(f"Tổng doanh thu: {total_revenue:,} VND")

@@ -103,33 +103,7 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
             self.login_ui.setupUi(self.mainwindow)
             self.mainwindow.show()
 
-    def ConfirmProcess(self):
-        from ui.user.UserUiExt import UserUiExt
-        if self.ui.checkBox.isChecked():
-            self.close()
-            msgbox = QMessageBox(self)
-            msgbox.setText("Xác nhận đã đăng nhập thành công")
-            msgbox.setWindowTitle("Xác nhận đăng nhập")
-            msgbox.setIcon(QMessageBox.Icon.Information)
-            msgbox.setStandardButtons(QMessageBox.StandardButton.Yes)
-            msgbox.exec()
 
-            if self.user_ui_ext:
-                self.user_ui_ext.MainWindow.close()
-
-            # Mở màn hình đăng nhập
-            self.mainwindow = QMainWindow()
-            self.myui = UserUiExt()
-            self.myui.setupUi(self.mainwindow)
-            self.mainwindow.show()
-        else:
-            msgbox = QMessageBox(self)
-            msgbox.setText("Vui lòng đánh dấu xác nhận với những điều khoản pháp lý")
-            msgbox.setWindowTitle("Xác nhận điều khoản")
-            msgbox.setIcon(QMessageBox.Icon.Information)
-            msgbox.setStandardButtons(QMessageBox.StandardButton.Yes)
-
-            msgbox.exec()
 
     def load_user_data(self):
         """ Đọc dữ liệu từ file UserS.json """
