@@ -28,46 +28,6 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
         self.pushButtonLogOut.clicked.connect(self.LogOutProcess)
     print("UserInforExt setup xong!")  # Debug kiểm tra
 
-    #ABC=LoginUiExt
-    '''def load_user_data(filename):
-        """ Đọc danh sách user từ file JSON và trả về danh sách đối tượng UserInfor """
-        import json
-        try:
-            with open(filename, "r", encoding="utf-8") as file:
-                data = json.load(file)  # Đọc dữ liệu (danh sách [])
-                # Kiểm tra nếu dữ liệu không phải danh sách
-                if not isinstance(data, list):
-                    return []
-                user_list = [
-                    UserInfor(user["Username"], user["fullname"], user["birthday"], user["phone"], user["email"])
-                    for user in data]
-                return user_list
-        except (FileNotFoundError, json.JSONDecodeError):
-            return []  # Trả về danh sách trống nếu có lỗi
-
-    def fill_user_data(self):
-        """ Lấy thông tin user từ file JSON và điền vào các lineEdit """
-        filename = "../dataset/UserS.json"
-
-        user_list = self.load_user_data(filename)  # Lấy danh sách user
-
-        # Tìm user theo username
-        user_info = None
-        for user in user_list:
-            if user.Username == self.username:  # So sánh username
-                user_info = user
-                break  # Dừng vòng lặp khi tìm thấy
-
-        # Nếu tìm thấy user thì gán giá trị vào các QLineEdit
-        if user_info:
-            self.ui.lineEdit.setText(str("nhuanh"))  # Username (String)
-            self.ui.lineEdit_2.setText(str("Phạm Lê Như Anh"))  # Họ và tên (String)
-            self.ui.lineEdit_6.setText(str("20-5-2025"))  # Ngày sinh (String)
-            self.ui.lineEdit_5.setText(str("0901030490"))  # Số điện thoại (String)
-            self.ui.lineEdit_4.setText(str("NhuAnh@gmail.com"))  # Email (String)
-        else:
-            QMessageBox.warning(self, "Lỗi", "Không tìm thấy thông tin người dùng!")'''
-
     def LogOutProcess(self):
         """ Xử lý đăng xuất, đóng UserInforExt & UserUiExt, mở lại Login """
         from ui.login.LoginUiExt import LoginUiExt
@@ -106,8 +66,7 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
 
 
     def load_user_data(self):
-        """ Đọc dữ liệu từ file UserS.json """
-        filename = "UserS.json"  # Cập nhật đường dẫn nếu cần
+        filename = "users_data.json"  # Cập nhật đường dẫn nếu cần
         try:
             with open(filename, "r", encoding="utf-8") as file:
                 return json.load(file)

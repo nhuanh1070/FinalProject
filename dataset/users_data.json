@@ -54,5 +54,21 @@
         "birthday": "ASCDVG",
         "phone": "DFGJN",
         "email": "DSFDFG"
+    },
+    {
+        "Username": "Minhgay",
+        "Password": "gay123",
+        "fullname": "lê văn minh",
+        "birthday": "01/02",
+        "phone": "0903298109",
+        "email": "ạcoiw"
+    },
+    {
+        "Username": "TruongSon",
+        "Password": "son123",
+        "fullname": "Nguyễn Trường Sơn",
+        "birthday": "31/08/2006",
+        "phone": "0905037490",
+        "email": "Sonntk24406H@st.uel.edu.vn"
     }
 ]

@@ -1,4 +1,3 @@
-
 from PyQt6.QtWidgets import QMainWindow, QApplication
 from ui.user.UserUiExt import UserUiExt
 

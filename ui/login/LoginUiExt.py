@@ -64,41 +64,31 @@ class LoginUiExt(Ui_MainWindow):
        Password = self.lineEditPassword_Signup.text().strip()
        ConfirmPassword = self.lineEditConfirmPassword_Signup.text().strip()
 
-       print(f"📌 Debug - Username nhập: {Username}")
-       print(f"📌 Debug - Password nhập: {Password}")
 
        if not Username or not Password or not ConfirmPassword:
-           print("❌ LỖI: Không nhập đủ thông tin!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng nhập đầy đủ thông tin.")
            return
 
        if Password != ConfirmPassword:
-           print("❌ LỖI: Mật khẩu không khớp!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Mật khẩu xác nhận không khớp. Vui lòng thử lại!")
            self.lineEditConfirmPassword_Signup.clear()
            return
 
        user = User(Username, Password)
-       print(f"📌 Debug - Đang kiểm tra username {Username} trong database...")
        index = self.dc.check_user_exist(user.Username)
 
        if index == -1:
            try:
-               print("📌 Debug - Đang lưu tài khoản vào database...")
                success = self.dc.save_account(user)
 
                if success:
-                   print(f"✅ Tài khoản {Username} đã được lưu!")
                    QMessageBox.information(self.MainWindow, "Thành công", "Tạo tài khoản thành công.")
                    self.clear_user_infor()
                else:
-                   print("❌ LỖI: Lưu tài khoản thất bại!")
                    QMessageBox.warning(self.MainWindow, "Lỗi", "Lưu tài khoản thất bại!")
            except Exception as e:
-               print(f"❌ LỖI HỆ THỐNG: {str(e)}")
                QMessageBox.critical(self.MainWindow, "Lỗi hệ thống", f"Lỗi khi lưu tài khoản: {str(e)}")
        else:
-           print("❌ LỖI: Username đã tồn tại!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Tên người dùng đã tồn tại!")
     #xử lý đăng nhập
    def load_user_data(self, filename):
@@ -122,22 +112,18 @@ class LoginUiExt(Ui_MainWindow):
        json_path = os.path.join(base_path, "dataset", "users_data.json")
 
        if not os.path.exists(json_path):
-           print(f"❌ LỖI: Không tìm thấy file {json_path}")
            return None
 
        try:
            with open(json_path, "r", encoding="utf-8") as file:
                users = json.load(file)
        except json.JSONDecodeError:
-           print("❌ LỖI: File JSON bị lỗi, không thể đọc!")
            return None
 
        for user in users:
            if user.get("Username") == Username and user.get("Password") == Password:
-               print(f"✅ Đăng nhập thành công: {user}")
                return user  # Trả về toàn bộ user_info
 
-       print(f"❌ Không tìm thấy tài khoản: {Username}")
        return None
 
    def coivalidate_admin(self, Username, Password):
@@ -163,38 +149,12 @@ class LoginUiExt(Ui_MainWindow):
            return
 
        # Kiểm tra dữ liệu trước khi mở UserInforExt
-       print("📂 Debug - user_info truyền vào UserInforExt:")
-       print(user_info)
 
        try:
            self.user_info_dialog = UserInforExt(user_info=user_info)
            self.user_info_dialog.exec()
        except Exception as e:
-           print(f"❌ LỖI: Không thể mở giao diện người dùng - {e}")
            QMessageBox.critical(self.MainWindow, "Lỗi hệ thống", f"Không thể mở giao diện người dùng: {e}")
-       """ Lấy thông tin user từ file JSON và điền vào các lineEdit 
-       filename = "../dataset/UserS.json"
-       user_list = self.load_user_infor(filename)  # Lấy danh sách user
-
-       # Tìm user theo username
-       user_info = None
-       for user in user_list:
-           if user.Username == self.username:  # So sánh username
-               user_info = user
-               break  # Dừng vòng lặp khi tìm thấy
-
-       # Nếu tìm thấy user thì gán giá trị vào các QLineEdit
-       if user_info:
-           self.ui.lineEdit.setText(str("nhuanh"))  # Username (String)
-           self.ui.lineEdit_2.setText(str("Phạm Lê Như Anh"))  # Họ và tên (String)
-           self.ui.lineEdit_6.setText(str("20-5-2025"))  # Ngày sinh (String)
-           self.ui.lineEdit_5.setText(str("0901030490"))  # Số điện thoại (String)
-           self.ui.lineEdit_4.setText(str("NhuAnh@gmail.com"))  # Email (String)
-       else:
-           QMessageBox.warning(self, "Lỗi", "Không tìm thấy thông tin người dùng!")
-
-
-"""
 
    def login_process(self):
        Username = self.lineEditUsername_Login.text().strip()
@@ -221,23 +181,16 @@ class LoginUiExt(Ui_MainWindow):
            user_info = self.coivalidate_user(Username, Password)  # Kiểm tra User
 
            if user_info:
-               print(f"✅ User hợp lệ: {user_info}")  # Debug xem user có được xác thực không
                self.MainWindow.close()
                # 🔹 Đường dẫn đến `current_user.json` trong thư mục `dataset/`
                dataset_path = os.path.join(os.path.dirname(__file__), "../dataset")
                current_user_path = os.path.join(dataset_path, "current_user.json")
 
-               # 🔹 Kiểm tra nếu thư mục `dataset/` không tồn tại, thì tạo mới
                if not os.path.exists(dataset_path):
                    os.makedirs(dataset_path)
 
-               # 🔹 Lưu username đang đăng nhập vào file `dataset/current_user.json`
-               try:
-                   with open(current_user_path, "w", encoding="utf-8") as f:
-                       json.dump({"Username": Username}, f)
-                   print(f"✅ Đã lưu user đang đăng nhập: {Username} tại {current_user_path}")
-               except Exception as e:
-                   print(f"❌ LỖI: Không thể ghi file current_user.json - {e}")
+               with open(current_user_path, "w", encoding="utf-8") as f:
+                   json.dump({"Username": Username}, f)
 
                self.open_user_ui(user_info)  # Truyền thông tin vào UserInforExt
            else:
@@ -260,18 +213,3 @@ class LoginUiExt(Ui_MainWindow):
                msgbox.setText(f"Tên đăng nhập hoặc mật khẩu không chính xác!")
                msgbox.setWindowTitle("Lỗi hệ thống")
                msgbox.exec()
-   """def load_user_infor(filename):
-        #Đọc danh sách user từ file JSON và trả về danh sách đối tượng UserInfor 
-       import json
-       try:
-           with open(filename, "r", encoding="utf-8") as file:
-               data = json.load(file)  # Đọc dữ liệu (danh sách [])
-               # Kiểm tra nếu dữ liệu không phải danh sách
-               if not isinstance(data, list):
-                   return []
-               user_list = [
-                   UserInfor(user["Username"], user["fullname"], user["birthday"], user["phone"], user["email"])
-                   for user in data]
-               return user_list
-       except (FileNotFoundError, json.JSONDecodeError):
-           return []"""
