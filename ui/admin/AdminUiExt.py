@@ -1,11 +1,14 @@
 
 import json
 import os
+from datetime import datetime
+
 import pandas as pd
 
 from PyQt6.QtWidgets import QMessageBox, QMainWindow, QTableWidgetItem
 from PyQt6 import QtWidgets, QtCore
-
+from matplotlib import pyplot as plt
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from CSDL.libs.DataConnector import DataConnector
 from CSDL.libs.JsonFileFactory import JsonFileFactory
 from CSDL.models.Film import Film
@@ -150,31 +153,98 @@ class AdminUiExt(Ui_MainWindow):
                 QMessageBox.critical(self.MainWindow, "Lỗi", "Không tìm thấy file dữ liệu doanh thu!")
                 return
 
-            self.movie_data = pd.read_excel(movie_file, engine="openpyxl", dtype=str)
-            self.food_data = pd.read_excel(food_file, engine="openpyxl", dtype=str)
+            # Đọc file Excel mà không ép kiểu, để pandas tự xác định kiểu dữ liệu
+            self.movie_data = pd.read_excel(movie_file, engine="openpyxl")
+            self.food_data = pd.read_excel(food_file, engine="openpyxl")
 
-            self.movie_data["Doanh thu"] = pd.to_numeric(self.movie_data["Doanh thu"], errors="coerce").fillna(0)
-            self.food_data["Doanh thu"] = pd.to_numeric(self.food_data["Doanh thu"], errors="coerce").fillna(0)
+            # Chuyển cột "Doanh thu" về numeric
+            self.movie_data["Revenue"] = pd.to_numeric(self.movie_data["Revenue"], errors="coerce").fillna(0)
+            self.food_data["Revenue"] = pd.to_numeric(self.food_data["Revenue"], errors="coerce").fillna(0)
 
-            if "Thời gian" not in self.movie_data.columns or "Thời gian" not in self.food_data.columns:
-                QMessageBox.critical(self.MainWindow, "Lỗi", "File Excel không có cột 'Thời gian'. Kiểm tra lại dữ liệu!")
+            if "Datetime" not in self.movie_data.columns or "Datetime" not in self.food_data.columns:
+                QMessageBox.critical(self.MainWindow, "Lỗi",
+                                     "File Excel không có cột 'Thời gian'. Kiểm tra lại dữ liệu!")
                 return
 
-            unique_months = sorted(set(self.movie_data["Thời gian"]).union(set(self.food_data["Thời gian"])))
-            self.comboMonthYear.clear()
-            self.comboMonthYear.addItems(unique_months)
+            # Chuyển đổi cột "Thời gian" về kiểu datetime (không chỉ định format để linh hoạt hơn)
+            self.movie_data["Datetime"] = pd.to_datetime(self.movie_data["Datetime"], errors="coerce")
+            self.food_data["Datetime"] = pd.to_datetime(self.food_data["Datetime"], errors="coerce")
+
+
+            # Chuyển đổi datetime thành chuỗi "YYYY-MM" để đồng nhất cho việc lọc
+            self.movie_data["Datetime"] = self.movie_data["Datetime"].dt.strftime('%Y-%m')
+            self.food_data["Datetime"] = self.food_data["Datetime"].dt.strftime('%Y-%m')
+
+            # Lấy danh sách tháng năm đã sắp xếp từ dữ liệu
+            unique_months = sorted(set(self.movie_data["Datetime"]).union(set(self.food_data["Datetime"])))
+
+            # Cập nhật vào combobox
+            self.comboMonthYear_1.clear()
+            self.comboMonthYear_1.addItems(unique_months)
+            self.comboMonthYear_2.clear()
+            self.comboMonthYear_2.addItems(unique_months)
+
             self.populate_table(self.movie_data, self.tableMovies)
             self.populate_table(self.food_data, self.tableFoods)
 
             self.tableMovies.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
             self.tableFoods.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
 
-
-
             self.calculate_total_revenue()
 
+            # Vẽ biểu đồ ban đầu
+            self.draw_movie_chart()
+            self.draw_food_chart()
         except Exception as e:
             QMessageBox.critical(self.MainWindow, "Lỗi", f"Lỗi khi đọc file Excel: {str(e)}")
+
+    def filter_data(self):
+        # Lấy giá trị từ combobox tháng bắt đầu và tháng kết thúc
+        start_month = self.comboMonthYear_1.currentText().strip()
+        end_month = self.comboMonthYear_2.currentText().strip()
+
+        print(f"Start month: {start_month}, End month: {end_month}")
+
+        if not start_month or not end_month:
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn tháng bắt đầu và tháng kết thúc để lọc!")
+            return
+
+        try:
+            # Chuyển chuỗi tháng/năm (YYYY-MM) thành datetime object
+            start_date = datetime.strptime(start_month, "%Y-%m")
+            end_date = datetime.strptime(end_month, "%Y-%m")
+            print(f"Start date: {start_date}, End date: {end_date}")
+
+            if end_date < start_date:
+                QMessageBox.warning(self.MainWindow, "Lỗi", "Tháng kết thúc phải lớn hơn hoặc bằng tháng bắt đầu!")
+                return
+
+            # Chuyển datetime về chuỗi định dạng "YYYY-MM" để so sánh với cột "Thời gian"
+            start_str = start_date.strftime("%Y-%m")
+            end_str = end_date.strftime("%Y-%m")
+        except ValueError as e:
+            QMessageBox.warning(self.MainWindow, "Lỗi", f"Định dạng tháng/năm không đúng: {e}")
+            return
+
+        # Lọc dữ liệu dựa trên chuỗi "YYYY-MM"
+        filtered_movies = self.movie_data[
+            (self.movie_data["Datetime"] >= start_str) & (self.movie_data["Datetime"] <= end_str)]
+        filtered_foods = self.food_data[
+            (self.food_data["Datetime"] >= start_str) & (self.food_data["Datetime"] <= end_str)]
+
+        print(f"Filtered movies: {filtered_movies.shape}")
+        print(f"Filtered foods: {filtered_foods.shape}")
+
+        if filtered_movies.empty and filtered_foods.empty:
+            QMessageBox.warning(self.MainWindow, "Thông báo", "Không có dữ liệu cho khoảng thời gian đã chọn!")
+            return
+
+        # Cập nhật lại bảng, doanh thu và biểu đồ với dữ liệu đã lọc
+        self.populate_table(filtered_movies, self.tableMovies)
+        self.populate_table(filtered_foods, self.tableFoods)
+        self.calculate_total_revenue(filtered_movies, filtered_foods)
+        self.draw_movie_chart(filtered_movies)
+        self.draw_food_chart(filtered_foods)
 
     def populate_table(self, data, table_widget):
         table_widget.setRowCount(len(data))
@@ -185,48 +255,19 @@ class AdminUiExt(Ui_MainWindow):
             for col_idx, value in enumerate(row):
                 table_widget.setItem(row_idx, col_idx, QTableWidgetItem(str(value)))
 
-    def filter_data(self):
-        selected_month_year = self.comboMonthYear.currentText().strip()
-        if not selected_month_year:
-            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn tháng/năm để lọc!")
-            return
-
-        # Làm sạch cột thời gian
-        self.movie_data["Thời gian"] = self.movie_data["Thời gian"].astype(str).str.strip()
-        self.food_data["Thời gian"] = self.food_data["Thời gian"].astype(str).str.strip()
-
-        # Lọc dữ liệu đúng tháng/năm
-        filtered_movies = self.movie_data[self.movie_data["Thời gian"] == selected_month_year]
-        filtered_foods = self.food_data[self.food_data["Thời gian"] == selected_month_year]
-
-        if filtered_movies.empty and filtered_foods.empty:
-            QMessageBox.warning(self.MainWindow, "Thông báo", "Không có dữ liệu cho tháng đã chọn!")
-            return
-
-        # Sắp xếp dữ liệu theo đúng thứ tự dòng (nếu có nhiều loại trong tháng)
-        filtered_movies = filtered_movies.reset_index(drop=True)
-        filtered_foods = filtered_foods.reset_index(drop=True)
-
-        # Hiển thị lại bảng
-        self.populate_table(filtered_movies, self.tableMovies)
-        self.populate_table(filtered_foods, self.tableFoods)
-
-        # Tính doanh thu
-        self.calculate_total_revenue(filtered_movies, filtered_foods)
-
     def calculate_total_revenue(self, movies=None, foods=None):
         if movies is None:
             movies = self.movie_data
         if foods is None:
             foods = self.food_data
 
-        movie_revenue = movies["Doanh thu"].sum()
-        food_revenue = foods["Doanh thu"].sum()
+        movie_revenue = movies["Revenue"].sum()
+        food_revenue = foods["Revenue"].sum()
         total_revenue = movie_revenue + food_revenue
 
-        self.lblMovieRevenue.setText(f"Doanh thu phim: {movie_revenue:,} VND")
-        self.lblFoodRevenue.setText(f"Doanh thu bắp nước: {food_revenue:,} VND")
-        self.lblTotalRevenue.setText(f"Tổng doanh thu: {total_revenue:,} VND")
+        self.lblMovieRevenue.setText(f"{movie_revenue:,}")
+        self.lblFoodRevenue.setText(f"{food_revenue:,}")
+        self.lblTotalRevenue.setText(f"{total_revenue:,}")
 
     def search_movie(self, text):
         text = text.strip().lower()
@@ -244,3 +285,59 @@ class AdminUiExt(Ui_MainWindow):
 
         completer_list = [movie.get("filmTitle", "") for movie in filtered_movies]
         self.completer_model.setStringList(completer_list)
+
+    def draw_movie_chart(self, data=None):
+        if data is None:
+            data = self.movie_data
+
+
+        # Thiết lập layout cho QFrame frameChartMovie
+        layout = self.frameChartMovie.layout()
+        if layout is None:
+            layout = QtWidgets.QVBoxLayout(self.frameChartMovie)
+        else:
+            # Xóa hết các widget cũ nếu có
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+
+        # Tạo figure và vẽ vertical bar chart
+        fig, ax = plt.subplots(figsize=(6, 4))
+        ax.bar(data["Datetime"], data["Revenue"], color='skyblue')
+        ax.set_ylabel("Revenue (VND)")
+        ax.set_title("Movie Revenue")
+        plt.xticks(rotation=45)  # Xoay nhãn trục x cho dễ đọc
+
+        # Tạo canvas từ figure và thêm vào layout
+        canvas = FigureCanvas(fig)
+        layout.addWidget(canvas)
+        canvas.draw()
+
+    def draw_food_chart(self, data=None):
+        if data is None:
+            data = self.food_data
+
+
+        layout = self.frameChartFood.layout()
+        if layout is None:
+            layout = QtWidgets.QVBoxLayout(self.frameChartFood)
+        else:
+            # Xóa hết các widget cũ nếu có
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+
+        fig, ax = plt.subplots(figsize=(6, 4))
+        ax.bar(data["Datetime"], data["Revenue"], color='lightgreen')
+        ax.set_ylabel("Revenue (VND)")
+        ax.set_title("Food Revenue")
+        plt.xticks(rotation=45)  # Xoay nhãn trục x cho dễ đọc
+
+        canvas = FigureCanvas(fig)
+        layout.addWidget(canvas)
+        canvas.draw()
+
+
+
