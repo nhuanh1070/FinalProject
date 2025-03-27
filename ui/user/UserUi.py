@@ -12,11 +12,16 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(962, 702)
+        MainWindow.resize(962, 662)
         MainWindow.setMinimumSize(QtCore.QSize(962, 0))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("#centralwidget, #scrollArea, #scrollAreaWidgetContents,  #widget_3, #widget_4, #widget_5 {\n"
 "background-color:rgb(145, 8, 12);\n"
 " border: none;\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "  #widget_6, #widget_7, #widget_8, #widget_10, #widget_11, #widget_9 {\n"
@@ -82,8 +87,13 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.headerFrame_7 = QtWidgets.QWidget(parent=self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.headerFrame_7.sizePolicy().hasHeightForWidth())
+        self.headerFrame_7.setSizePolicy(sizePolicy)
         self.headerFrame_7.setMinimumSize(QtCore.QSize(962, 64))
-        self.headerFrame_7.setMaximumSize(QtCore.QSize(0, 0))
+        self.headerFrame_7.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.headerFrame_7.setStyleSheet("background-color: rgb(124, 0, 11);")
         self.headerFrame_7.setObjectName("headerFrame_7")
         self.horizontalLayout_104 = QtWidgets.QHBoxLayout(self.headerFrame_7)
@@ -114,10 +124,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_108.setSpacing(0)
         self.horizontalLayout_108.setObjectName("horizontalLayout_108")
         self.Account_btn = QtWidgets.QPushButton(parent=self.widget_34)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.Account_btn.sizePolicy().hasHeightForWidth())
+        self.Account_btn.setSizePolicy(sizePolicy)
         self.Account_btn.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/user_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.Account_btn.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/user_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Account_btn.setIcon(icon1)
         self.Account_btn.setIconSize(QtCore.QSize(40, 40))
         self.Account_btn.setObjectName("Account_btn")
         self.horizontalLayout_108.addWidget(self.Account_btn)
@@ -147,9 +162,9 @@ class Ui_MainWindow(object):
         self.pushButton_Left = QtWidgets.QPushButton(parent=self.widget_35)
         self.pushButton_Left.setStyleSheet("background-color: rgb(83, 9, 11);")
         self.pushButton_Left.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/chevron_left_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_Left.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/chevron_left_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_Left.setIcon(icon2)
         self.pushButton_Left.setIconSize(QtCore.QSize(32, 32))
         self.pushButton_Left.setObjectName("pushButton_Left")
         self.horizontalLayout_11.addWidget(self.pushButton_Left, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
@@ -202,9 +217,9 @@ class Ui_MainWindow(object):
         self.pushButton_Right = QtWidgets.QPushButton(parent=self.widget_35)
         self.pushButton_Right.setStyleSheet("background-color: rgb(83, 9, 11);")
         self.pushButton_Right.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/chevron_right_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_Right.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/chevron_right_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_Right.setIcon(icon3)
         self.pushButton_Right.setIconSize(QtCore.QSize(32, 32))
         self.pushButton_Right.setObjectName("pushButton_Right")
         self.horizontalLayout_11.addWidget(self.pushButton_Right)
@@ -312,9 +327,9 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/alert_circle_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.btn_ViewDetails_1.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/alert_circle_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.btn_ViewDetails_1.setIcon(icon4)
         self.btn_ViewDetails_1.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_1.setObjectName("btn_ViewDetails_1")
         self.horizontalLayout_7.addWidget(self.btn_ViewDetails_1)
@@ -368,7 +383,7 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        self.btn_ViewDetails_7.setIcon(icon3)
+        self.btn_ViewDetails_7.setIcon(icon4)
         self.btn_ViewDetails_7.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_7.setObjectName("btn_ViewDetails_7")
         self.horizontalLayout_12.addWidget(self.btn_ViewDetails_7)
@@ -423,7 +438,7 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        self.btn_ViewDetails_8.setIcon(icon3)
+        self.btn_ViewDetails_8.setIcon(icon4)
         self.btn_ViewDetails_8.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_8.setObjectName("btn_ViewDetails_8")
         self.horizontalLayout_13.addWidget(self.btn_ViewDetails_8)
@@ -486,7 +501,7 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        self.btn_ViewDetails_12.setIcon(icon3)
+        self.btn_ViewDetails_12.setIcon(icon4)
         self.btn_ViewDetails_12.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_12.setObjectName("btn_ViewDetails_12")
         self.horizontalLayout_17.addWidget(self.btn_ViewDetails_12)
@@ -541,7 +556,7 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        self.btn_ViewDetails_11.setIcon(icon3)
+        self.btn_ViewDetails_11.setIcon(icon4)
         self.btn_ViewDetails_11.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_11.setObjectName("btn_ViewDetails_11")
         self.horizontalLayout_16.addWidget(self.btn_ViewDetails_11)
@@ -598,7 +613,7 @@ class Ui_MainWindow(object):
 "border-radius: 8px;\n"
 "color: rgb(254, 254, 255);\n"
 "")
-        self.btn_ViewDetails_10.setIcon(icon3)
+        self.btn_ViewDetails_10.setIcon(icon4)
         self.btn_ViewDetails_10.setIconSize(QtCore.QSize(24, 24))
         self.btn_ViewDetails_10.setObjectName("btn_ViewDetails_10")
         self.horizontalLayout_15.addWidget(self.btn_ViewDetails_10)
@@ -802,7 +817,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Cinex CInema"))
         self.appHeader_7.setText(_translate("MainWindow", "     WELCOME TO CINEX CINEMA"))
         self.label_88.setText(_translate("MainWindow", "NOW SHOWING"))
         self.label_NameMovie_1.setText(_translate("MainWindow", "AVATAR: THE WAY OF WATER"))

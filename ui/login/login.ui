@@ -23,14 +23,19 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>WelcomeCinex</string>
+   <string>Welcome to Cinex</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../utils/resources.qrc">
+    <normaloff>:/Logo/images/Logo/Movie_logo.png</normaloff>:/Logo/images/Logo/Movie_logo.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">* {
     border: none;
     padding: 0;
     margin: 0;
-    color: #fff;
+	font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -39,6 +44,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+	font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+    color: rgb(0, 0, 0);
 }
 QStackedWidget {
     background-color: rgb(243, 233, 206);

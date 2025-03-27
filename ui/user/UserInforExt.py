@@ -6,7 +6,6 @@ from PyQt6.QtWidgets import QDialog, QMessageBox, QMainWindow, QApplication
 from CSDL.libs.DataConnector import DataConnector
 from ui.user.UserInforUi import Ui_Dialog
 
-
 from utils import resources_banner_rc
 from utils import resources_poster_rc
 from utils import resources_rc
@@ -22,11 +21,10 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
         self.fill_user_data()
         self.setupSignalAndSlot()
     def setupSignalAndSlot(self):
-        # Khi nhấn nút "Xác nhận", lưu thông tin vào users_data.json
-        self.pushButtonConfirm.clicked.connect(self.save_user_info)
 
+        self.pushButtonConfirm.clicked.connect(self.save_user_info)
         self.pushButtonLogOut.clicked.connect(self.LogOutProcess)
-    print("UserInforExt setup xong!")  # Debug kiểm tra
+
 
     def LogOutProcess(self):
         """ Xử lý đăng xuất, đóng UserInforExt & UserUiExt, mở lại Login """
@@ -74,7 +72,7 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
             return []
 
     def fill_user_data(self):
-        # Đảm bảo không có giá trị None trước khi gán vào UI
+        self.lineEditUserName.setReadOnly(True)
         self.lineEditUserName.setText(str(self.user_info.get("Username", "")))
         self.lineEditFullName.setText(str(self.user_info.get("fullname", "")))
         self.lineEditBirthDay.setText(str(self.user_info.get("birthday", "")))
@@ -88,37 +86,29 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
         Phone = self.lineEditPhoneNumber.text().strip()
         Email = self.lineEditEmail.text().strip()
 
-        print(f"📌 Debug - Kiểm tra thông tin user {Username}")
-        print(f"📌 Fullname: {Fullname}, Birthday: {Birthday}, Phone: {Phone}, Email: {Email}")
 
         # Nếu có bất kỳ trường nào bị bỏ trống, yêu cầu người dùng nhập đủ
         if not Fullname or not Birthday or not Phone or not Email:
-            print("❌ LỖI: Một trong các trường bị bỏ trống!")
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin trước khi xác nhận.")
             return  # Không đóng cửa sổ, yêu cầu user nhập đủ thông tin
 
         # Nếu mở từ UserUiExt, chỉ đóng UserInforExt, không mở lại UserUiExt
         if self.from_user_ui:
-            print(f"✅ User {Username} đang xem lại thông tin, chỉ đóng UserInforExt.")
             self.close()
             return
 
         # Nếu đây là lần đầu nhập thông tin, cập nhật JSON và mở lại UserUiExt
-        print(f"📌 Debug - Cập nhật thông tin cho user: {Username}")
         success = self.dc.update_user_info(Username, Fullname, Birthday, Phone, Email)
 
         if success:
-            print(f"✅ Cập nhật thành công user {Username}!")
-            QMessageBox.information(self, "Thành công", "Thông tin đã được cập nhật.")
+            QMessageBox.information(self, "Thành công", "Enjoy your movies <3")
             self.close()
             self.open_user_ui()
         else:
-            print(f"❌ LỖI: Không tìm thấy user {Username} trong JSON!")
             QMessageBox.critical(self, "Lỗi hệ thống", "Không thể cập nhật thông tin.")
     def open_user_ui(self):
         """ Mở giao diện UserUiExt sau khi hoàn tất thông tin """
         from ui.user.UserUiExt import UserUiExt  # Import tại đây để tránh vòng lặp
-        print("📌 Debug - Đang mở giao diện User UI...")
         self.mainwindow = QMainWindow()
         self.user_ui = UserUiExt()
         self.user_ui.setupUi(self.mainwindow)

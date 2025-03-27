@@ -12,37 +12,36 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1006, 650)
+        MainWindow.resize(1000, 650)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 650))
         MainWindow.setMaximumSize(QtCore.QSize(1149, 773))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/group_lg.jpg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setMinimumSize(QtCore.QSize(1000, 650))
         self.centralwidget.setMaximumSize(QtCore.QSize(1000, 650))
         self.centralwidget.setStyleSheet("* {\n"
 "    color: #000;\n"
-"    border: none;\n"
 "}\n"
 "#frame_8{\n"
 "    background-color:#fbbe14;\n"
 "}\n"
 "#centralwidget, #tab_MovieManagement{\n"
-"    background-color: #f9f6e9;\n"
+"    background-color: #fdfdfa;\n"
 "}\n"
 "QLineEdit {\n"
 "    background: transparent;\n"
 "    color: #7c000b;\n"
 "}\n"
 "#searchMoiveName {\n"
-"    border-radius: 10px;\n"
+"    border-radius: 3px;\n"
 "    border: 2px solid #7c000b;\n"
 "}\n"
 "#appHeader {\n"
 "    color: #7c000b;\n"
 "}\n"
-"#card1, #card2, #card3, #card4 {\n"
-"    background-color: #fefeff;\n"
-"     border-radius: 20px;\n"
-"}\n"
+"\n"
 "#pushButton, #pushButton_2 {\n"
 "    background-color: #7c000b;\n"
 "    color: #fff;\n"
@@ -55,12 +54,7 @@ class Ui_MainWindow(object):
 "#headerFrame {\n"
 "    background-color: #fefeff;\n"
 "}\n"
-"#pushButtonHome {\n"
-"    background-color: #fefeff;\n"
-"    padding: 10px 5px;\n"
-"    text-align: left;\n"
-"    border-top-left-radius: 20px;\n"
-"}\n"
+"\n"
 "QPushButton {\n"
 "    padding: 10px 5px;\n"
 "    text-align: left;\n"
@@ -90,6 +84,7 @@ class Ui_MainWindow(object):
         self.tab_MovieManagement = QtWidgets.QWidget()
         self.tab_MovieManagement.setMinimumSize(QtCore.QSize(1000, 650))
         self.tab_MovieManagement.setMaximumSize(QtCore.QSize(1000, 650))
+        self.tab_MovieManagement.setStyleSheet("")
         self.tab_MovieManagement.setObjectName("tab_MovieManagement")
         self.gridLayout = QtWidgets.QGridLayout(self.tab_MovieManagement)
         self.gridLayout.setContentsMargins(0, 0, 24, 0)
@@ -142,9 +137,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.Account_btn = QtWidgets.QPushButton(parent=self.widget_4)
         self.Account_btn.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.Account_btn.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Account_btn.setIcon(icon1)
         self.Account_btn.setIconSize(QtCore.QSize(32, 32))
         self.Account_btn.setObjectName("Account_btn")
         self.horizontalLayout_6.addWidget(self.Account_btn)
@@ -227,6 +222,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.tableWidget.setStyleSheet("background-color: rgb(254, 254, 255);\n"
 "font: 75 bold 10pt \"MS Shell Dlg 2\";")
+        self.tableWidget.setInputMethodHints(QtCore.Qt.InputMethodHint.ImhUppercaseOnly)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setRowCount(0)
@@ -291,9 +287,9 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButtonDetails.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/details_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButtonDetails.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/details_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButtonDetails.setIcon(icon2)
         self.pushButtonDetails.setIconSize(QtCore.QSize(32, 32))
         self.pushButtonDetails.setObjectName("pushButtonDetails")
         self.verticalLayout_8.addWidget(self.pushButtonDetails)
@@ -301,9 +297,9 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButtonDelete.setFont(font)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/delete_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButtonDelete.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/delete_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButtonDelete.setIcon(icon3)
         self.pushButtonDelete.setIconSize(QtCore.QSize(32, 32))
         self.pushButtonDelete.setObjectName("pushButtonDelete")
         self.verticalLayout_8.addWidget(self.pushButtonDelete)
@@ -312,9 +308,9 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.pushButtonEdit.setFont(font)
         self.pushButtonEdit.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/edit_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButtonEdit.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/edit_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButtonEdit.setIcon(icon4)
         self.pushButtonEdit.setIconSize(QtCore.QSize(32, 32))
         self.pushButtonEdit.setCheckable(False)
         self.pushButtonEdit.setObjectName("pushButtonEdit")
@@ -323,9 +319,9 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButtonCreate.setFont(font)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/create_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButtonCreate.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/WhiteIcons/images/icons/WhiteIcons/create_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButtonCreate.setIcon(icon5)
         self.pushButtonCreate.setIconSize(QtCore.QSize(32, 32))
         self.pushButtonCreate.setObjectName("pushButtonCreate")
         self.verticalLayout_8.addWidget(self.pushButtonCreate)
@@ -360,49 +356,156 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.widget_6, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         self.verticalLayout.addWidget(self.mainFrame)
         self.gridLayout.addWidget(self.mainBody, 0, 0, 1, 1)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("D:\\FinalProject\\FinalProject\\ui\\admin\\../../images/icons_menu/cinema_ic.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.tabWidget.addTab(self.tab_MovieManagement, icon5, "")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/Menu/images/icons_menu/cinema_ic.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_MovieManagement, icon6, "")
         self.tab_Revenue = QtWidgets.QWidget()
+        self.tab_Revenue.setStyleSheet("    background-color: #fdfdfa;")
         self.tab_Revenue.setObjectName("tab_Revenue")
-        self.tableMovies = QtWidgets.QTableWidget(parent=self.tab_Revenue)
-        self.tableMovies.setGeometry(QtCore.QRect(10, 160, 471, 451))
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.tab_Revenue)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.widget = QtWidgets.QWidget(parent=self.tab_Revenue)
+        self.widget.setObjectName("widget")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.widget_9 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_9.setObjectName("widget_9")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_9)
+        self.horizontalLayout_7.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.widget_8 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_8.setObjectName("widget_8")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_8)
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5.setSpacing(12)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.comboMonthYear = QtWidgets.QComboBox(parent=self.widget_8)
+        self.comboMonthYear.setMinimumSize(QtCore.QSize(0, 32))
+        self.comboMonthYear.setMaximumSize(QtCore.QSize(16777215, 32))
+        self.comboMonthYear.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 11pt \"MS Shell Dlg 2\";")
+        self.comboMonthYear.setObjectName("comboMonthYear")
+        self.horizontalLayout_5.addWidget(self.comboMonthYear)
+        self.btnFilter = QtWidgets.QPushButton(parent=self.widget_8)
+        self.btnFilter.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.btnFilter.setStyleSheet("border-radius: 12px;\n"
+"font: 87 10pt \"Segoe UI Black\";\n"
+"background-color: rgb(255, 235, 192);\n"
+"color: rgb(0, 0, 0);")
+        self.btnFilter.setText("")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/filter_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.btnFilter.setIcon(icon7)
+        self.btnFilter.setIconSize(QtCore.QSize(32, 32))
+        self.btnFilter.setObjectName("btnFilter")
+        self.horizontalLayout_5.addWidget(self.btnFilter, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_7.addWidget(self.widget_8, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.widget_7 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_7.setObjectName("widget_7")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_7)
+        self.verticalLayout_2.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.lblMovieRevenue = QtWidgets.QLabel(parent=self.widget_7)
+        self.lblMovieRevenue.setMinimumSize(QtCore.QSize(0, 32))
+        self.lblMovieRevenue.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 11pt \"MS Shell Dlg 2\";\n"
+"border-radius: 8px;")
+        self.lblMovieRevenue.setObjectName("lblMovieRevenue")
+        self.verticalLayout_2.addWidget(self.lblMovieRevenue)
+        self.lblFoodRevenue = QtWidgets.QLabel(parent=self.widget_7)
+        self.lblFoodRevenue.setMinimumSize(QtCore.QSize(0, 32))
+        self.lblFoodRevenue.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 11pt \"MS Shell Dlg 2\";\n"
+"border-radius: 8px;")
+        self.lblFoodRevenue.setObjectName("lblFoodRevenue")
+        self.verticalLayout_2.addWidget(self.lblFoodRevenue)
+        self.lblTotalRevenue = QtWidgets.QLabel(parent=self.widget_7)
+        self.lblTotalRevenue.setMinimumSize(QtCore.QSize(0, 32))
+        self.lblTotalRevenue.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 11pt \"MS Shell Dlg 2\";\n"
+"border-radius: 8px;")
+        self.lblTotalRevenue.setObjectName("lblTotalRevenue")
+        self.verticalLayout_2.addWidget(self.lblTotalRevenue)
+        self.horizontalLayout_7.addWidget(self.widget_7)
+        self.verticalLayout_3.addWidget(self.widget_9)
+        self.widget_3 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_3.setObjectName("widget_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_3)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.tableMovies = QtWidgets.QTableWidget(parent=self.widget_3)
+        self.tableMovies.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 10pt \"MS Shell Dlg 2\";")
         self.tableMovies.setObjectName("tableMovies")
         self.tableMovies.setColumnCount(0)
         self.tableMovies.setRowCount(0)
-        self.tableFoods = QtWidgets.QTableWidget(parent=self.tab_Revenue)
-        self.tableFoods.setGeometry(QtCore.QRect(510, 170, 401, 441))
+        self.horizontalLayout_4.addWidget(self.tableMovies)
+        self.tableFoods = QtWidgets.QTableWidget(parent=self.widget_3)
+        self.tableFoods.setStyleSheet("background-color: rgb(254, 254, 255);\n"
+"font: 75 bold 10pt \"MS Shell Dlg 2\";")
         self.tableFoods.setObjectName("tableFoods")
         self.tableFoods.setColumnCount(0)
         self.tableFoods.setRowCount(0)
-        self.comboMonthYear = QtWidgets.QComboBox(parent=self.tab_Revenue)
-        self.comboMonthYear.setGeometry(QtCore.QRect(29, 40, 111, 22))
-        self.comboMonthYear.setObjectName("comboMonthYear")
-        self.btnFilter = QtWidgets.QPushButton(parent=self.tab_Revenue)
-        self.btnFilter.setGeometry(QtCore.QRect(154, 32, 111, 31))
-        self.btnFilter.setObjectName("btnFilter")
-        self.lblMovieRevenue = QtWidgets.QLabel(parent=self.tab_Revenue)
-        self.lblMovieRevenue.setGeometry(QtCore.QRect(350, 15, 441, 21))
-        self.lblMovieRevenue.setObjectName("lblMovieRevenue")
-        self.lblFoodRevenue = QtWidgets.QLabel(parent=self.tab_Revenue)
-        self.lblFoodRevenue.setGeometry(QtCore.QRect(350, 50, 481, 31))
-        self.lblFoodRevenue.setObjectName("lblFoodRevenue")
-        self.lblTotalRevenue = QtWidgets.QLabel(parent=self.tab_Revenue)
-        self.lblTotalRevenue.setGeometry(QtCore.QRect(350, 90, 571, 31))
-        self.lblTotalRevenue.setObjectName("lblTotalRevenue")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/Menu/images/icons_menu/revenue_ic.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.tabWidget.addTab(self.tab_Revenue, icon6, "")
+        self.horizontalLayout_4.addWidget(self.tableFoods)
+        self.verticalLayout_3.addWidget(self.widget_3)
+        self.gridLayout_2.addWidget(self.widget, 1, 0, 1, 1)
+        self.widget_10 = QtWidgets.QWidget(parent=self.tab_Revenue)
+        self.widget_10.setObjectName("widget_10")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.widget_10)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.headerFrame_2 = QtWidgets.QWidget(parent=self.widget_10)
+        self.headerFrame_2.setMinimumSize(QtCore.QSize(1000, 64))
+        self.headerFrame_2.setMaximumSize(QtCore.QSize(1000, 64))
+        self.headerFrame_2.setObjectName("headerFrame_2")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.headerFrame_2)
+        self.horizontalLayout_8.setContentsMargins(9, 0, 0, 0)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.widget_11 = QtWidgets.QWidget(parent=self.headerFrame_2)
+        self.widget_11.setObjectName("widget_11")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.widget_11)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.appHeader_2 = QtWidgets.QLabel(parent=self.widget_11)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.appHeader_2.setFont(font)
+        self.appHeader_2.setStyleSheet("font: 87 16pt \"Segoe UI Black\";")
+        self.appHeader_2.setObjectName("appHeader_2")
+        self.horizontalLayout_9.addWidget(self.appHeader_2)
+        self.horizontalLayout_8.addWidget(self.widget_11, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.widget_12 = QtWidgets.QWidget(parent=self.headerFrame_2)
+        self.widget_12.setObjectName("widget_12")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_12)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_10.setSpacing(0)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.Account_btn_2 = QtWidgets.QPushButton(parent=self.widget_12)
+        self.Account_btn_2.setText("")
+        self.Account_btn_2.setIcon(icon1)
+        self.Account_btn_2.setIconSize(QtCore.QSize(32, 32))
+        self.Account_btn_2.setObjectName("Account_btn_2")
+        self.horizontalLayout_10.addWidget(self.Account_btn_2)
+        self.horizontalLayout_8.addWidget(self.widget_12, 0, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.verticalLayout_4.addWidget(self.headerFrame_2)
+        self.gridLayout_2.addWidget(self.widget_10, 0, 0, 1, 1)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/Menu/images/icons_menu/revenue_ic.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_Revenue, icon8, "")
         self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Movie Magagement"))
         self.appHeader.setText(_translate("MainWindow", "MOVIE MANAGEMENT"))
         self.label_14.setText(_translate("MainWindow", "List of movies"))
         self.lineEdit_6.setPlaceholderText(_translate("MainWindow", "Search movie name"))
@@ -421,7 +524,7 @@ class Ui_MainWindow(object):
         self.pushButtonDelete.setText(_translate("MainWindow", "Delete"))
         self.pushButtonEdit.setText(_translate("MainWindow", "Edit"))
         self.pushButtonCreate.setText(_translate("MainWindow", "Create"))
-        self.btnFilter.setText(_translate("MainWindow", "Filter"))
         self.lblMovieRevenue.setText(_translate("MainWindow", "TextLabel"))
         self.lblFoodRevenue.setText(_translate("MainWindow", "TextLabel"))
         self.lblTotalRevenue.setText(_translate("MainWindow", "TextLabel"))
+        self.appHeader_2.setText(_translate("MainWindow", "CINEX CINEMA REVENUE"))

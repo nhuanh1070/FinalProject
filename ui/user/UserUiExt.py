@@ -1,16 +1,13 @@
 import json
 import os
 
-
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
-
 
 from CSDL.libs.DataConnector import DataConnector
 from ui.user.BookTicketExt import BookTicketExt
 from ui.user.UserInforExt import UserInforExt
 from ui.user.UserUi import Ui_MainWindow
 from ui.user.ViewDetailExt import ViewDetailExt
-
 
 from utils import resources_banner_rc
 from utils import resources_poster_rc
@@ -29,8 +26,6 @@ class UserUiExt(Ui_MainWindow):
        super().setupUi(MainWindow)
        self.MainWindow = MainWindow
        self.MainWindow.ui = self
-       # Gán sự kiện click cho các nút chuyển trang
-
 
        self.setupSignalAndSlot()
 
@@ -88,21 +83,12 @@ class UserUiExt(Ui_MainWindow):
 
    def showUserInfo(self):
        """ Mở giao diện UserInforExt với thông tin user đang đăng nhập """
-       print("📌 Debug - Đang mở UserInforExt từ UserUiExt...")
-
-
        # Lấy username từ file tạm
        current_username = self.get_logged_in_user()
-
-
        if not current_username:
            print("❌ LỖI: Không tìm thấy user đang đăng nhập!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Không tìm thấy thông tin tài khoản!")
            return
-
-
-       print(f"✅ Debug - Username đang đăng nhập: {current_username}")
-
 
        # Lấy thông tin user từ file JSON
        dc = DataConnector()
@@ -115,12 +101,7 @@ class UserUiExt(Ui_MainWindow):
            QMessageBox.warning(self.MainWindow, "Lỗi", "Tài khoản không tồn tại trong hệ thống!")
            return
 
-
-       print(f"✅ Debug - Thông tin user đang đăng nhập: {user_info}")
-
-
-       # Mở cửa sổ UserInforExt và truyền `self.MainWindow` làm parent
-       self.user_info_dialog = UserInforExt(user_info=user_info, parent=self.MainWindow)
+       self.user_info_dialog = UserInforExt(user_info=user_info, from_user_ui=True, parent=self.MainWindow)
        self.user_info_dialog.exec()
 
 

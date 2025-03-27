@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1006</width>
+    <width>1000</width>
     <height>650</height>
    </rect>
   </property>
@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Movie Magagement</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../utils/resources_logo.qrc">
+    <normaloff>:/Logo/images/Logo/group_lg.jpg</normaloff>:/Logo/images/Logo/group_lg.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
@@ -41,29 +45,25 @@
    <property name="styleSheet">
     <string notr="true">* {
     color: #000;
-	border: none;
 }
 #frame_8{
     background-color:#fbbe14;
 }
 #centralwidget, #tab_MovieManagement{
-    background-color: #f9f6e9;
+    background-color: #fdfdfa;
 }
 QLineEdit {
     background: transparent;
 	color: #7c000b;
 }
 #searchMoiveName {
-    border-radius: 10px;
+    border-radius: 3px;
     border: 2px solid #7c000b;
 }
 #appHeader {
     color: #7c000b;
 }
-#card1, #card2, #card3, #card4 {
-    background-color: #fefeff;
- 	border-radius: 20px;
-}
+
 #pushButton, #pushButton_2 {
     background-color: #7c000b;
     color: #fff;
@@ -76,12 +76,7 @@ QLineEdit {
 #headerFrame {
     background-color: #fefeff;
 }
-#pushButtonHome {
-    background-color: #fefeff;
-    padding: 10px 5px;
-    text-align: left;
-    border-top-left-radius: 20px;
-}
+
 QPushButton {
     padding: 10px 5px;
     text-align: left;
@@ -138,7 +133,7 @@ QPushButton {
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -159,9 +154,12 @@ QPushButton {
          <height>650</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <attribute name="icon">
-        <iconset>
-         <normaloff>../../images/icons_menu/cinema_ic.png</normaloff>../../images/icons_menu/cinema_ic.png</iconset>
+        <iconset resource="../../utils/resources.qrc">
+         <normaloff>:/Menu/images/icons_menu/cinema_ic.png</normaloff>:/Menu/images/icons_menu/cinema_ic.png</iconset>
        </attribute>
        <attribute name="title">
         <string/>
@@ -514,6 +512,9 @@ font: 12pt &quot;Sans Serif Collection&quot;;</string>
                     <string notr="true">background-color: rgb(254, 254, 255);
 font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                    </property>
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhUppercaseOnly</set>
+                   </property>
                    <property name="columnCount">
                     <number>5</number>
                    </property>
@@ -809,6 +810,9 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_Revenue">
+       <property name="styleSheet">
+        <string notr="true">    background-color: #fdfdfa;</string>
+       </property>
        <attribute name="icon">
         <iconset resource="../../utils/resources.qrc">
          <normaloff>:/Menu/images/icons_menu/revenue_ic.png</normaloff>:/Menu/images/icons_menu/revenue_ic.png</iconset>
@@ -816,88 +820,295 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
        <attribute name="title">
         <string/>
        </attribute>
-       <widget class="QTableWidget" name="tableMovies">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>160</y>
-          <width>471</width>
-          <height>451</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QTableWidget" name="tableFoods">
-        <property name="geometry">
-         <rect>
-          <x>510</x>
-          <y>170</y>
-          <width>401</width>
-          <height>441</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboMonthYear">
-        <property name="geometry">
-         <rect>
-          <x>29</x>
-          <y>40</y>
-          <width>111</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btnFilter">
-        <property name="geometry">
-         <rect>
-          <x>154</x>
-          <y>32</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Filter</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="lblMovieRevenue">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>15</y>
-          <width>441</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="lblFoodRevenue">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>50</y>
-          <width>481</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="lblTotalRevenue">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>90</y>
-          <width>571</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QWidget" name="widget_9" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignTop">
+               <widget class="QWidget" name="widget_8" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboMonthYear">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignLeft">
+                  <widget class="QPushButton" name="btnFilter">
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-radius: 12px;
+font: 87 10pt &quot;Segoe UI Black&quot;;
+background-color: rgb(255, 235, 192);
+color: rgb(0, 0, 0);</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../utils/resources.qrc">
+                     <normaloff>:/RedIcons/images/icons/RedIcons/filter_ic.svg</normaloff>:/RedIcons/images/icons/RedIcons/filter_ic.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_7" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="lblMovieRevenue">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 8px;</string>
+                   </property>
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lblFoodRevenue">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 8px;</string>
+                   </property>
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lblTotalRevenue">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 8px;</string>
+                   </property>
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_3" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QTableWidget" name="tableMovies">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="tableFoods">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(254, 254, 255);
+font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QWidget" name="widget_10" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="headerFrame_2" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>1000</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>1000</width>
+               <height>64</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>9</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignLeft">
+               <widget class="QWidget" name="widget_11" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="appHeader_2">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Black</family>
+                     <pointsize>16</pointsize>
+                     <weight>10</weight>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 87 16pt &quot;Segoe UI Black&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>CINEX CINEMA REVENUE</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignRight">
+               <widget class="QWidget" name="widget_12" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="Account_btn_2">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -906,6 +1117,7 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
  </widget>
  <resources>
   <include location="../../utils/resources.qrc"/>
+  <include location="../../utils/resources_logo.qrc"/>
  </resources>
  <connections/>
 </ui>

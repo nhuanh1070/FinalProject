@@ -7,16 +7,37 @@
     <x>0</x>
     <y>0</y>
     <width>486</width>
-    <height>635</height>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>User Information</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../utils/resources.qrc">
+    <normaloff>:/Logo/images/Logo/Movie_logo.png</normaloff>:/Logo/images/Logo/Movie_logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(124, 0, 11);</string>
+   <string notr="true">background-color: rgb(255, 255, 255);
+	font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+    color: rgb(0, 0, 0);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="horizontalSpacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">

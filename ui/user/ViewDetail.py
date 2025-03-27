@@ -20,6 +20,9 @@ class Ui_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         Dialog.setMinimumSize(QtCore.QSize(984, 667))
         Dialog.setMaximumSize(QtCore.QSize(984, 667))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon)
         Dialog.setStyleSheet("background-color:  rgb(83, 9, 11);")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(Dialog)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -82,7 +85,7 @@ class Ui_Dialog(object):
         self.label.setPixmap(QtGui.QPixmap(":/slogan/images/Welcome/slogan.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
-        self.verticalLayout_8.addWidget(self.label)
+        self.verticalLayout_8.addWidget(self.label, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.verticalLayout.addWidget(self.frame)
         self.horizontalLayout.addWidget(self.widget_2)
         self.widget_4 = QtWidgets.QWidget(parent=self.widget)
@@ -247,7 +250,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Movie Details"))
         self.pushButtonBuyTickets.setText(_translate("Dialog", "BUY TICKETS"))
         self.label_title.setText(_translate("Dialog", "AVATAR: THE WAY OF WATER"))
         self.label_genre.setText(_translate("Dialog", "Comedy"))

@@ -15,11 +15,15 @@ class Ui_MainWindow(object):
         MainWindow.resize(933, 637)
         MainWindow.setMinimumSize(QtCore.QSize(933, 637))
         MainWindow.setMaximumSize(QtCore.QSize(933, 637))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("* {\n"
 "    border: none;\n"
 "    padding: 0;\n"
 "    margin: 0;\n"
-"    color: #fff;\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "\n"
@@ -28,6 +32,8 @@ class Ui_MainWindow(object):
 "    background-position: center;\n"
 "    background-repeat: no-repeat;\n"
 "    background-size: cover;\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "QStackedWidget {\n"
 "    background-color: rgb(243, 233, 206);\n"
@@ -368,7 +374,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "WelcomeCinex"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Welcome to Cinex"))
         self.label_2.setText(_translate("MainWindow", "SIGN UP"))
         self.label_3.setText(_translate("MainWindow", "Enter your information below"))
         self.lineEditUsername_Signup.setPlaceholderText(_translate("MainWindow", "Username"))

@@ -143,7 +143,7 @@ class AdminUiExt(Ui_MainWindow):
     def load_revenue_data(self):
         try:
             base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-            movie_file = os.path.join(base_dir, "dataset", "data_doanhthuve..xlsx")
+            movie_file = os.path.join(base_dir, "dataset", "data_doanhthuve.xlsx")
             food_file = os.path.join(base_dir, "dataset", "data_doanhthubapnuoc.xlsx")
 
             if not os.path.exists(movie_file) or not os.path.exists(food_file):
@@ -165,6 +165,12 @@ class AdminUiExt(Ui_MainWindow):
             self.comboMonthYear.addItems(unique_months)
             self.populate_table(self.movie_data, self.tableMovies)
             self.populate_table(self.food_data, self.tableFoods)
+
+            self.tableMovies.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+            self.tableFoods.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+
+
+
             self.calculate_total_revenue()
 
         except Exception as e:

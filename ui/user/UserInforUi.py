@@ -12,9 +12,16 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(486, 635)
-        Dialog.setStyleSheet("background-color: rgb(124, 0, 11);")
+        Dialog.resize(486, 559)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon)
+        Dialog.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"    color: rgb(0, 0, 0);")
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setHorizontalSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
         self.widget = QtWidgets.QWidget(parent=Dialog)
         self.widget.setStyleSheet("background-color: rgb(124, 0, 11);\n"
@@ -282,7 +289,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "User Information"))
         self.label_9.setText(_translate("Dialog", "  Please check and fill in your information to receive <br> incentives from Cinex."))
         self.label_2.setText(_translate("Dialog", "User Name:"))
         self.lineEditUserName.setPlaceholderText(_translate("Dialog", "Your User Name"))
