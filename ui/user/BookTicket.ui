@@ -36,10 +36,10 @@
     <normaloff>:/Logo/images/Logo/Movie_logo.png</normaloff>:/Logo/images/Logo/Movie_logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">#pushButton_2, #pushButton_3, #pushButton_4, #pushButton_5, #pushButton_6, #pushButton_7, #pushButton_8, #pushButton_9, #pushButton_10, #pushButton_11, 
-#pushButton_12, #pushButton_13, #pushButton_14, #pushButton_15, #pushButton_16, #pushButton_17, #pushButton_18, #pushButton_19, #pushButton_20, #pushButton_21, 
-#pushButton_22, #pushButton_23, #pushButton_24, #pushButton_25, #pushButton_26, #pushButton_27, #pushButton_28, #pushButton_29, #pushButton_30, #pushButton_31, 
-#pushButton_32, #pushButton_33, #pushButton_34, #pushButton_35, #pushButton_36, #pushButton_37, #pushButton_38, #pushButton_39, #pushButton_40, #pushButton_41
+   <string notr="true">#pushButton_A_1, #pushButton_A_2, #pushButton_A_3, #pushButton_A_4, #pushButton_A_5, #pushButton_A_6, #pushButton_A_7, #pushButton_A_8, #pushButton_A_9, #pushButton_A_10,
+#pushButton_B_1, #pushButton_B_2, #pushButton_B_3, #pushButton_B_4, #pushButton_B_5, #pushButton_B_6, #pushButton_B_7, #pushButton_B_8, #pushButton_B_9, #pushButton_B_10,
+#pushButton_D_1, #pushButton_D_2, #pushButton_D_3, #pushButton_D_4, #pushButton_D_5, #pushButton_D_6, #pushButton_D_7, #pushButton_D_8, #pushButton_D_9, #pushButton_D_10,
+#pushButton_C_1, #pushButton_C_2, #pushButton_C_3, #pushButton_C_4, #pushButton_C_5, #pushButton_C_6, #pushButton_C_7, #pushButton_C_8, #pushButton_C_9, #pushButton_C_10
 {
 font: 75 12pt &quot;Segoe UI Variable Display&quot;;
 border: 2px solid #7c000b;
@@ -60,7 +60,7 @@ background-color: rgb(224, 224, 224);
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pageChonGhe">
       <property name="styleSheet">
@@ -180,7 +180,7 @@ border-radius: 10px;</string>
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_3">
                       <item>
-                       <widget class="QPushButton" name="pushButton_2">
+                       <widget class="QPushButton" name="pushButton_A_1">
                         <property name="styleSheet">
                          <string notr="true">font: 75  10pt &quot;Segoe UI Variable Display&quot;;</string>
                         </property>
@@ -190,49 +190,49 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_11">
+                       <widget class="QPushButton" name="pushButton_A_2">
                         <property name="text">
                          <string>A2</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_8">
+                       <widget class="QPushButton" name="pushButton_A_3">
                         <property name="text">
                          <string>A3</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_7">
+                       <widget class="QPushButton" name="pushButton_A_4">
                         <property name="text">
                          <string>A4</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_4">
+                       <widget class="QPushButton" name="pushButton_A_5">
                         <property name="text">
                          <string>A5</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_9">
+                       <widget class="QPushButton" name="pushButton_A_6">
                         <property name="text">
                          <string>A6</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_3">
+                       <widget class="QPushButton" name="pushButton_A_7">
                         <property name="text">
                          <string>A7</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_6">
+                       <widget class="QPushButton" name="pushButton_A_8">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -242,14 +242,14 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_5">
+                       <widget class="QPushButton" name="pushButton_A_9">
                         <property name="text">
                          <string>A9</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_10">
+                       <widget class="QPushButton" name="pushButton_A_10">
                         <property name="text">
                          <string>A10</string>
                         </property>
@@ -271,14 +271,14 @@ border-radius: 10px;</string>
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_4">
                       <item>
-                       <widget class="QPushButton" name="pushButton_12">
+                       <widget class="QPushButton" name="pushButton_B_1">
                         <property name="text">
                          <string>B1</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_21">
+                       <widget class="QPushButton" name="pushButton_B_2">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -288,7 +288,7 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_18">
+                       <widget class="QPushButton" name="pushButton_B_3">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -298,49 +298,49 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_17">
+                       <widget class="QPushButton" name="pushButton_B_4">
                         <property name="text">
                          <string>B4</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_14">
+                       <widget class="QPushButton" name="pushButton_B_5">
                         <property name="text">
                          <string>B5</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_19">
+                       <widget class="QPushButton" name="pushButton_B_6">
                         <property name="text">
                          <string>B6</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_13">
+                       <widget class="QPushButton" name="pushButton_B_7">
                         <property name="text">
                          <string>B7</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_16">
+                       <widget class="QPushButton" name="pushButton_B_8">
                         <property name="text">
                          <string>B8</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_15">
+                       <widget class="QPushButton" name="pushButton_B_9">
                         <property name="text">
                          <string>B9</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_20">
+                       <widget class="QPushButton" name="pushButton_B_10">
                         <property name="text">
                          <string>B10</string>
                         </property>
@@ -362,70 +362,70 @@ border-radius: 10px;</string>
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_6">
                       <item>
-                       <widget class="QPushButton" name="pushButton_32">
+                       <widget class="QPushButton" name="pushButton_C_1">
                         <property name="text">
                          <string>C1</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_41">
+                       <widget class="QPushButton" name="pushButton_C_2">
                         <property name="text">
                          <string>C2</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_38">
+                       <widget class="QPushButton" name="pushButton_C_3">
                         <property name="text">
                          <string>C3</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_37">
+                       <widget class="QPushButton" name="pushButton_C_4">
                         <property name="text">
                          <string>C4</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_34">
+                       <widget class="QPushButton" name="pushButton_C_5">
                         <property name="text">
                          <string>C5</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_39">
+                       <widget class="QPushButton" name="pushButton_C_6">
                         <property name="text">
                          <string>C6</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_33">
+                       <widget class="QPushButton" name="pushButton_C_7">
                         <property name="text">
                          <string>C7</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_36">
+                       <widget class="QPushButton" name="pushButton_C_8">
                         <property name="text">
                          <string>C8</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_35">
+                       <widget class="QPushButton" name="pushButton_C_9">
                         <property name="text">
                          <string>C9</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_40">
+                       <widget class="QPushButton" name="pushButton_C_10">
                         <property name="text">
                          <string>C10</string>
                         </property>
@@ -447,21 +447,21 @@ border-radius: 10px;</string>
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_5">
                       <item>
-                       <widget class="QPushButton" name="pushButton_22">
+                       <widget class="QPushButton" name="pushButton_D_1">
                         <property name="text">
                          <string>D1</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_31">
+                       <widget class="QPushButton" name="pushButton_D_2">
                         <property name="text">
                          <string>D2</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_28">
+                       <widget class="QPushButton" name="pushButton_D_3">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -471,35 +471,35 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_27">
+                       <widget class="QPushButton" name="pushButton_D_4">
                         <property name="text">
                          <string>D4</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_24">
+                       <widget class="QPushButton" name="pushButton_D_5">
                         <property name="text">
                          <string>D5</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_29">
+                       <widget class="QPushButton" name="pushButton_D_6">
                         <property name="text">
                          <string>D6</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_23">
+                       <widget class="QPushButton" name="pushButton_D_7">
                         <property name="text">
                          <string>D7</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_26">
+                       <widget class="QPushButton" name="pushButton_D_8">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -509,7 +509,7 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_25">
+                       <widget class="QPushButton" name="pushButton_D_9">
                         <property name="styleSheet">
                          <string notr="true">background-color: rgb(211, 47, 47);</string>
                         </property>
@@ -519,7 +519,7 @@ border-radius: 10px;</string>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_30">
+                       <widget class="QPushButton" name="pushButton_D_10">
                         <property name="text">
                          <string>D10</string>
                         </property>
