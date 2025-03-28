@@ -92,6 +92,9 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
 
         # Nếu mở từ UserUiExt, chỉ đóng UserInforExt, không mở lại UserUiExt
         if self.from_user_ui:
+            success = self.dc.update_user_info(Username, Fullname, Birthday, Phone, Email)
+            if success:
+                QMessageBox.information(self, "Thành công", "Enjoy your movies <3")
             self.close()
             return
 

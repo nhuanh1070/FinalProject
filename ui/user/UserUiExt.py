@@ -15,8 +15,6 @@ from utils import resources_rc
 from utils import resources_logo_rc
 
 
-
-
 class UserUiExt(Ui_MainWindow):
    def __init__(self):
        self.MainWindow = QMainWindow()
@@ -180,8 +178,6 @@ class UserUiExt(Ui_MainWindow):
        try:
            dataset_path = os.path.join(os.path.dirname(__file__), "../dataset")
            current_user_path = os.path.join(dataset_path, "current_user.json")
-
-
            with open(current_user_path, "r", encoding="utf-8") as f:
                data = json.load(f)
                return data.get("Username", None)

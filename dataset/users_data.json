@@ -5,7 +5,7 @@
         "fullname": "Phạm Lê Như Anh",
         "birthday": "2006-04-17",
         "phone": "0987654321",
-        "email": "nhuanh@example.com"
+        "email": "nhuanh@gmail.com"
     },
     {
         "Username": "minhnguyen123",
@@ -13,15 +13,15 @@
         "fullname": "Nguyễn Minh",
         "birthday": "2005-07-20",
         "phone": "0912345678",
-        "email": "minh@example.com"
+        "email": "minh@gmail.com"
     },
     {
         "Username": "linhtran123",
         "Password": "linh456",
         "fullname": "Trần Kim Linh",
         "birthday": "2004-12-10",
-        "phone": "0987123456",
-        "email": "linh@example.com"
+        "phone": "0987134256",
+        "email": "linh@gmail.com"
     },
     {
         "Username": "tuanle123",
@@ -29,7 +29,7 @@
         "fullname": "Lê Tuấn",
         "birthday": "2003-08-22",
         "phone": "0978123456",
-        "email": "tuanle@example.com"
+        "email": "tuanle@gmail.com"
     },
     {
         "Username": "hoangphat123",
@@ -37,7 +37,7 @@
         "fullname": "Ngô Hoàng Phát",
         "birthday": "2002-11-30",
         "phone": "0967123456",
-        "email": "hoangphat@example.com"
+        "email": "hoangphat@gmail.com"
     },
     {
         "Username": "Minhgay",
@@ -58,14 +58,6 @@
     {
         "Username": "new_user",
         "Password": "password123",
-        "fullname": "",
-        "birthday": "",
-        "phone": "",
-        "email": ""
-    },
-    {
-        "Username": "Vietnamese Crepe",
-        "Password": "123456",
         "fullname": "",
         "birthday": "",
         "phone": "",
