@@ -74,7 +74,7 @@ class MovieEditExt(QDialog):
             "Duration": self.ui.lineEditDuration.text(),
             "ReleaseDate": self.ui.lineEditYear.text(),
             "Description": self.ui.textEditDescription.toPlainText(),
-            "image": self.selected_image  # Cập nhật ảnh đã chọn
+            "image": getattr(self, 'selected_image', self.movie.get("image"))
         }
 
         # Cập nhật dữ liệu trong file JSON
