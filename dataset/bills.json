@@ -1,0 +1,30 @@
+[
+    {
+        "username": "nhuanh123",
+        "filmTitle": "SPIDERMAN",
+        "Showtimes": "20:00",
+        "room": "Room 5",
+        "seats": [
+            "A1",
+            "A2"
+        ],
+        "ticket_price": 100000,
+        "food_price": 150000,
+        "total_price": 250000,
+        "timestamp": "2025-03-28 07:30:10"
+    },
+    {
+        "username": "tuanle123",
+        "filmTitle": "JOHN WICK 4",
+        "Showtimes": "20:00",
+        "room": "Room 4",
+        "seats": [
+            "D6",
+            "D7"
+        ],
+        "ticket_price": 100000,
+        "food_price": 150000,
+        "total_price": 250000,
+        "timestamp": "2025-03-28 10:29:53"
+    }
+]

@@ -1,7 +1,7 @@
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QDialog
 
-
+from CSDL.test.TestDataConnector import username
 from ui.user.BookTicketExt import BookTicketExt
 from ui.user.ViewDetail import Ui_Dialog
 from utils import resources_banner_rc
@@ -16,6 +16,7 @@ class ViewDetailExt(QDialog):
        super().__init__(parent)
        self.ui = Ui_Dialog()
        self.ui.setupUi(self)
+       self.username=username
        self.setMovieDetails(movie)
 
 
@@ -39,6 +40,8 @@ class ViewDetailExt(QDialog):
 
    def bookTicket(self, movie):
        """Mở giao diện đặt vé khi bấm Buy Ticket"""
-       book_ticket_dialog = BookTicketExt(movie)
-       book_ticket_dialog.exec()
+       self.book_ticket_dialog = BookTicketExt(movie,self.username)  # truyền thông tin phim nếu cần
+       self.book_ticket_dialog.exec()
+
+
 
