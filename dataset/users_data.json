@@ -58,10 +58,10 @@
     {
         "Username": "Minhgay",
         "Password": "gay123",
-        "fullname": "lê văn minh",
+        "fullname": "lê duy nhật minh",
         "birthday": "01/02",
         "phone": "0903298109",
-        "email": "ạcoiw"
+        "email": "lenhatminh2401@gmail.com"
     },
     {
         "Username": "TruongSon",
@@ -70,5 +70,13 @@
         "birthday": "31/08/2006",
         "phone": "0905037490",
         "email": "Sonntk24406H@st.uel.edu.vn"
+    },
+    {
+        "Username": "new_user",
+        "Password": "password123",
+        "fullname": "",
+        "birthday": "",
+        "phone": "",
+        "email": ""
     }
 ]

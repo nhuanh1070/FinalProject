@@ -1,3 +1,5 @@
+import json
+import os
 from datetime import datetime
 
 
@@ -6,10 +8,11 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QDialog, QMessageBox, QHBoxLayout, QWidget, QLabel, QSpinBox, QPushButton, QVBoxLayout, \
    QFrame
 
-
+from CSDL.libs.DataConnector import DataConnector
 from CSDL.libs.JsonFileFactory import JsonFileFactory
-from CSDL.models.Ticket import Ticket
+from CSDL.models.Bill import Bill
 from CSDL.models.UserInfor import UserInfor
+from ui.user.UserInforExt import UserInforExt
 from utils import resources_rc
 from utils import resources_food_rc
 from ui.user.BookTicket import Ui_Dialog
@@ -18,11 +21,13 @@ from ui.user.BookTicket import Ui_Dialog
 class BookTicketExt(QDialog):
    def __init__(self, movie, username, parent=None):
        super().__init__(parent)
+       self.MainWindow = self
        self.ui = Ui_Dialog()
        self.ui.setupUi(self)
        self.ui.stackedWidget.setCurrentWidget(self.ui.pageChonGhe)
        self.movie = movie  # Lưu thông tin phim
        self.username= username
+       self.showUserInfo()
        self.selected_seats = set()
        self.ticket_price_per_seat = 50000
 
@@ -37,8 +42,17 @@ class BookTicketExt(QDialog):
        pixmap = QPixmap(image_path)
        self.ui.label.setPixmap(pixmap.scaled(185, 273))
 
+       base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+       dataset_path = os.path.join(base_path, "dataset")
+       if not os.path.exists(dataset_path):
+           os.makedirs(dataset_path)
+
+       self.current_user_path = os.path.join(dataset_path, "current_user.json")
+       if not os.path.exists(self.current_user_path):
+           QMessageBox.critical(self.MainWindow, "Lỗi", f"Không tìm thấy file: {self.current_user_path}")
 
        self.setupSignalAndSlot()
+       self.selected_foods = []
 
 
 
@@ -87,10 +101,6 @@ class BookTicketExt(QDialog):
 
    def goToProductCategory(self):
        self.ui.stackedWidget.setCurrentWidget(self.ui.page_ProductCatalog)
-
-
-
-
 
 
    def backToChonGhe(self):
@@ -192,8 +202,8 @@ class BookTicketExt(QDialog):
        btnPlus.setStyleSheet("border: none; font-size: 16px;")
 
 
-       btnMinus.clicked.connect(lambda: self.updateQuantity(label_quantity, -1, label_price, product_price))
-       btnPlus.clicked.connect(lambda: self.updateQuantity(label_quantity, 1, label_price, product_price))
+       btnMinus.clicked.connect(lambda: self.updateQuantity(label_quantity, -1, label_price, product_price,product_name))
+       btnPlus.clicked.connect(lambda: self.updateQuantity(label_quantity, 1, label_price, product_price,product_name))
 
 
        quantity_layout = QHBoxLayout()
@@ -240,7 +250,47 @@ class BookTicketExt(QDialog):
        self.ui.verticalLayout_Checkout.addWidget(food_widget)
        self.updateTotalPriceFood()
 
+       for food in self.selected_foods:
+           if food["name"] == product_name:
+               food["quantity"] += 1
+               food["price"] = int(product_price)
+               break
+       else:
+           self.selected_foods.append({
+               "name": product_name,
+               "quantity": 1,
+               "price": int(product_price)
+           })
 
+   def clearLayout(self, layout):
+       while layout.count():
+           child = layout.takeAt(0)
+           if child.widget():
+               child.widget().deleteLater()
+
+   def displayFoodInInvoice(self):
+       layout = self.ui.verticalLayout_FoodPayment
+       # Xóa toàn bộ widget cũ
+       while layout.count():
+           child = layout.takeAt(0)
+           if child.widget():
+               child.widget().deleteLater()
+
+       # Hiển thị từng món ăn
+       for food in self.selected_foods:
+           row = QHBoxLayout()
+           name = QLabel(f"{food['name']}")
+           qty = QLabel(f"{food['quantity']} x")
+           price = QLabel(f"{food['price'] * food['quantity']} VNĐ")
+
+           row.addWidget(qty)
+           row.addWidget(name)
+           row.addStretch()
+           row.addWidget(price)
+
+           container = QWidget()
+           container.setLayout(row)
+           layout.addWidget(container)
 
 
    def updateTotalPriceFood(self):
@@ -259,12 +309,23 @@ class BookTicketExt(QDialog):
 
 
 
-   def updateQuantity(self, quantity_label, change, price_label, original_price):
+   def updateQuantity(self, quantity_label, change, price_label, original_price,product_name):
        """Cập nhật số lượng và giá sản phẩm khi nhấn nút + hoặc -"""
+       '''current_quantity = int(quantity_label.text())
+       new_quantity = max(1, current_quantity + change)
+       quantity_label.setText(str(new_quantity))
+
+       new_price = int(original_price.replace("VNĐ", "").strip()) * new_quantity
+       price_label.setText(f"{new_price} VNĐ")
+       self.updateTotalPriceFood()'''
+
        current_quantity = int(quantity_label.text())
        new_quantity = max(1, current_quantity + change)
        quantity_label.setText(str(new_quantity))
 
+       for food in self.selected_foods:
+           if food["name"] == product_name:
+               food["quantity"] = new_quantity
 
        new_price = int(original_price.replace("VNĐ", "").strip()) * new_quantity
        price_label.setText(f"{new_price} VNĐ")
@@ -288,6 +349,7 @@ class BookTicketExt(QDialog):
 
    def goToHoaDon(self):
        self.addFoodToPayment()  # Thêm dòng này để cập nhật giá
+       self.displayFoodInInvoice()
        self.updateTotalBill()
        self.showMovieInfo()
        self.showUserInfo()
@@ -295,20 +357,27 @@ class BookTicketExt(QDialog):
 
 
    def showUserInfo(self):
-       jff = JsonFileFactory()
-       filename = "dataset/users_data.json"
-       users = jff.read_data(filename, UserInfor)
+       dc = DataConnector()
 
+       # Bước 1: Đọc tên đăng nhập hiện tại từ current_user.json
+       base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+       current_user_path = os.path.join(base_path, "dataset", "current_user.json")
 
+       with open(current_user_path, "r", encoding="utf-8") as f:
+           username = json.load(f).get("Username")
+
+       # Bước 2: Lấy tất cả người dùng từ DataConnector
+       users = dc.get_all_users()
+
+       # Bước 3: Tìm đúng user theo Username
        for user in users:
-           if user.Username == self.username:
-               self.ui.label_NameCustomer.setText(user.fullname)
-               self.ui.label_PhoneCustomer.setText(user.phone)
-               self.ui.label_ScreenRoom_3.setText(user.email)
+           if user.get("Username") == username:
+               self.ui.label_NameCustomer.setText(user.get("fullname", ""))
+               self.ui.label_PhoneCustomer.setText(user.get("phone", ""))
+               self.ui.label_ScreenRoom_3.setText(user.get("email", ""))
                return
 
-
-       # Không tìm thấy user
+       # Không tìm thấy thì gán mặc định
        self.ui.label_NameCustomer.setText("Unknown")
        self.ui.label_PhoneCustomer.setText("Unknown")
        self.ui.label_ScreenRoom_3.setText("Unknown")
@@ -348,25 +417,36 @@ class BookTicketExt(QDialog):
 
    def save_ticket_to_json(self):
        jff = JsonFileFactory()
-       filename = "dataset/tickets.json"
+       filename = "../dataset/bills.json"
 
+       ticket_price = len(self.selected_seats) * self.ticket_price_per_seat
+       food_price = sum(item["price"] * item["quantity"] for item in self.selected_foods)
+       total = ticket_price + food_price
 
-
-
-       new_ticket = Ticket(
+       new_bill = Bill(
            username=self.username,
-           filmTitle=self.movie.get("title"),
+           filmTitle=self.movie.get("filmTitle"),
            Showtimes=self.movie.get("Showtimes"),
            room=self.movie.get("room"),
            seats=list(self.selected_seats),
-           ticket_price=len(self.selected_seats) * self.ticket_price_per_seat,
+           ticket_price=ticket_price,
+           food_price=food_price,
+           total_price=total,
            timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
        )
 
 
-       tickets = jff.read_data(filename, Ticket)
-       tickets.append(new_ticket)
-       jff.write_data(tickets, filename)
+       bills = jff.read_data(filename, Bill)
+       bills.append(new_bill)
+       jff.write_data(bills, filename)
+
+
+
+
+
+
+
+
 
 
 
