@@ -62,5 +62,13 @@
         "birthday": "",
         "phone": "",
         "email": ""
+    },
+    {
+        "Username": "1",
+        "Password": "1",
+        "fullname": "DƯ",
+        "birthday": "DỨA",
+        "phone": "DEA",
+        "email": "ADW"
     }
 ]

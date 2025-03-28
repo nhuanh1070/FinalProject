@@ -52,6 +52,7 @@ class BookTicketExt(QDialog):
        self.setupSignalAndSlot()
        self.selected_foods = []
 
+       self.mark_already_booked_seats()
 
 
 
@@ -71,15 +72,77 @@ class BookTicketExt(QDialog):
        self.setupSeatButtons()
        self.setupFoodButtons()
 
-
    def setupSeatButtons(self):
        """Gán sự kiện cho các nút ghế"""
-       for i in range(2, 42):  # pushButton_2 đến pushButton_41
-           button_name = f"pushButton_{i}"
+       button_names = [
+           "pushButton_A_1", "pushButton_A_2", "pushButton_A_3", "pushButton_A_4", "pushButton_A_5",
+           "pushButton_A_6", "pushButton_A_7", "pushButton_A_8", "pushButton_A_9", "pushButton_A_10",
+           "pushButton_B_1", "pushButton_B_2", "pushButton_B_3", "pushButton_B_4", "pushButton_B_5",
+           "pushButton_B_6", "pushButton_B_7", "pushButton_B_8", "pushButton_B_9", "pushButton_B_10",
+           "pushButton_D_1", "pushButton_D_2", "pushButton_D_3", "pushButton_D_4", "pushButton_D_5",
+           "pushButton_D_6", "pushButton_D_7", "pushButton_D_8", "pushButton_D_9", "pushButton_D_10",
+           "pushButton_C_1", "pushButton_C_2", "pushButton_C_3", "pushButton_C_4", "pushButton_C_5",
+           "pushButton_C_6", "pushButton_C_7", "pushButton_C_8", "pushButton_C_9", "pushButton_C_10"
+       ]
+
+       for button_name in button_names:
            button = getattr(self.ui, button_name, None)
            if button:
                button.clicked.connect(lambda _, btn=button: self.toggleSeatSelection(btn))
 
+   def get_already_booked_seats(self):
+       booked_seats = set()
+       try:
+           base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+           dataset_path = os.path.join(base_path, "dataset")
+           if not os.path.exists(dataset_path):
+               os.makedirs(dataset_path)
+
+           self.bills_path = os.path.join(dataset_path, "bills.json")
+
+           # Sử dụng self.bills_path thay vì bills_file
+           with open(self.bills_path, "r", encoding="utf-8") as f:
+               bills = json.load(f)  # Đọc nội dung JSON vào biến `bills`
+
+           # Duyệt tất cả bill
+           for bill in bills:
+               if (bill.get("filmTitle") == self.movie.get("filmTitle") and
+                       bill.get("Showtimes") == self.movie.get("Showtimes") and
+                       bill.get("room") == self.movie.get("room")):
+
+                   for seat in bill.get("seats", []):
+                       booked_seats.add(seat)
+
+       except FileNotFoundError:
+           print("❌ Chưa có file bills.json hoặc sai đường dẫn!")
+       except json.JSONDecodeError:
+           print("❌ bills.json bị lỗi định dạng!")
+
+       return booked_seats
+
+       return booked_seats
+   def mark_already_booked_seats(self):
+       booked_seats = self.get_already_booked_seats()
+
+       button_names = [
+           "pushButton_A_1", "pushButton_A_2", "pushButton_A_3", "pushButton_A_4", "pushButton_A_5",
+           "pushButton_A_6", "pushButton_A_7", "pushButton_A_8", "pushButton_A_9", "pushButton_A_10",
+           "pushButton_B_1", "pushButton_B_2", "pushButton_B_3", "pushButton_B_4", "pushButton_B_5",
+           "pushButton_B_6", "pushButton_B_7", "pushButton_B_8", "pushButton_B_9", "pushButton_B_10",
+           "pushButton_C_1", "pushButton_C_2", "pushButton_C_3", "pushButton_C_4", "pushButton_C_5",
+           "pushButton_C_6", "pushButton_C_7", "pushButton_C_8", "pushButton_C_9", "pushButton_C_10",
+           "pushButton_D_1", "pushButton_D_2", "pushButton_D_3", "pushButton_D_4", "pushButton_D_5",
+           "pushButton_D_6", "pushButton_D_7", "pushButton_D_8", "pushButton_D_9", "pushButton_D_10"
+       ]
+       for btn_name in button_names:
+           button = getattr(self.ui, btn_name, None)  # Lấy đối tượng button theo tên
+           if not button:
+               continue
+
+           seat_text = button.text()  # "A1", "B2", ...
+           if seat_text in booked_seats:
+               button.setStyleSheet("background-color: rgb(211, 47, 47);")
+               # button.setEnabled(False)  # nếu muốn cấm luôn người dùng nhấn
 
    def setupFoodButtons(self):
        """Gán sự kiện cho các nút + để thêm sản phẩm"""
