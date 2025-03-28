@@ -39,5 +39,29 @@
         "food_price": 75000,
         "total_price": 125000,
         "timestamp": "2025-03-28 11:28:23"
+    },
+    {
+        "username": "1",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "22:00",
+        "room": "Room 6",
+        "seats": [
+            "A4"
+        ],
+        "ticket_price": 50000,
+        "food_price": 74000,
+        "total_price": 124000,
+        "timestamp": "2025-03-28 16:24:35"
+    },
+    {
+        "username": "1",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "21:00",
+        "room": "Room 2",
+        "seats": [],
+        "ticket_price": 0,
+        "food_price": 0,
+        "total_price": 0,
+        "timestamp": "2025-03-28 16:38:20"
     }
 ]

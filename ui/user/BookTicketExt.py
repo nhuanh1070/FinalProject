@@ -13,6 +13,7 @@ from CSDL.libs.JsonFileFactory import JsonFileFactory
 from CSDL.models.Bill import Bill
 from CSDL.models.UserInfor import UserInfor
 from ui.user.UserInforExt import UserInforExt
+
 from utils import resources_rc
 from utils import resources_food_rc
 from ui.user.BookTicket import Ui_Dialog
@@ -465,9 +466,14 @@ class BookTicketExt(QDialog):
        msg_box.setWindowTitle("Thông báo")
        msg_box.setText("Thực hiện giao dịch thành công")
        msg_box.setStandardButtons(QMessageBox.StandardButton.Ok)
-       msg_box.exec()
 
-
+       # Lưu kết quả nút bấm vào biến result
+       result = msg_box.exec()
+       if result == QMessageBox.StandardButton.Ok:
+           from ui.user.UserUiExt import UserUiExt
+           self.close()  # Đóng cửa sổ hiện tại
+           self.user_ui = UserUiExt()
+           self.user_ui.showWindow()
    def save_ticket_to_json(self):
        jff = JsonFileFactory()
        filename = "../dataset/bills.json"
