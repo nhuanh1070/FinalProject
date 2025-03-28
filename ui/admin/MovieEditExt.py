@@ -1,6 +1,6 @@
 import json
 import os
-from PyQt6.QtWidgets import QDialog, QMessageBox
+from PyQt6.QtWidgets import QDialog, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
 from ui.admin.MovieEdit import Ui_Dialog
 from utils import resources_banner_rc
@@ -27,6 +27,7 @@ class MovieEditExt(QDialog):
             self.load_movie_data()
 
         self.ui.pushButtonSave.clicked.connect(self.save_movie_data)
+        self.ui.pushButton_AddPoster.clicked.connect(self.choose_image)
 
     def load_movie_data(self):
         """ Load dữ liệu phim vào các ô nhập """
@@ -72,7 +73,8 @@ class MovieEditExt(QDialog):
             "Country": self.ui.lineEditCountry.text(),
             "Duration": self.ui.lineEditDuration.text(),
             "ReleaseDate": self.ui.lineEditYear.text(),
-            "Description": self.ui.textEditDescription.toPlainText()
+            "Description": self.ui.textEditDescription.toPlainText(),
+            "image": self.selected_image  # Cập nhật ảnh đã chọn
         }
 
         # Cập nhật dữ liệu trong file JSON
@@ -120,3 +122,13 @@ class MovieEditExt(QDialog):
                     break
         except Exception as e:
             print(f"❌ Lỗi cập nhật dữ liệu hiển thị: {e}")
+
+    def choose_image(self):
+        """ Mở File Explorer và cho phép người dùng chọn ảnh từ thư mục Poster """
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, "Chọn ảnh", "../images/Poster/", "Hình ảnh (*.png *.jpg *.jpeg)"
+        )
+
+        if file_path:  # Nếu người dùng chọn ảnh
+            self.selected_image = os.path.basename(file_path)  # Lưu tên ảnh
+            self.ui.labelImage.setPixmap(QPixmap(file_path).scaled(200, 300))

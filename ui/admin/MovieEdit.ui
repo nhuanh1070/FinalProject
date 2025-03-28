@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Movie Edit</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../utils/resources.qrc">
+    <normaloff>:/Logo/images/Logo/Movie_logo.png</normaloff>:/Logo/images/Logo/Movie_logo.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QLabel {
@@ -551,16 +555,6 @@ QLineEdit {
                    <widget class="QLineEdit" name="lineEditYear"/>
                   </item>
                  </layout>
-                </widget>
-               </item>
-               <item alignment="Qt::AlignTop">
-                <widget class="QComboBox" name="comboBox">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>30</height>
-                  </size>
-                 </property>
                 </widget>
                </item>
                <item alignment="Qt::AlignBottom">

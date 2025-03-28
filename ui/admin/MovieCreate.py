@@ -15,6 +15,9 @@ class Ui_Dialog(object):
         Dialog.resize(755, 561)
         Dialog.setMinimumSize(QtCore.QSize(755, 561))
         Dialog.setMaximumSize(QtCore.QSize(755, 583))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon)
         Dialog.setStyleSheet("QLabel {\n"
 "font: 75 bold 12pt \"Arial\";\n"
 "}\n"
@@ -256,17 +259,17 @@ class Ui_Dialog(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.pushButton_AddPoster = QtWidgets.QPushButton(parent=self.frame_9)
         self.pushButton_AddPoster.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/folder_plus_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_AddPoster.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/folder_plus_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_AddPoster.setIcon(icon1)
         self.pushButton_AddPoster.setIconSize(QtCore.QSize(40, 40))
         self.pushButton_AddPoster.setObjectName("pushButton_AddPoster")
         self.horizontalLayout_4.addWidget(self.pushButton_AddPoster)
         self.pushButtonSave = QtWidgets.QPushButton(parent=self.frame_9)
         self.pushButtonSave.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/save_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButtonSave.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/RedIcons/images/icons/RedIcons/save_ic.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButtonSave.setIcon(icon2)
         self.pushButtonSave.setIconSize(QtCore.QSize(40, 40))
         self.pushButtonSave.setObjectName("pushButtonSave")
         self.horizontalLayout_4.addWidget(self.pushButtonSave)
@@ -281,7 +284,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Movie Create"))
         self.appHeader.setText(_translate("Dialog", "     MOVIE CREATE"))
         self.label.setText(_translate("Dialog", "Movie name"))
         self.label_2.setText(_translate("Dialog", "Author"))

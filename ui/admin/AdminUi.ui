@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1043</width>
-    <height>685</height>
+    <height>738</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -61,7 +61,7 @@ QLineEdit {
     color: #7c000b;
 }
 
-#widget_4, #widget_5, #frame_12, #widget_6 {
+#widget_4,#widget_7, #widget_5, #frame_12, #widget_6 {
     background-color: #fefeff;
     border-radius: 20px;
     border: None
@@ -258,50 +258,6 @@ color: rgb(253, 253, 250);</string>
                    </property>
                    <property name="text">
                     <string>MOVIE MANAGEMENT</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignRight">
-               <widget class="QWidget" name="widget_4" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_6">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QPushButton" name="Account_btn">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>32</width>
-                     <height>32</height>
-                    </size>
                    </property>
                   </widget>
                  </item>
@@ -1260,47 +1216,48 @@ font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;</string>
               <item>
                <widget class="QWidget" name="widget_14" native="true">
                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QTableWidget" name="tableFoods">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: rgb(254, 254, 255);
-font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;
-            QSlider::groove:horizontal {
-                border: 1px solid #999;
-                background: #ECECEC;   /* màu nền rãnh */
-                height: 8px;           /* chiều cao của rãnh */
-                border-radius: 4px;    /* bo góc rãnh */
-            }
-            QSlider::handle:horizontal {
-                background: #E0E0E0;   /* màu nền nút trượt */
-                border: 1px solid #777;
-                width: 16px;           /* độ rộng nút trượt */
-                height: 16px;          /* độ cao nút trượt (chủ yếu là bo tròn) */
-                margin: -5px 0;        /* canh vị trí nút trượt nằm giữa rãnh */
-                border-radius: 8px;    /* bo tròn nút trượt */
-            }
-            QSlider::handle:horizontal:hover {
-                background: #D6D6D6;   /* màu nút trượt khi hover */
-            }
-            QSlider::sub-page:horizontal {
-                background: #0078D7;   /* màu phần rãnh đã trượt qua */
-                border-radius: 4px;
-            }
-            QSlider::add-page:horizontal {
-                background: #ECECEC;   /* màu phần rãnh chưa trượt tới */
-                border-radius: 4px;
-            }</string>
+                    <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frameChartFood">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
+                  <widget class="QWidget" name="widget_4" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
+                   <layout class="QGridLayout" name="gridLayout_5">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frameChartFood">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -1309,22 +1266,48 @@ font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;
               <item>
                <widget class="QWidget" name="widget_13" native="true">
                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QTableWidget" name="tableMovies">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: rgb(254, 254, 255);
-font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
+                    <string notr="true">font: 75 bold 10pt &quot;MS Shell Dlg 2&quot;;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frameChartMovie">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
+                  <widget class="QWidget" name="widget_7" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
+                   <layout class="QGridLayout" name="gridLayout_4">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frameChartMovie">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -1405,53 +1388,6 @@ color: rgb(253, 253, 250);</string>
                    </property>
                    <property name="text">
                     <string>CINEX CINEMA REVENUE</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_12" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>73</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">  border-radius: 5px;</string>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_10">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="Account_btn_2">
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</normaloff>C:/Users/Nhu Anh/.designer/images/icons/RedIcons/user_ic.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>32</width>
-                     <height>32</height>
-                    </size>
                    </property>
                   </widget>
                  </item>

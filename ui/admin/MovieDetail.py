@@ -15,6 +15,9 @@ class Ui_Dialog(object):
         Dialog.resize(755, 561)
         Dialog.setMinimumSize(QtCore.QSize(755, 561))
         Dialog.setMaximumSize(QtCore.QSize(755, 583))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Logo/images/Logo/Movie_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon)
         Dialog.setStyleSheet("QLabel {\n"
 "font: 75 bold 12pt \"Arial\";\n"
 "}\n"
@@ -231,7 +234,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Movie Detail"))
         self.appHeader.setText(_translate("Dialog", "     MOVIE DETAILS"))
         self.label.setText(_translate("Dialog", "Movie name"))
         self.label_2.setText(_translate("Dialog", "Author"))

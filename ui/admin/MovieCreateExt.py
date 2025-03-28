@@ -36,15 +36,9 @@ class MovieCreateExt(QDialog):
         )
 
         if file_path:  # Nếu người dùng chọn ảnh
-            image_name = os.path.basename(file_path)  # Lấy tên file ảnh
-            new_image_path = os.path.join(self.image_folder, image_name)
-
-            # Nếu ảnh không nằm trong thư mục Poster thì copy vào
-            if not file_path.startswith(self.image_folder):
-                shutil.copy(file_path, new_image_path)
-
-            self.selected_image = image_name  # Lưu ảnh đã chọn
-            self.ui.labelImage.setPixmap(QPixmap(new_image_path).scaled(200, 300))  # Hiển thị ảnh xem trước
+            # Hiển thị ảnh được chọn lên label mà không cần sao chép
+            self.selected_image = os.path.basename(file_path)  # Lưu tên ảnh
+            self.ui.labelImage.setPixmap(QPixmap(file_path).scaled(200, 300))  # Hiển thị ảnh xem trước
 
     def save_movie_data(self):
         """ Lưu dữ liệu phim mới """

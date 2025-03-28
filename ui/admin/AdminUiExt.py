@@ -153,17 +153,17 @@ class AdminUiExt(Ui_MainWindow):
                 QMessageBox.critical(self.MainWindow, "Lỗi", "Không tìm thấy file dữ liệu doanh thu!")
                 return
 
-            # Đọc file Excel mà không ép kiểu, để pandas tự xác định kiểu dữ liệu
+
             self.movie_data = pd.read_excel(movie_file, engine="openpyxl")
             self.food_data = pd.read_excel(food_file, engine="openpyxl")
 
-            # Chuyển cột "Doanh thu" về numeric
+
             self.movie_data["Revenue"] = pd.to_numeric(self.movie_data["Revenue"], errors="coerce").fillna(0)
             self.food_data["Revenue"] = pd.to_numeric(self.food_data["Revenue"], errors="coerce").fillna(0)
 
             if "Datetime" not in self.movie_data.columns or "Datetime" not in self.food_data.columns:
                 QMessageBox.critical(self.MainWindow, "Lỗi",
-                                     "File Excel không có cột 'Thời gian'. Kiểm tra lại dữ liệu!")
+                                     "File Excel không có cột 'Datetime'. Kiểm tra lại dữ liệu!")
                 return
 
             # Chuyển đổi cột "Thời gian" về kiểu datetime (không chỉ định format để linh hoạt hơn)
@@ -202,9 +202,8 @@ class AdminUiExt(Ui_MainWindow):
         # Lấy giá trị từ combobox tháng bắt đầu và tháng kết thúc
         start_month = self.comboMonthYear_1.currentText().strip()
         end_month = self.comboMonthYear_2.currentText().strip()
-
-        print(f"Start month: {start_month}, End month: {end_month}")
-
+        start_str = f"{start_month[:4]}-{start_month[5:]}"  # "YYYY-MM"
+        end_str = f"{end_month[:4]}-{end_month[5:]}"  # "YYYY-MM"
         if not start_month or not end_month:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn tháng bắt đầu và tháng kết thúc để lọc!")
             return
@@ -213,48 +212,67 @@ class AdminUiExt(Ui_MainWindow):
             # Chuyển chuỗi tháng/năm (YYYY-MM) thành datetime object
             start_date = datetime.strptime(start_month, "%Y-%m")
             end_date = datetime.strptime(end_month, "%Y-%m")
-            print(f"Start date: {start_date}, End date: {end_date}")
 
             if end_date < start_date:
                 QMessageBox.warning(self.MainWindow, "Lỗi", "Tháng kết thúc phải lớn hơn hoặc bằng tháng bắt đầu!")
                 return
 
-            # Chuyển datetime về chuỗi định dạng "YYYY-MM" để so sánh với cột "Thời gian"
-            start_str = start_date.strftime("%Y-%m")
-            end_str = end_date.strftime("%Y-%m")
+            # Lọc các tháng có dữ liệu trong file Excel
+            movie_months = set(self.movie_data["Datetime"].unique())  # Các tháng có trong dữ liệu phim
+            food_months = set(self.food_data["Datetime"].unique())  # Các tháng có trong dữ liệu thực phẩm
+
+            # Tạo một tập hợp các tháng từ dữ liệu
+            all_months_in_data = movie_months.union(food_months)
+
+            # Lọc các tháng nằm trong khoảng từ start_str đến end_str và có trong dữ liệu
+            valid_months = [month for month in all_months_in_data
+                            if start_date <= datetime.strptime(month, "%Y-%m") <= end_date]
+
+
         except ValueError as e:
             QMessageBox.warning(self.MainWindow, "Lỗi", f"Định dạng tháng/năm không đúng: {e}")
             return
 
-        # Lọc dữ liệu dựa trên chuỗi "YYYY-MM"
+        # Lọc dữ liệu theo thời gian
         filtered_movies = self.movie_data[
             (self.movie_data["Datetime"] >= start_str) & (self.movie_data["Datetime"] <= end_str)]
         filtered_foods = self.food_data[
             (self.food_data["Datetime"] >= start_str) & (self.food_data["Datetime"] <= end_str)]
 
-        print(f"Filtered movies: {filtered_movies.shape}")
-        print(f"Filtered foods: {filtered_foods.shape}")
-
         if filtered_movies.empty and filtered_foods.empty:
             QMessageBox.warning(self.MainWindow, "Thông báo", "Không có dữ liệu cho khoảng thời gian đã chọn!")
             return
 
-        # Cập nhật lại bảng, doanh thu và biểu đồ với dữ liệu đã lọc
+        # Cập nhật bảng với dữ liệu đã lọc
         self.populate_table(filtered_movies, self.tableMovies)
         self.populate_table(filtered_foods, self.tableFoods)
+
+        # Cập nhật doanh thu tổng
         self.calculate_total_revenue(filtered_movies, filtered_foods)
+
+        # Vẽ lại biểu đồ với dữ liệu đã lọc
         self.draw_movie_chart(filtered_movies)
         self.draw_food_chart(filtered_foods)
 
     def populate_table(self, data, table_widget):
-        table_widget.setRowCount(len(data))
+
+        # Xóa nội dung hiện tại trong bảng
+        table_widget.clearContents()
+
+        # Đặt số cột dựa trên số cột của DataFrame
         table_widget.setColumnCount(len(data.columns))
-        table_widget.setHorizontalHeaderLabels(data.columns)
+        table_widget.setHorizontalHeaderLabels(data.columns.tolist())
 
-        for row_idx, row in data.iterrows():
+        # Thêm dữ liệu vào bảng
+        for row_idx, (index, row) in enumerate(data.iterrows()):
+            # Dòng đầu tiên bắt đầu từ row_idx == 0
+            table_widget.insertRow(row_idx)  # Thêm hàng mới
             for col_idx, value in enumerate(row):
-                table_widget.setItem(row_idx, col_idx, QTableWidgetItem(str(value)))
+                item = QTableWidgetItem(str(value))  # Chuyển giá trị thành chuỗi
+                table_widget.setItem(row_idx, col_idx, item)  # Thêm giá trị vào ô tương ứng
 
+        # Làm mới giao diện bảng
+        table_widget.repaint()
     def calculate_total_revenue(self, movies=None, foods=None):
         if movies is None:
             movies = self.movie_data
@@ -307,7 +325,7 @@ class AdminUiExt(Ui_MainWindow):
         ax.bar(data["Datetime"], data["Revenue"], color='skyblue')
         ax.set_ylabel("Revenue (VND)")
         ax.set_title("Movie Revenue")
-        plt.xticks(rotation=45)  # Xoay nhãn trục x cho dễ đọc
+        plt.xticks(rotation=15)
 
         # Tạo canvas từ figure và thêm vào layout
         canvas = FigureCanvas(fig)
@@ -333,7 +351,7 @@ class AdminUiExt(Ui_MainWindow):
         ax.bar(data["Datetime"], data["Revenue"], color='lightgreen')
         ax.set_ylabel("Revenue (VND)")
         ax.set_title("Food Revenue")
-        plt.xticks(rotation=45)  # Xoay nhãn trục x cho dễ đọc
+        plt.xticks(rotation=15)
 
         canvas = FigureCanvas(fig)
         layout.addWidget(canvas)

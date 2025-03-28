@@ -1,7 +1,7 @@
 [
     {
         "filmId": "F1",
-        "filmTitle": "anyone but you",
+        "filmTitle": "Anyone But You",
         "Gerne": "Tình cảm",
         "Duration": "103",
         "Country": "Mỹ",
@@ -16,7 +16,7 @@
     },
     {
         "filmId": "F2",
-        "filmTitle": "john wick 4",
+        "filmTitle": "John Wick 4",
         "Gerne": "Hành động",
         "Duration": 169,
         "Country": "Mỹ",
@@ -31,7 +31,7 @@
     },
     {
         "filmId": "F3",
-        "filmTitle": "the marvels",
+        "filmTitle": "The Marvels",
         "Gerne": "Siêu anh hùng",
         "Duration": 130,
         "Country": "Mỹ",
@@ -46,9 +46,9 @@
     },
     {
         "filmId": "F4",
-        "filmTitle": "oppenheimer",
+        "filmTitle": "Oppenheimer",
         "Gerne": "Chính kịch",
-        "Duration": 180,
+        "Duration": "180",
         "Country": "Mỹ",
         "Author": "Christopher Nolan",
         "Language": "Phụ đề tiếng Việt",
@@ -61,7 +61,7 @@
     },
     {
         "filmId": "F5",
-        "filmTitle": "inside out 2",
+        "filmTitle": "Inside Out 2",
         "Gerne": "Hoạt hình",
         "Duration": 100,
         "Country": "Mỹ",
@@ -76,7 +76,7 @@
     },
     {
         "filmId": "F6",
-        "filmTitle": "dune: part two",
+        "filmTitle": "Dune: Part Two",
         "Gerne": "Khoa học viễn tưởng",
         "Duration": 166,
         "Country": "Mỹ",
@@ -91,7 +91,7 @@
     },
     {
         "filmId": "F7",
-        "filmTitle": "avatar: the way of water",
+        "filmTitle": "Avatar: The Way of Water",
         "Gerne": "Khoa học viễn tưởng",
         "Duration": 192,
         "Country": "Mỹ",
@@ -106,7 +106,7 @@
     },
     {
         "filmId": "F8",
-        "filmTitle": "spider-man: no way home",
+        "filmTitle": "Spider-Man: No Way Home",
         "Gerne": "Siêu anh hùng",
         "Duration": 148,
         "Country": "Mỹ",
@@ -121,7 +121,7 @@
     },
     {
         "filmId": "F9",
-        "filmTitle": "the conjuring: The Devil Made Me Do It",
+        "filmTitle": "The Conjuring: The Devil Made Me Do It",
         "Gerne": "Kinh dị",
         "Duration": 112,
         "Country": "Mỹ",
@@ -136,7 +136,7 @@
     },
     {
         "filmId": "F10",
-        "filmTitle": "fast x",
+        "filmTitle": "Fast X",
         "Gerne": "Hành động",
         "Duration": 141,
         "Country": "Mỹ",
