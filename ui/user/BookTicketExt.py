@@ -48,8 +48,6 @@ class BookTicketExt(QDialog):
            os.makedirs(dataset_path)
 
        self.current_user_path = os.path.join(dataset_path, "current_user.json")
-       if not os.path.exists(self.current_user_path):
-           QMessageBox.critical(self.MainWindow, "Lỗi", f"Không tìm thấy file: {self.current_user_path}")
 
        self.setupSignalAndSlot()
        self.selected_foods = []
@@ -136,7 +134,7 @@ class BookTicketExt(QDialog):
 
    def updateTotalTicketPrice(self):
        total = len(self.selected_seats) * self.ticket_price_per_seat
-       self.ui.label_TotalPriceTicket.setText(f"{total} VNĐ")
+       self.ui.label_TotalPriceTicket.setText(f"{total} ")
        self.ui.label_Price.setText(f"{total}")
 
 
@@ -280,8 +278,9 @@ class BookTicketExt(QDialog):
        for food in self.selected_foods:
            row = QHBoxLayout()
            name = QLabel(f"{food['name']}")
+           name.setWordWrap(True)
            qty = QLabel(f"{food['quantity']} x")
-           price = QLabel(f"{food['price'] * food['quantity']} VNĐ")
+           price = QLabel(f"{food['price'] * food['quantity']}")
 
            row.addWidget(qty)
            row.addWidget(name)
@@ -310,15 +309,6 @@ class BookTicketExt(QDialog):
 
 
    def updateQuantity(self, quantity_label, change, price_label, original_price,product_name):
-       """Cập nhật số lượng và giá sản phẩm khi nhấn nút + hoặc -"""
-       '''current_quantity = int(quantity_label.text())
-       new_quantity = max(1, current_quantity + change)
-       quantity_label.setText(str(new_quantity))
-
-       new_price = int(original_price.replace("VNĐ", "").strip()) * new_quantity
-       price_label.setText(f"{new_price} VNĐ")
-       self.updateTotalPriceFood()'''
-
        current_quantity = int(quantity_label.text())
        new_quantity = max(1, current_quantity + change)
        quantity_label.setText(str(new_quantity))

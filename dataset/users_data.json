@@ -40,22 +40,6 @@
         "email": "hoangphat@example.com"
     },
     {
-        "Username": "1",
-        "Password": "1",
-        "fullname": "fwscaeƯAQD",
-        "birthday": "fwaedscăe",
-        "phone": "fdừa",
-        "email": "aeffeghmjk233456"
-    },
-    {
-        "Username": "umxumlun",
-        "Password": "umxumlun",
-        "fullname": "SDAFGH",
-        "birthday": "ASCDVG",
-        "phone": "DFGJN",
-        "email": "DSFDFG"
-    },
-    {
         "Username": "Minhgay",
         "Password": "gay123",
         "fullname": "lê duy nhật minh",
@@ -74,6 +58,14 @@
     {
         "Username": "new_user",
         "Password": "password123",
+        "fullname": "",
+        "birthday": "",
+        "phone": "",
+        "email": ""
+    },
+    {
+        "Username": "Vietnamese Crepe",
+        "Password": "123456",
         "fullname": "",
         "birthday": "",
         "phone": "",

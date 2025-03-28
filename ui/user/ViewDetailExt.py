@@ -40,8 +40,9 @@ class ViewDetailExt(QDialog):
 
    def bookTicket(self, movie):
        """Mở giao diện đặt vé khi bấm Buy Ticket"""
-       self.book_ticket_dialog = BookTicketExt(movie,self.username)  # truyền thông tin phim nếu cần
+       self.close()  # Đóng giao diện ViewDetail hiện tại
+       self.parent().close()
+       self.book_ticket_dialog = BookTicketExt(movie, self.username)  # Truyền thông tin phim
        self.book_ticket_dialog.exec()
-
 
 

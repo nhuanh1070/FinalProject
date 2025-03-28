@@ -45,14 +45,12 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
 
             if os.path.exists(current_user_path):
                 os.remove(current_user_path)  # Xóa file đăng nhập
-                print("✅ Đã đăng xuất và xóa thông tin người dùng!")
 
             # Đóng cửa sổ UserInforExt
             self.close()
 
             # Đóng luôn UserUiExt nếu nó tồn tại (vì đã được truyền vào làm parent)
             if self.parent():
-                print("📌 Đóng luôn UserUiExt!")
                 self.parent().close()
 
             # Mở lại giao diện đăng nhập

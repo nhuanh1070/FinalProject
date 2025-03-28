@@ -26,5 +26,51 @@
         "food_price": 150000,
         "total_price": 250000,
         "timestamp": "2025-03-28 10:29:53"
+    },
+    {
+        "username": "test_user",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "21:00",
+        "room": "Room 2",
+        "seats": [
+            "C10"
+        ],
+        "ticket_price": 50000,
+        "food_price": 75000,
+        "total_price": 125000,
+        "timestamp": "2025-03-28 11:28:23"
+    },
+    {
+        "username": "1",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "21:00",
+        "room": "Room 2",
+        "seats": [
+            "C6",
+            "C7",
+            "C10",
+            "C4",
+            "C9",
+            "C5"
+        ],
+        "ticket_price": 300000,
+        "food_price": 298000,
+        "total_price": 598000,
+        "timestamp": "2025-03-28 11:28:48"
+    },
+    {
+        "username": "1",
+        "filmTitle": "FAST X",
+        "Showtimes": "16:00",
+        "room": "Room 3",
+        "seats": [
+            "D10",
+            "C10",
+            "C9"
+        ],
+        "ticket_price": 150000,
+        "food_price": 376000,
+        "total_price": 526000,
+        "timestamp": "2025-03-28 11:52:22"
     }
 ]

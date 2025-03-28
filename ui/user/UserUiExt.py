@@ -77,7 +77,7 @@ class UserUiExt(Ui_MainWindow):
        self.stackedWidget.setCurrentIndex(prev_index)
    def showMovieDetail(self, movie_index):
        movie = self.movie_data[movie_index]
-       detail_dialog = ViewDetailExt(movie)
+       detail_dialog = ViewDetailExt(movie, parent=self.MainWindow)
        detail_dialog.exec()
 
 
@@ -86,7 +86,6 @@ class UserUiExt(Ui_MainWindow):
        # Lấy username từ file tạm
        current_username = self.get_logged_in_user()
        if not current_username:
-           print("❌ LỖI: Không tìm thấy user đang đăng nhập!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Không tìm thấy thông tin tài khoản!")
            return
 
@@ -97,7 +96,6 @@ class UserUiExt(Ui_MainWindow):
 
 
        if not user_info:
-           print(f"❌ LỖI: Không tìm thấy user {current_username} trong JSON!")
            QMessageBox.warning(self.MainWindow, "Lỗi", "Tài khoản không tồn tại trong hệ thống!")
            return
 
@@ -188,7 +186,6 @@ class UserUiExt(Ui_MainWindow):
                data = json.load(f)
                return data.get("Username", None)
        except Exception as e:
-           print(f"❌ LỖI: Không thể đọc file current_user.json - {e}")
            return None
 
 
