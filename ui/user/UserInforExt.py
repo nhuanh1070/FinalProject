@@ -21,15 +21,12 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
         self.fill_user_data()
         self.setupSignalAndSlot()
     def setupSignalAndSlot(self):
-
         self.pushButtonConfirm.clicked.connect(self.save_user_info)
         self.pushButtonLogOut.clicked.connect(self.LogOutProcess)
-
 
     def LogOutProcess(self):
         """ Xử lý đăng xuất, đóng UserInforExt & UserUiExt, mở lại Login """
         from ui.login.LoginUiExt import LoginUiExt
-
         # Hiển thị hộp thoại xác nhận
         msgbox = QMessageBox(self)
         msgbox.setText("Bạn có chắc chắn muốn đăng xuất?")
@@ -58,8 +55,6 @@ class UserInforExt(QDialog, Ui_Dialog):  # Kế thừa từ Ui_Dialog
             self.login_ui = LoginUiExt()
             self.login_ui.setupUi(self.mainwindow)
             self.mainwindow.show()
-
-
 
     def load_user_data(self):
         filename = "users_data.json"  # Cập nhật đường dẫn nếu cần

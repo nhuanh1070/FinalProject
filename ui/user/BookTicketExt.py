@@ -32,11 +32,9 @@ class BookTicketExt(QDialog):
        self.selected_seats = set()
        self.ticket_price_per_seat = 50000
 
-
        self.ui.label_MovieName.setText(self.movie.get("filmTitle", ""))
        self.ui.label_Showtime.setText(self.movie.get("Showtimes", ""))
        self.ui.label_ScreenRoom.setText(self.movie.get("room", "Room ?"))
-
 
        image_filename = self.movie.get("image", "default.jpg")
        image_path = self.movie.get("Poster", ":/Poster/images/Poster/default.jpg")
@@ -54,8 +52,6 @@ class BookTicketExt(QDialog):
        self.selected_foods = []
 
        self.mark_already_booked_seats()
-
-
 
    def setupSignalAndSlot(self):
        """Gán sự kiện cho các nút trong giao diện"""
@@ -116,12 +112,8 @@ class BookTicketExt(QDialog):
 
        except FileNotFoundError:
            print("❌ Chưa có file bills.json hoặc sai đường dẫn!")
-       except json.JSONDecodeError:
-           print("❌ bills.json bị lỗi định dạng!")
-
        return booked_seats
 
-       return booked_seats
    def mark_already_booked_seats(self):
        booked_seats = self.get_already_booked_seats()
 
@@ -143,7 +135,6 @@ class BookTicketExt(QDialog):
            seat_text = button.text()  # "A1", "B2", ...
            if seat_text in booked_seats:
                button.setStyleSheet("background-color: rgb(211, 47, 47);")
-               # button.setEnabled(False)  # nếu muốn cấm luôn người dùng nhấn
 
    def setupFoodButtons(self):
        """Gán sự kiện cho các nút + để thêm sản phẩm"""
@@ -153,17 +144,14 @@ class BookTicketExt(QDialog):
            if button:
                button.clicked.connect(lambda _, idx=i: self.addFoodToCheckout(idx))
 
-
    def backToHomePage(self):
        from ui.user.UserUiExt import UserUiExt
        self.close()  # Đóng cửa sổ hiện tại
        self.user_ui = UserUiExt()
        self.user_ui.showWindow()
 
-
    def goToProductCategory(self):
        self.ui.stackedWidget.setCurrentWidget(self.ui.page_ProductCatalog)
-
 
    def backToChonGhe(self):
        """Quay lại trang Chọn Ghế"""
@@ -173,7 +161,6 @@ class BookTicketExt(QDialog):
        seat_number = button.text()
        seat_color = button.palette().color(button.backgroundRole()).name()
 
-
        if seat_color == "#d32f2f":  # Màu đỏ (đã có người đặt)
            msg_box = QMessageBox()
            msg_box.setIcon(QMessageBox.Icon.Warning)
@@ -182,7 +169,6 @@ class BookTicketExt(QDialog):
            msg_box.setStandardButtons(QMessageBox.StandardButton.Ok)
            msg_box.exec()
            return
-
 
        if seat_number in self.selected_seats:
            # Bỏ chọn ghế
@@ -195,12 +181,10 @@ class BookTicketExt(QDialog):
        self.updateTotalTicketPrice()
        self.ui.label_Seats.setText(", ".join(sorted(self.selected_seats)))
 
-
    def updateTotalTicketPrice(self):
        total = len(self.selected_seats) * self.ticket_price_per_seat
        self.ui.label_TotalPriceTicket.setText(f"{total} ")
        self.ui.label_Price.setText(f"{total}")
-
 
    def addFoodToCheckout(self, index):
        """Thêm sản phẩm vào checkout hoặc cập nhật số lượng nếu đã có sẵn"""
@@ -208,7 +192,6 @@ class BookTicketExt(QDialog):
        label_price = getattr(self.ui, f"label_PriceProduct_{index}", None)
        if not label_name or not label_price:
            return
-
 
        product_name = label_name.text()
        product_price = label_price.text().replace("VNĐ", "").strip()
@@ -220,10 +203,8 @@ class BookTicketExt(QDialog):
                quantity_label = widget.findChild(QLabel, "label_Quantity")
                price_label = widget.findChild(QLabel, "label_PriceFood")
 
-
                new_quantity = int(quantity_label.text()) + 1
                quantity_label.setText(str(new_quantity))
-
 
                # Cập nhật lại giá mới dựa trên số lượng
                new_price = int(product_price.replace("VNĐ", "").strip()) * new_quantity
@@ -231,26 +212,22 @@ class BookTicketExt(QDialog):
                self.updateTotalPriceFood()
                return
 
-
        # Nếu chưa có thì tạo widget mới
        food_widget = QWidget()
        food_widget.setObjectName("widget_FoodCheckout")
        food_widget.setFixedSize(221, 82)
        food_widget.setStyleSheet("background-color: rgb(243, 246, 250); border-radius: 10px;")
 
-
        # Tạo frame chứa label_NameProduct và các nút số lượng
        frame_container = QFrame(food_widget)
        frame_container.setObjectName("frame_2")
        frame_layout = QVBoxLayout()
-
 
        label_product = QLabel(product_name)
        label_product.setObjectName("label_NameProduct")
        label_product.setFixedSize(97, 24)
        label_product.setStyleSheet("font: 75 9pt 'Segoe UI Variable Display';")
        label_product.setWordWrap(True)
-
 
        # Tạo QLabel và nút cộng trừ
        label_quantity = QLabel("1", frame_container)
@@ -259,25 +236,20 @@ class BookTicketExt(QDialog):
        btnMinus = QPushButton("-", frame_container)
        btnPlus = QPushButton("+", frame_container)
 
-
        btnMinus.setStyleSheet("border: none; font-size: 16px;")
        btnPlus.setStyleSheet("border: none; font-size: 16px;")
 
-
        btnMinus.clicked.connect(lambda: self.updateQuantity(label_quantity, -1, label_price, product_price,product_name))
        btnPlus.clicked.connect(lambda: self.updateQuantity(label_quantity, 1, label_price, product_price,product_name))
-
 
        quantity_layout = QHBoxLayout()
        quantity_layout.addWidget(btnMinus)
        quantity_layout.addWidget(label_quantity)
        quantity_layout.addWidget(btnPlus)
 
-
        frame_layout.addWidget(label_product)
        frame_layout.addLayout(quantity_layout)
        frame_container.setLayout(frame_layout)
-
 
        # Tạo frame giá và nút xóa
        frame_price_delete = QFrame()
@@ -285,11 +257,9 @@ class BookTicketExt(QDialog):
        frame_layout_price_delete = QVBoxLayout()
        frame_layout_price_delete.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
 
-
        label_price = QLabel(f"{product_price} VNĐ")
        label_price.setObjectName("label_PriceFood")
        label_price.setStyleSheet("font: 75 bold 10pt 'MS Shell Dlg 2';")
-
 
        button_delete = QPushButton()
        button_delete.setIcon(QtGui.QIcon(":/WhiteIcons/images/icons/WhiteIcons/delete_ic.svg"))
@@ -297,17 +267,14 @@ class BookTicketExt(QDialog):
        button_delete.setStyleSheet("background-color: rgb(145, 8, 12); border-radius: 5px;")
        button_delete.clicked.connect(lambda _, w=food_widget: self.removeFoodFromCheckout(w))
 
-
        frame_layout_price_delete.addWidget(button_delete)
        frame_layout_price_delete.addWidget(label_price)
        frame_price_delete.setLayout(frame_layout_price_delete)
-
 
        food_layout = QHBoxLayout()
        food_layout.addWidget(frame_container)
        food_layout.addWidget(frame_price_delete)
        food_widget.setLayout(food_layout)
-
 
        self.ui.verticalLayout_Checkout.addWidget(food_widget)
        self.updateTotalPriceFood()
@@ -355,7 +322,6 @@ class BookTicketExt(QDialog):
            container.setLayout(row)
            layout.addWidget(container)
 
-
    def updateTotalPriceFood(self):
        """Cập nhật tổng giá của các sản phẩm trong danh sách checkout"""
        total_price = 0
@@ -369,9 +335,6 @@ class BookTicketExt(QDialog):
 
        self.ui.label_TotalPriceFood.setText(f"{total_price} ")
 
-
-
-
    def updateQuantity(self, quantity_label, change, price_label, original_price,product_name):
        current_quantity = int(quantity_label.text())
        new_quantity = max(1, current_quantity + change)
@@ -384,7 +347,6 @@ class BookTicketExt(QDialog):
        new_price = int(original_price.replace("VNĐ", "").strip()) * new_quantity
        price_label.setText(f"{new_price} VNĐ")
        self.updateTotalPriceFood()
-
 
    def removeFoodFromCheckout(self, widget):
        """Xóa sản phẩm khỏi danh sách checkout"""
@@ -493,7 +455,6 @@ class BookTicketExt(QDialog):
            total_price=total,
            timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
        )
-
 
        bills = jff.read_data(filename, Bill)
        bills.append(new_bill)

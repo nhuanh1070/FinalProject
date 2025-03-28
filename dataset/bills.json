@@ -63,5 +63,35 @@
         "food_price": 0,
         "total_price": 0,
         "timestamp": "2025-03-28 16:38:20"
+    },
+    {
+        "username": "Vietnamesecrepe123",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "22:00",
+        "room": "Room 6",
+        "seats": [
+            "C9",
+            "C7",
+            "B7",
+            "B9"
+        ],
+        "ticket_price": 200000,
+        "food_price": 499000,
+        "total_price": 699000,
+        "timestamp": "2025-03-28 17:46:29"
+    },
+    {
+        "username": "nhuanh123",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "22:00",
+        "room": "Room 6",
+        "seats": [
+            "C8",
+            "B8"
+        ],
+        "ticket_price": 100000,
+        "food_price": 149000,
+        "total_price": 249000,
+        "timestamp": "2025-03-28 17:47:29"
     }
 ]

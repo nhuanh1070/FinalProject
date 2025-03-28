@@ -88,7 +88,6 @@ class DataConnector:
 
         for i, user in enumerate(users):
             if user.get("Username") == Username:
-                print(f"✅ Tìm thấy username: {Username} (index {i})")
                 return i  # Username tồn tại
 
         return -1  # Username không tồn tại
@@ -151,13 +150,10 @@ class DataConnector:
             try:
                 with open(filename, "w", encoding="utf-8") as f:
                     json.dump(users, f, indent=4, ensure_ascii=False)
-                print(f"✅ Cập nhật thành công user {Username}!")
                 return True
             except Exception as e:
-                print(f"❌ LỖI KHI GHI FILE JSON: {e}")
                 return False
         else:
-            print(f"❌ Không tìm thấy user {Username} trong JSON!")
             return False
 
 

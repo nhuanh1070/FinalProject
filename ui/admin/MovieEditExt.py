@@ -105,7 +105,6 @@ class MovieEditExt(QDialog):
                 json.dump(films, file, indent=4, ensure_ascii=False)
             return True
         except Exception as e:
-            print(f"❌ Lỗi cập nhật film.json: {e}")
             return False
 
     def refresh_movie_data(self):

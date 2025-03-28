@@ -3,7 +3,7 @@
         "filmId": "F1",
         "filmTitle": "Anyone But You",
         "Gerne": "Tình cảm",
-        "Duration": "103",
+        "Duration": "160",
         "Country": "Mỹ",
         "Author": "Will Gluck",
         "Language": "Phụ đề tiếng Việt",
@@ -148,5 +148,15 @@
         "Showtimes": "16:00",
         "inventory": 10,
         "image": "FastX.jpg"
+    },
+    {
+        "filmTitle": "Us",
+        "Author": "Jordan Peele\n",
+        "Gerne": "Kinh dị, Giật gân\n",
+        "Country": "Hoa Kỳ",
+        "Duration": "116 phút\n",
+        "ReleaseDate": "23/05/2019",
+        "Description": "\"Us\" là một bộ phim kinh dị tâm lý kể về gia đình Wilson, khi họ trở lại căn nhà nghỉ mát thời thơ ấu của mẹ, Adelaide. Tại đây, họ phải đối mặt với những bản sao đáng sợ của chính mình, dẫn đến cuộc chiến sinh tử. Phim khai thác chủ đề về bản sắc cá nhân và sự bất bình đẳng trong xã hội.\n",
+        "image": "Us.jpg"
     }
 ]

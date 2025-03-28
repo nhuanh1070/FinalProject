@@ -62,5 +62,13 @@
         "birthday": "",
         "phone": "",
         "email": ""
+    },
+    {
+        "Username": "Vietnamesecrepe123",
+        "Password": "`12345",
+        "fullname": "Nhóm Bánh Xèo",
+        "birthday": "28/03/2025",
+        "phone": "0367234982",
+        "email": "banhxeo123@gmail.com"
     }
 ]

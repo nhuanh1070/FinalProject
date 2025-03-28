@@ -182,7 +182,7 @@ class LoginUiExt(Ui_MainWindow):
 
            if user_info:
                self.MainWindow.close()
-               # 🔹 Đường dẫn đến `current_user.json` trong thư mục `dataset/`
+               # Đường dẫn đến `current_user.json` trong thư mục `dataset/`
                dataset_path = os.path.join(os.path.dirname(__file__), "../dataset")
                current_user_path = os.path.join(dataset_path, "current_user.json")
 

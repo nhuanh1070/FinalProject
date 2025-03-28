@@ -61,14 +61,12 @@ class AdminUiExt(Ui_MainWindow):
     def get_movies_list(self):
         file_path = "../dataset/film.json"
         if not os.path.exists(file_path):
-            print("❌ Lỗi: File dữ liệu không tồn tại!")
             return []
         try:
             with open(file_path, "r", encoding="utf-8") as file:
                 data = json.load(file)
                 return data if isinstance(data, list) else []
         except json.JSONDecodeError:
-            print("❌ Lỗi: Không thể đọc file JSON!")
             return []
 
     def load_all_movies(self):

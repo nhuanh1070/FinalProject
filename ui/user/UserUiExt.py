@@ -27,7 +27,6 @@ class UserUiExt(Ui_MainWindow):
 
        self.setupSignalAndSlot()
 
-
    def showWindow(self):
        self.MainWindow.show()
    def setupSignalAndSlot(self):
@@ -92,14 +91,12 @@ class UserUiExt(Ui_MainWindow):
        users = dc.get_all_users()
        user_info = next((user for user in users if user["Username"] == current_username), None)
 
-
        if not user_info:
            QMessageBox.warning(self.MainWindow, "Lỗi", "Tài khoản không tồn tại trong hệ thống!")
            return
 
        self.user_info_dialog = UserInforExt(user_info=user_info, from_user_ui=True, parent=self.MainWindow)
        self.user_info_dialog.exec()
-
 
    def get_movie_data(self):
        # Danh sách dữ liệu phim

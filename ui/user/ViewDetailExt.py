@@ -9,8 +9,6 @@ from utils import resources_poster_rc
 from utils import resources_rc
 
 
-
-
 class ViewDetailExt(QDialog):
    def __init__(self, movie, parent=None):
        super().__init__(parent)
@@ -18,7 +16,6 @@ class ViewDetailExt(QDialog):
        self.ui.setupUi(self)
        self.username=username
        self.setMovieDetails(movie)
-
 
        # Kết nối nút "Buy Ticket" với hàm mở giao diện đặt vé
        self.ui.pushButtonBuyTickets.clicked.connect(lambda: self.bookTicket(movie))
@@ -32,8 +29,6 @@ class ViewDetailExt(QDialog):
        self.ui.label_rating.setText(movie["Rating"])  # Độ tuổi
        self.ui.label_poster.setPixmap(QtGui.QPixmap(movie["Poster"]))
 
-
-       #self.ui.label_poster.setPixmap(QtGui.QPixmap(movie["Poster"]))  # Cập nhật poster
        self.ui.textEditMovieContent.setText(movie["Description"])  # Mô tả phim
        self.ui.textEditMovieContent.setReadOnly(True)
 
