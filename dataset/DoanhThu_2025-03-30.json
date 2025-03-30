@@ -1,0 +1,302 @@
+[
+    {
+        "username": "user01",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "19:00",
+        "room": "Room 5",
+        "seats": [
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+        ],
+        "ticket_price": 200000,
+        "food_price": 50000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 21:50:00"
+    },
+    {
+        "username": "user02",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "21:00",
+        "room": "Room 3",
+        "seats": [
+            "A7",
+            "A8",
+            "A9"
+        ],
+        "ticket_price": 150000,
+        "food_price": 100000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 17:42:00"
+    },
+    {
+        "username": "user01",
+        "filmTitle": "SPIDERMAN",
+        "Showtimes": "22:00",
+        "room": "Room 2",
+        "seats": [
+            "D4",
+            "D5",
+            "D6",
+            "D7"
+        ],
+        "ticket_price": 200000,
+        "food_price": 50000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 22:04:00"
+    },
+    {
+        "username": "user01",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "20:00",
+        "room": "Room 3",
+        "seats": [
+            "C6",
+            "C7",
+            "C8"
+        ],
+        "ticket_price": 150000,
+        "food_price": 0,
+        "total_price": 150000,
+        "timestamp": "2025-03-30 19:02:00"
+    },
+    {
+        "username": "user01",
+        "filmTitle": "INSIDE OUT 2",
+        "Showtimes": "22:00",
+        "room": "Room 4",
+        "seats": [
+            "B6",
+            "B7",
+            "B8"
+        ],
+        "ticket_price": 150000,
+        "food_price": 100000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 19:47:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "19:00",
+        "room": "Room 4",
+        "seats": [
+            "A8",
+            "A9",
+            "A10"
+        ],
+        "ticket_price": 150000,
+        "food_price": 75000,
+        "total_price": 225000,
+        "timestamp": "2025-03-30 17:25:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "SPIDERMAN",
+        "Showtimes": "22:00",
+        "room": "Room 1",
+        "seats": [
+            "C2",
+            "C3",
+            "C4"
+        ],
+        "ticket_price": 150000,
+        "food_price": 150000,
+        "total_price": 300000,
+        "timestamp": "2025-03-30 17:05:00"
+    },
+    {
+        "username": "user05",
+        "filmTitle": "JOHN WICK 4",
+        "Showtimes": "22:00",
+        "room": "Room 3",
+        "seats": [
+            "C2",
+            "C3",
+            "C4"
+        ],
+        "ticket_price": 150000,
+        "food_price": 75000,
+        "total_price": 225000,
+        "timestamp": "2025-03-30 18:40:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "22:00",
+        "room": "Room 1",
+        "seats": [
+            "A7",
+            "A8",
+            "A9",
+            "A10"
+        ],
+        "ticket_price": 200000,
+        "food_price": 150000,
+        "total_price": 350000,
+        "timestamp": "2025-03-30 21:58:00"
+    },
+    {
+        "username": "user03",
+        "filmTitle": "SPIDERMAN",
+        "Showtimes": "21:00",
+        "room": "Room 1",
+        "seats": [
+            "C9"
+        ],
+        "ticket_price": 50000,
+        "food_price": 150000,
+        "total_price": 200000,
+        "timestamp": "2025-03-30 20:44:00"
+    },
+    {
+        "username": "user01",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "22:00",
+        "room": "Room 5",
+        "seats": [
+            "B5",
+            "B6"
+        ],
+        "ticket_price": 100000,
+        "food_price": 0,
+        "total_price": 100000,
+        "timestamp": "2025-03-30 18:20:00"
+    },
+    {
+        "username": "user03",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "19:00",
+        "room": "Room 5",
+        "seats": [
+            "A4",
+            "A5",
+            "A6",
+            "A7"
+        ],
+        "ticket_price": 200000,
+        "food_price": 50000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 20:50:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "INSIDE OUT 2",
+        "Showtimes": "20:00",
+        "room": "Room 2",
+        "seats": [
+            "B1",
+            "B2",
+            "B3",
+            "B4"
+        ],
+        "ticket_price": 200000,
+        "food_price": 50000,
+        "total_price": 250000,
+        "timestamp": "2025-03-30 19:18:00"
+    },
+    {
+        "username": "user01",
+        "filmTitle": "SPIDERMAN",
+        "Showtimes": "19:00",
+        "room": "Room 2",
+        "seats": [
+            "A9",
+            "A10"
+        ],
+        "ticket_price": 100000,
+        "food_price": 50000,
+        "total_price": 150000,
+        "timestamp": "2025-03-30 20:48:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "21:00",
+        "room": "Room 1",
+        "seats": [
+            "C4",
+            "C5",
+            "C6",
+            "C7"
+        ],
+        "ticket_price": 200000,
+        "food_price": 0,
+        "total_price": 200000,
+        "timestamp": "2025-03-30 18:56:00"
+    },
+    {
+        "username": "user05",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "20:00",
+        "room": "Room 4",
+        "seats": [
+            "A8",
+            "A9"
+        ],
+        "ticket_price": 100000,
+        "food_price": 75000,
+        "total_price": 175000,
+        "timestamp": "2025-03-30 18:44:00"
+    },
+    {
+        "username": "user05",
+        "filmTitle": "JOHN WICK 4",
+        "Showtimes": "20:00",
+        "room": "Room 2",
+        "seats": [
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+        ],
+        "ticket_price": 200000,
+        "food_price": 0,
+        "total_price": 200000,
+        "timestamp": "2025-03-30 19:53:00"
+    },
+    {
+        "username": "user04",
+        "filmTitle": "INSIDE OUT 2",
+        "Showtimes": "19:00",
+        "room": "Room 5",
+        "seats": [
+            "A9"
+        ],
+        "ticket_price": 50000,
+        "food_price": 50000,
+        "total_price": 100000,
+        "timestamp": "2025-03-30 19:45:00"
+    },
+    {
+        "username": "user02",
+        "filmTitle": "DUNE PART TWO",
+        "Showtimes": "20:00",
+        "room": "Room 4",
+        "seats": [
+            "A5",
+            "A6",
+            "A7",
+            "A8"
+        ],
+        "ticket_price": 200000,
+        "food_price": 150000,
+        "total_price": 350000,
+        "timestamp": "2025-03-30 17:19:00"
+    },
+    {
+        "username": "user02",
+        "filmTitle": "THE CONJURING",
+        "Showtimes": "21:00",
+        "room": "Room 1",
+        "seats": [
+            "D2",
+            "D3"
+        ],
+        "ticket_price": 100000,
+        "food_price": 0,
+        "total_price": 100000,
+        "timestamp": "2025-03-30 19:34:00"
+    }
+]

@@ -145,7 +145,7 @@ QPushButton {
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1192,6 +1192,76 @@ font: 75 bold 11pt &quot;MS Shell Dlg 2&quot;;</string>
                    <property name="icon">
                     <iconset resource="../../utils/resources.qrc">
                      <normaloff>:/RedIcons/images/icons/RedIcons/filter_ic.svg</normaloff>:/RedIcons/images/icons/RedIcons/filter_ic.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <property name="autoDefault">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnExportFile">
+                   <property name="maximumSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::RightToLeft</enum>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../utils/resources.qrc">
+                     <normaloff>:/RedIcons/images/icons/RedIcons/log_out.svg</normaloff>:/RedIcons/images/icons/RedIcons/log_out.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <property name="autoDefault">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnStatistic">
+                   <property name="maximumSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::RightToLeft</enum>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../utils/resources.qrc">
+                     <normaloff>:/RedIcons/images/icons/RedIcons/Revenue_ic.svg</normaloff>:/RedIcons/images/icons/RedIcons/Revenue_ic.svg</iconset>
                    </property>
                    <property name="iconSize">
                     <size>

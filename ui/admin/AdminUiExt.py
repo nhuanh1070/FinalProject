@@ -7,15 +7,18 @@ import pandas as pd
 
 from PyQt6.QtWidgets import QMessageBox, QMainWindow, QTableWidgetItem
 from PyQt6 import QtWidgets, QtCore
+from PyQt6 import QtGui
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from CSDL.libs.DataConnector import DataConnector
 from CSDL.libs.JsonFileFactory import JsonFileFactory
 from CSDL.models.Film import Film
 from ui.admin.AdminUi import Ui_MainWindow
+from ui.admin.ExportExt import ExportExt
 from ui.admin.MovieDetailExt import MovieDetailExt
 from ui.admin.MovieCreateExt import MovieCreateExt
 from ui.admin.MovieEditExt import MovieEditExt
+from ui.admin.StatisticExt import StatisticExt
 from utils import resources_banner_rc
 from utils import resources_poster_rc
 from utils import resources_rc
@@ -35,6 +38,8 @@ class AdminUiExt(Ui_MainWindow):
         self.setupSignalAndSlot()
         self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.MultiSelection)
+        self.tableWidget.itemSelectionChanged.connect(self.highlight_selected_rows)
 
         self.movies = self.get_movies_list()
         self.filtered_movies = self.movies.copy()
@@ -54,33 +59,43 @@ class AdminUiExt(Ui_MainWindow):
         self.pushButtonDelete.clicked.connect(self.delete_movie)
         self.lineEdit_6.textChanged.connect(self.search_movie)
         self.btnFilter.clicked.connect(self.filter_data)
-
+        self.btnExportFile.clicked.connect(self.show_export_window)
+        self.btnStatistic.clicked.connect(self.show_report_window)
     def showWindow(self):
         self.MainWindow.show()
 
     def get_movies_list(self):
         file_path = "../dataset/film.json"
         if not os.path.exists(file_path):
+            print("❌ Lỗi: File dữ liệu không tồn tại!")
             return []
         try:
             with open(file_path, "r", encoding="utf-8") as file:
                 data = json.load(file)
                 return data if isinstance(data, list) else []
         except json.JSONDecodeError:
+            print("❌ Lỗi: Không thể đọc file JSON!")
             return []
 
     def load_all_movies(self):
         self.load_movie(self.movies)
 
     def load_movie(self, movie_list):
-        self.filtered_movies = movie_list.copy()  # ✅ fixed: use a copy to avoid reference issues
+        self.filtered_movies = movie_list.copy()
         self.tableWidget.setRowCount(len(movie_list))
         for row, movie in enumerate(movie_list):
-            self.tableWidget.setItem(row, 0, QTableWidgetItem(movie["filmTitle"]))
-            self.tableWidget.setItem(row, 1, QTableWidgetItem(movie["Gerne"]))
-            self.tableWidget.setItem(row, 2, QTableWidgetItem(movie["Country"]))
-            self.tableWidget.setItem(row, 3, QTableWidgetItem(movie["ReleaseDate"]))
-            self.tableWidget.setItem(row, 4, QTableWidgetItem(str(movie["Duration"])))
+            columns = [
+                movie["filmTitle"],
+                movie["Gerne"],
+                movie["Country"],
+                movie["ReleaseDate"],
+                str(movie["Duration"])
+            ]
+            for col, value in enumerate(columns):
+                item = QTableWidgetItem(value)
+                item.setFlags(item.flags() & ~QtCore.Qt.ItemFlag.ItemIsEditable)  # Khoá ô không cho sửa
+                self.tableWidget.setItem(row, col, item)
+        self.highlight_selected_rows()
 
     def show_movie_details(self):
         selected_row = self.tableWidget.currentRow()
@@ -110,15 +125,17 @@ class AdminUiExt(Ui_MainWindow):
             self.load_all_movies()
 
     def delete_movie(self):
-        selected_row = self.tableWidget.currentRow()
-        if selected_row == -1 or selected_row >= len(self.filtered_movies):
-            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn một bộ phim!")
+        selected_rows = list(set(index.row() for index in self.tableWidget.selectedIndexes()))
+        if not selected_rows:
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn ít nhất một bộ phim để xoá!")
             return
 
-        filmTitle = self.filtered_movies[selected_row]["filmTitle"]
+        titles_to_delete = [self.filtered_movies[row]["filmTitle"] for row in selected_rows]
+        confirm_text = "\n".join(titles_to_delete)
+
         dlg = QMessageBox(self.MainWindow)
         dlg.setWindowTitle("Xác nhận xoá")
-        dlg.setText(f'Bạn có chắc muốn xoá "{filmTitle}" không?')
+        dlg.setText(f"Bạn có chắc muốn xoá các phim sau không?\n\n{confirm_text}")
         dlg.setIcon(QMessageBox.Icon.Question)
         dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
 
@@ -130,16 +147,39 @@ class AdminUiExt(Ui_MainWindow):
             with open(file_path, "r", encoding="utf-8") as file:
                 films = json.load(file)
 
-            updated_films = [film for film in films if film["filmTitle"] != filmTitle]
+            updated_films = [film for film in films if film["filmTitle"] not in titles_to_delete]
 
             with open(file_path, "w", encoding="utf-8") as file:
                 json.dump(updated_films, file, indent=4, ensure_ascii=False)
 
-            QMessageBox.information(self.MainWindow, "Thành công", "Phim đã được xoá!")
+            QMessageBox.information(self.MainWindow, "Thành công", f"Đã xoá {len(titles_to_delete)} phim.")
             self.movies = updated_films
             self.load_all_movies()
+
+            # Deselect all rows before highlighting them again
+            self.tableWidget.clearSelection()  # Bỏ chọn tất cả các dòng
+            self.highlight_selected_rows()  # Tắt highlight
         except Exception as e:
             QMessageBox.critical(self.MainWindow, "Lỗi", f"Lỗi khi xoá phim: {str(e)}")
+
+    def highlight_selected_rows(self):
+        for row in range(self.tableWidget.rowCount()):
+            for col in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, col)
+                if item:
+                    item.setBackground(QtGui.QColor("white"))
+                    item.setForeground(QtGui.QBrush(QtGui.QColor("black")))
+
+        for index in self.tableWidget.selectionModel().selectedRows():
+            row = index.row()
+            for col in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, col)
+                if item:
+                    item.setBackground(QtGui.QColor("#fff3cd"))
+                    if col == 0:
+                        item.setForeground(QtGui.QBrush(QtGui.QColor("red")))  # Tên phim tô đỏ
+                    else:
+                        item.setForeground(QtGui.QBrush(QtGui.QColor("black")))
 
     def load_revenue_data(self):
         try:
@@ -354,6 +394,15 @@ class AdminUiExt(Ui_MainWindow):
         canvas = FigureCanvas(fig)
         layout.addWidget(canvas)
         canvas.draw()
+    def show_export_window(self):
+        dialog = ExportExt(self.MainWindow)
+        dialog.exec()
 
+    def show_report_window(self):
+        try:
+            dialog = StatisticExt(self.MainWindow)
+            dialog.exec()
+        except Exception as e:
+            QMessageBox.critical(self.MainWindow, "Lỗi", f"Có lỗi xảy ra khi mở báo cáo: {str(e)}")
 
 
